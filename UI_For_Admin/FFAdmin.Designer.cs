@@ -53,6 +53,13 @@
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             contentContainer = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel7 = new Panel();
+            button6 = new Button();
+            panel9 = new Panel();
+            button7 = new Button();
+            panel10 = new Panel();
+            button8 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             sidebar.SuspendLayout();
@@ -64,6 +71,11 @@
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
+            contentContainer.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            panel7.SuspendLayout();
+            panel9.SuspendLayout();
+            panel10.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -277,6 +289,7 @@
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel4
             // 
@@ -329,6 +342,7 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // menuTransition
             // 
@@ -343,6 +357,7 @@
             // contentContainer
             // 
             contentContainer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            contentContainer.Controls.Add(flowLayoutPanel1);
             contentContainer.Dock = DockStyle.Fill;
             contentContainer.Location = new Point(356, 64);
             contentContainer.Margin = new Padding(0);
@@ -350,6 +365,100 @@
             contentContainer.Size = new Size(1144, 811);
             contentContainer.TabIndex = 2;
             contentContainer.Resize += contentContainer_Resize;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.BackColor = Color.FromArgb(255, 192, 128);
+            flowLayoutPanel1.Controls.Add(panel7);
+            flowLayoutPanel1.Controls.Add(panel9);
+            flowLayoutPanel1.Controls.Add(panel10);
+            flowLayoutPanel1.Location = new Point(239, 169);
+            flowLayoutPanel1.Margin = new Padding(0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(356, 100);
+            flowLayoutPanel1.TabIndex = 7;
+            // 
+            // panel7
+            // 
+            panel7.Anchor = AnchorStyles.Top;
+            panel7.Controls.Add(button6);
+            panel7.Location = new Point(0, 0);
+            panel7.Margin = new Padding(0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(356, 98);
+            panel7.TabIndex = 4;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(18, 17, 22);
+            button6.Cursor = Cursors.Hand;
+            button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Image = (Image)resources.GetObject("button6.Image");
+            button6.Location = new Point(-54, -50);
+            button6.Margin = new Padding(0);
+            button6.Name = "button6";
+            button6.Padding = new Padding(10, 0, 0, 0);
+            button6.Size = new Size(421, 194);
+            button6.TabIndex = 3;
+            button6.Text = "     Thiết bị";
+            button6.TextAlign = ContentAlignment.MiddleLeft;
+            button6.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click_1;
+            // 
+            // panel9
+            // 
+            panel9.CausesValidation = false;
+            panel9.Controls.Add(button7);
+            panel9.Location = new Point(0, 98);
+            panel9.Margin = new Padding(0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(356, 98);
+            panel9.TabIndex = 5;
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(65, 65, 65);
+            button7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.White;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.Location = new Point(-14, -50);
+            button7.Margin = new Padding(0);
+            button7.Name = "button7";
+            button7.Padding = new Padding(45, 0, 0, 0);
+            button7.Size = new Size(378, 194);
+            button7.TabIndex = 3;
+            button7.Text = "Danh sách thiết bị";
+            button7.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button7.UseVisualStyleBackColor = false;
+            // 
+            // panel10
+            // 
+            panel10.CausesValidation = false;
+            panel10.Controls.Add(button8);
+            panel10.Location = new Point(0, 196);
+            panel10.Margin = new Padding(0);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(356, 98);
+            panel10.TabIndex = 6;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.FromArgb(65, 65, 65);
+            button8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.White;
+            button8.Image = (Image)resources.GetObject("button8.Image");
+            button8.Location = new Point(-14, -50);
+            button8.Margin = new Padding(0);
+            button8.Name = "button8";
+            button8.Padding = new Padding(55, 0, 0, 0);
+            button8.Size = new Size(378, 194);
+            button8.TabIndex = 3;
+            button8.Text = "Xử lý đặt chỗ thiết bị";
+            button8.TextAlign = ContentAlignment.MiddleLeft;
+            button8.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button8.UseVisualStyleBackColor = false;
             // 
             // FFAdmin
             // 
@@ -375,6 +484,11 @@
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel6.ResumeLayout(false);
+            contentContainer.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel9.ResumeLayout(false);
+            panel10.ResumeLayout(false);
             ResumeLayout(false);
 
         }
@@ -404,6 +518,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer sidebarTransition;
         private System.Windows.Forms.Panel contentContainer;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel7;
+        private Button button6;
+        private Panel panel9;
+        private Button button7;
+        private Panel panel10;
+        private Button button8;
     }
 }
 
