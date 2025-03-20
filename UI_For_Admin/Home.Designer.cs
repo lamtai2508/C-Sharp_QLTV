@@ -62,9 +62,11 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(864, 664);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(228, 292);

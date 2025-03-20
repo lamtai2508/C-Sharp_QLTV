@@ -17,5 +17,10 @@ namespace QLTV
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None; // xóa thanh tiêu đề 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

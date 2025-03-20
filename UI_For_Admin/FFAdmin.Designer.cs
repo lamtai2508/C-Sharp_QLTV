@@ -342,11 +342,10 @@
             // 
             // contentContainer
             // 
-            contentContainer.AutoSize = true;
             contentContainer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             contentContainer.Dock = DockStyle.Fill;
             contentContainer.Location = new Point(356, 64);
-            contentContainer.Margin = new Padding(3, 4, 3, 4);
+            contentContainer.Margin = new Padding(0);
             contentContainer.Name = "contentContainer";
             contentContainer.Size = new Size(1144, 811);
             contentContainer.TabIndex = 2;
@@ -377,7 +376,6 @@
             panel4.ResumeLayout(false);
             panel6.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
 
         }
 

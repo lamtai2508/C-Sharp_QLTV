@@ -19,6 +19,7 @@ namespace QLTV
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             dbHelper = new DatabaseHelep();
+            this.Dock = DockStyle.Fill;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

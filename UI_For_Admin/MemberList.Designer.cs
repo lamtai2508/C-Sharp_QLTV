@@ -70,7 +70,8 @@
             // 
             // members_table
             // 
-            members_table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            members_table.AllowUserToOrderColumns = true;
+            members_table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             members_table.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             members_table.BackgroundColor = Color.White;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -92,7 +93,8 @@
             members_table.DefaultCellStyle = dataGridViewCellStyle2;
             members_table.Dock = DockStyle.Fill;
             members_table.GridColor = Color.Black;
-            members_table.Location = new Point(3, 307);
+            members_table.Location = new Point(15, 307);
+            members_table.Margin = new Padding(15, 3, 3, 3);
             members_table.Name = "members_table";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -102,19 +104,20 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             members_table.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            members_table.RowHeadersWidth = 51;
+            members_table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             members_table.RowTemplate.Height = 24;
-            members_table.Size = new Size(1141, 333);
+            members_table.Size = new Size(1103, 333);
             members_table.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             flowLayoutPanel1.Controls.Add(label2);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
-            flowLayoutPanel1.Location = new Point(3, 3);
+            flowLayoutPanel1.Dock = DockStyle.Top;
+            flowLayoutPanel1.Location = new Point(15, 3);
+            flowLayoutPanel1.Margin = new Padding(15, 3, 3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1141, 234);
+            flowLayoutPanel1.Size = new Size(1103, 234);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // label2
@@ -234,11 +237,11 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             flowLayoutPanel2.Controls.Add(panel1);
-            flowLayoutPanel2.Location = new Point(3, 243);
+            flowLayoutPanel2.Location = new Point(100, 243);
+            flowLayoutPanel2.Margin = new Padding(100, 3, 3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1141, 58);
+            flowLayoutPanel2.Size = new Size(1018, 58);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // panel1
@@ -314,6 +317,7 @@
             ClientSize = new Size(1118, 652);
             Controls.Add(flowLayoutPanel4);
             Name = "MemberList";
+            ShowIcon = false;
             Text = "Form3";
             Load += Form3_Load;
             ((System.ComponentModel.ISupportInitialize)members_table).EndInit();

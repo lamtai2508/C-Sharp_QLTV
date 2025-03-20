@@ -28,15 +28,18 @@ namespace QLTV
         }
         private void contentContainer_Resize(object sender, EventArgs e)
         {
-            if (contentContainer.Controls.Count > 0)
-            {
-                contentContainer.Controls[0].Dock = DockStyle.Fill; // Form con tự mở rộng theo Panel
-            }
+            //foreach (Control control in contentContainer.Controls)
+            //{
+            //    if (control is Form form)
+            //    {
+            //        form.Size = contentContainer.Size; // Cập nhật kích thước Form3 theo Panel
+            //    }
+            //}
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MemberList mbList = new QLTV.MemberList();
+            MemberList mbList = new MemberList();
 
             contentContainer.Controls.Clear();
 
