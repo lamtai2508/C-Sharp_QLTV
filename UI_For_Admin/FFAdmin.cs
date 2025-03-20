@@ -10,40 +10,13 @@ using System.Windows.Forms;
 
 namespace QLTV
 {
-    public partial class FFAdmin: Form
+    public partial class FFAdmin : Form
     {
         public FFAdmin()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.Text = "Phần mềm quán lý thư quán"; 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             menuTransition.Start();
@@ -52,11 +25,6 @@ namespace QLTV
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
         private void contentContainer_Resize(object sender, EventArgs e)
         {
@@ -68,14 +36,14 @@ namespace QLTV
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Form3 memberlist = new Form3();
+            MemberList mbList = new QLTV.MemberList();
 
             contentContainer.Controls.Clear();
 
-            memberlist.TopLevel = false;
-            memberlist.Dock = DockStyle.Fill;
-            contentContainer.Controls.Add(memberlist);
-            memberlist.Show();
+            mbList.TopLevel = false;
+            mbList.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(mbList);
+            mbList.Show();
 
         }
         bool menuExpand = false;
@@ -84,13 +52,13 @@ namespace QLTV
             if (menuExpand == false)
             {
                 sidebarTransition.Start();
-                if(sidebar.Width >= 265)
+                if (sidebar.Width >= 355)
                 {
                     sidebarTransition.Stop();
                     sidebarExpand = true;
                 }
                 menuContainer.Height += 5;
-                if (menuContainer.Height >= 185)
+                if (menuContainer.Height >= 275)
                 {
                     menuTransition.Stop();
                     menuExpand = true;
@@ -99,13 +67,13 @@ namespace QLTV
             else
             {
                 menuContainer.Height -= 5;
-                if (menuContainer.Height <= 65)
+                if (menuContainer.Height <= 98)
                 {
                     menuTransition.Stop();
                     menuExpand = false;
                 }
             }
-            
+
         }
         bool sidebarExpand = true;
         private void sidebarTransition_Tick(object sender, EventArgs e)
@@ -116,11 +84,14 @@ namespace QLTV
                 if (sidebar.Width <= 76)
                 {
                     menuTransition.Start();
-                    menuContainer.Height -= 5;
-                    if(menuContainer.Height <=65)
+                    if (menuContainer.Height <= 98)
                     {
-                         menuTransition.Stop();
-                         menuExpand = false;
+                        menuTransition.Stop();
+                        menuExpand = false;
+                    }
+                    else
+                    {
+                        menuContainer.Height -= 5;
                     }
                     sidebarTransition.Stop();
                     sidebarExpand = false;
@@ -129,7 +100,7 @@ namespace QLTV
             else
             {
                 sidebar.Width += 5;
-                if (sidebar.Width >= 265)
+                if (sidebar.Width >= 355)
                 {
                     sidebarTransition.Stop();
                     sidebarExpand = true;
@@ -142,36 +113,16 @@ namespace QLTV
             sidebarTransition.Start();
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button4_Click_1(object sender, EventArgs e)
         {
             contentContainer.Controls.Clear();
 
-            Form2 form2 = new Form2();
-            form2.TopLevel = false; // ko hiện thị form 2 làm màn hình chính
-            form2.Dock = DockStyle.Fill; 
-            contentContainer.Controls.Add(form2);
+            Home home = new Home();
+            home.TopLevel = false; // ko hiện thị form 2 làm màn hình chính
+            home.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(home);
 
-            form2.Show();
+            home.Show();
         }
     }
 }
