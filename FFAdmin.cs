@@ -1,8 +1,8 @@
 namespace qltv
 {
-    public partial class Form1 : Form
+    public partial class FFAdmin : Form
     {
-        public Form1()
+        public FFAdmin()
         {
             InitializeComponent();
         }

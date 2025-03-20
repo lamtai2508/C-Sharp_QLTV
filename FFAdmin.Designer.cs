@@ -1,6 +1,6 @@
 ﻿namespace qltv
 {
-    partial class Form1
+    partial class FFAdmin
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            SuspendLayout();
+            // 
+            // FFAdmin
+            // 
+            AutoScaleDimensions = new SizeF(10F, 23F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1194, 617);
+            Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Name = "FFAdmin";
+            Text = "Phần mềm quản lý thư quán";
+            ResumeLayout(false);
         }
 
         #endregion
