@@ -35,6 +35,7 @@
     <Folder Include="BUS\" />
     <Folder Include="DAO\" />
     <Folder Include="DTO\" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
 </Project>
