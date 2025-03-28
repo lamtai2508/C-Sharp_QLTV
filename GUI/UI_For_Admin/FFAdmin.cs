@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QLTV
+﻿namespace QLTV
 {
     public partial class FFAdmin : Form
     {
+        bool menuExpand = true;
+        bool deviceExpand = false;
+        bool memberExpand = false;
+        bool violationExpand = false;
+        bool statisticsExpand = false;
+
+
         public FFAdmin()
         {
             InitializeComponent();
@@ -19,22 +16,12 @@ namespace QLTV
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            menuTransition.Start();
+            memberTransition.Start();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        private void contentContainer_Resize(object sender, EventArgs e)
-        {
-            //foreach (Control control in contentContainer.Controls)
-            //{
-            //    if (control is Form form)
-            //    {
-            //        form.Size = contentContainer.Size; // Cập nhật kích thước Form3 theo Panel
-            //    }
-            //}
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -49,55 +36,60 @@ namespace QLTV
             mbList.Show();
 
         }
-        bool menuExpand = false;
-        private void MenuTransition_Tick(object sender, EventArgs e)
+        private void menuTransition_Tick(object sender, EventArgs e)
         {
-            if (menuExpand == false)
-            {
-                sidebarTransition.Start();
-                if (sidebar.Width >= 355)
-                {
-                    sidebarTransition.Stop();
-                    sidebarExpand = true;
-                }
-                menuContainer.Height += 5;
-                if (menuContainer.Height >= 275)
-                {
-                    menuTransition.Stop();
-                    menuExpand = true;
-                }
-            }
-            else
-            {
-                menuContainer.Height -= 5;
-                if (menuContainer.Height <= 98)
-                {
-                    menuTransition.Stop();
-                    menuExpand = false;
-                }
-            }
-
-        }
-        bool sidebarExpand = true;
-        private void sidebarTransition_Tick(object sender, EventArgs e)
-        {
-            if (sidebarExpand)
+            if (menuExpand)
             {
                 sidebar.Width -= 5;
                 if (sidebar.Width <= 76)
                 {
-                    menuTransition.Start();
-                    if (menuContainer.Height <= 98)
+                    // tự động thu lại khi menu thu nhỏ
+                    // thu nhỏ member
+                    memberTransition.Start();
+                    if (memberContainer.Height <= 98)
                     {
-                        menuTransition.Stop();
-                        menuExpand = false;
+                        memberTransition.Stop();
+                        memberExpand = false;
                     }
                     else
                     {
-                        menuContainer.Height -= 5;
+                        memberContainer.Height -= 5;
                     }
-                    sidebarTransition.Stop();
-                    sidebarExpand = false;
+                    // thu nhỏ device
+                    deviceTransition.Start();
+                    if (deviceContainer.Height <= 98)
+                    {
+                        deviceTransition.Stop();
+                        deviceExpand = false;
+                    }
+                    else
+                    {
+                        deviceContainer.Height -= 5;
+                    }
+                    // thu nhỏ vi phạm
+                    violationTransition.Start();
+                    if (violationContainer.Height <= 98)
+                    {
+                        violationTransition.Stop();
+                        violationExpand = false;
+                    }
+                    else
+                    {
+                        violationContainer.Height -= 5;
+                    }
+                    // thu nhỏ thống kê
+                    statisticsTransition.Start();
+                    if (statisticsContainer.Height <= 98)
+                    {
+                        statisticsTransition.Stop();
+                        statisticsExpand = false;
+                    }
+                    else
+                    {
+                        statisticsContainer.Height -= 5;
+                    }
+                    menuTransition.Stop();
+                    menuExpand = false;
                 }
             }
             else
@@ -105,15 +97,15 @@ namespace QLTV
                 sidebar.Width += 5;
                 if (sidebar.Width >= 355)
                 {
-                    sidebarTransition.Stop();
-                    sidebarExpand = true;
+                    menuTransition.Stop();
+                    menuExpand = true;
                 }
             }
 
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            sidebarTransition.Start();
+            menuTransition.Start();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -121,31 +113,145 @@ namespace QLTV
             contentContainer.Controls.Clear();
 
             Home home = new Home();
-            home.TopLevel = false; // ko hiện thị form 2 làm màn hình chính
+            home.TopLevel = false;
             home.Dock = DockStyle.Fill;
             contentContainer.Controls.Add(home);
 
             home.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button6_Click_1(object sender, EventArgs e)
         {
+            deviceTransition.Start();
+        }
+        private void deviceTransition_Tick(object sender, EventArgs e)
+        {
+            if (deviceExpand == false)
+            {
+                // tự động phóng to menu khi click icon device
+                menuTransition.Start();
+                if (sidebar.Width >= 355)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+
+                deviceContainer.Height += 5;
+                if (deviceContainer.Height >= 385)
+                {
+                    deviceTransition.Stop();
+                    deviceExpand = true;
+                }
+            }
+            else
+            {
+                deviceContainer.Height -= 5;
+                if (deviceContainer.Height <= 98)
+                {
+                    deviceTransition.Stop();
+                    deviceExpand = false;
+                }
+            }
+        }
+        private void MemberTransition_Tick(object sender, EventArgs e)
+        {
+            if (memberExpand == false)
+            {
+                // tự động phóng to menu khi click icon Member
+                menuTransition.Start();
+                if (sidebar.Width >= 355)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+                memberContainer.Height += 5;
+                if (memberContainer.Height >= 275)
+                {
+                    memberTransition.Stop();
+                    memberExpand = true;
+                }
+            }
+            else
+            {
+                memberContainer.Height -= 5;
+                if (memberContainer.Height <= 98)
+                {
+                    memberTransition.Stop();
+                    memberExpand = false;
+                }
+            }
+        }
+
+        private void deviceContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void violationTransition_Tick(object sender, EventArgs e)
+        {
+            if (violationExpand == false)
+            {
+                // tự động phóng to menu khi click icon Member
+                menuTransition.Start();
+                if (sidebar.Width >= 355)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+                violationContainer.Height += 5;
+                if (violationContainer.Height >= 180)
+                {
+                    violationTransition.Stop();
+                    violationExpand = true;
+                }
+            }
+            else
+            {
+                violationContainer.Height -= 5;
+                if (violationContainer.Height <= 98)
+                {
+                    violationTransition.Stop();
+                    violationExpand = false;
+                }
+            }
+        }
+
+        private void bt_violation_Click(object sender, EventArgs e)
+        {
+            violationTransition.Start();
+        }
+
+        private void statisticsTransiton_Tick(object sender, EventArgs e)
+        {
+            if (statisticsExpand == false)
+            {
+                // tự động phóng to menu khi click icon Member
+                menuTransition.Start();
+                if (sidebar.Width >= 355)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+                statisticsContainer.Height += 5;
+                if (statisticsContainer.Height >= 180)
+                {
+                    statisticsTransition.Stop();
+                    statisticsExpand = true;
+                }
+            }
+            else
+            {
+                statisticsContainer.Height -= 5;
+                if (statisticsContainer.Height <= 98)
+                {
+                    statisticsTransition.Stop();
+                    statisticsExpand = false;
+                }
+            }
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void bt_statistics_Click(object sender, EventArgs e)
         {
-
+            statisticsTransition.Start();
         }
     }
 }

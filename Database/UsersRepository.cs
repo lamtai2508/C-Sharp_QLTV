@@ -12,7 +12,7 @@ namespace QLTV.Resources
         //Lấy dữ liệu bảng member trong database
         public static DataTable GetUser()
         {
-            String query = "SELECT * FROM MEMBERS";
+            String query = "SELECT * FROM members";
             return DatabaseHelep.GetData(query);
         }
     }
