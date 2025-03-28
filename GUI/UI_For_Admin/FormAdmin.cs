@@ -1,6 +1,6 @@
 ﻿namespace QLTV
 {
-    public partial class FFAdmin : Form
+    public partial class FormAdmin : Form
     {
         bool menuExpand = true;
         bool deviceExpand = false;
@@ -9,10 +9,11 @@
         bool statisticsExpand = false;
 
 
-        public FFAdmin()
+        public FormAdmin()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         private void button2_Click(object sender, EventArgs e)
         {

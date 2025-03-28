@@ -1,3 +1,4 @@
+using qltv.GUI.UI_For_Login;
 using QLTV;
 
 namespace qltv
@@ -13,7 +14,8 @@ namespace qltv
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FFAdmin());
+            Application.Run(new FormAdmin());
+            //Application.Run(new Login());
         }
     }
 }

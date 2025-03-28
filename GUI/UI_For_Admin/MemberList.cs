@@ -34,7 +34,7 @@ namespace QLTV
         private void label2_Click(object sender, EventArgs e)
         {
 
-        } 
+        }
         private void MemberList_Load(object sender, EventArgs e)
         {
             LoadData();

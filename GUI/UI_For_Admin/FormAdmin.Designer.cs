@@ -1,6 +1,6 @@
 ﻿namespace QLTV
 {
-    partial class FFAdmin
+    partial class FormAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FFAdmin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             panel1 = new Panel();
             label2 = new Label();
             pictureBox1 = new PictureBox();
@@ -148,11 +148,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(98, 11);
+            label1.Location = new Point(92, 19);
             label1.Name = "label1";
-            label1.Size = new Size(76, 31);
+            label1.Size = new Size(99, 31);
             label1.TabIndex = 0;
-            label1.Text = "Menu";
+            label1.Text = "Mục lục";
             // 
             // sidebar
             // 
@@ -167,7 +167,7 @@
             sidebar.Location = new Point(0, 64);
             sidebar.Margin = new Padding(0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(356, 811);
+            sidebar.Size = new Size(356, 831);
             sidebar.TabIndex = 1;
             // 
             // panel2
@@ -696,7 +696,7 @@
             contentContainer.Location = new Point(356, 64);
             contentContainer.Margin = new Padding(0);
             contentContainer.Name = "contentContainer";
-            contentContainer.Size = new Size(1144, 811);
+            contentContainer.Size = new Size(1144, 831);
             contentContainer.TabIndex = 2;
             // 
             // deviceTransition
@@ -714,17 +714,17 @@
             statisticsTransition.Interval = 10;
             statisticsTransition.Tick += statisticsTransiton_Tick;
             // 
-            // FFAdmin
+            // FormAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1500, 875);
+            ClientSize = new Size(1500, 895);
             Controls.Add(contentContainer);
             Controls.Add(sidebar);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "FFAdmin";
+            Name = "FormAdmin";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
