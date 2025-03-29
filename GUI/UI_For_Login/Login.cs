@@ -1,5 +1,6 @@
 ﻿using qltv.BUS;
 using qltv.DTO;
+using qltv.GUI.UI_For_User;
 using QLTV;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,8 @@ namespace qltv.GUI.UI_For_Login
                 // user
                 if (account.role == 1)
                 {
+                    this.Hide();
+                    new FormUser().Show();
                 }
             }
             else
