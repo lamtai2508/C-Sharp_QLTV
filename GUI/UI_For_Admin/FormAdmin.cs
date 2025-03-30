@@ -1,4 +1,6 @@
-﻿namespace QLTV
+﻿using qltv.GUI.UI_For_Admin;
+
+namespace QLTV
 {
     public partial class FormAdmin : Form
     {
@@ -122,7 +124,16 @@
         }
         private void button6_Click_1(object sender, EventArgs e)
         {
+            // Bắt đầu animation cho menu thiết bị
             deviceTransition.Start();
+
+            // Tải FormDevice vào contentContainer
+            FormDevice deviceForm = new FormDevice();
+            contentContainer.Controls.Clear();
+            deviceForm.TopLevel = false;
+            deviceForm.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(deviceForm);
+            deviceForm.Show();
         }
         private void deviceTransition_Tick(object sender, EventArgs e)
         {
