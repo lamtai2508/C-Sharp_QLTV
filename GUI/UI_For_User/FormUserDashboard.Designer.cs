@@ -1,6 +1,6 @@
 ﻿namespace qltv.GUI.UI_For_User
 {
-    partial class FormUser
+    partial class FormUserDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUser));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserDashboard));
             memberTransition = new System.Windows.Forms.Timer(components);
             menuTransition = new System.Windows.Forms.Timer(components);
             deviceTransition = new System.Windows.Forms.Timer(components);
             statisticsTransition = new System.Windows.Forms.Timer(components);
             historyTransition = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
+            bt_logout = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -43,10 +44,6 @@
             memberContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             ThanhVien_bt = new Button();
-            MemberList = new Panel();
-            btn_member = new Button();
-            panel8 = new Panel();
-            button2 = new Button();
             deviceContainer = new FlowLayoutPanel();
             panel7 = new Panel();
             button6 = new Button();
@@ -69,8 +66,6 @@
             sidebar.SuspendLayout();
             memberContainer.SuspendLayout();
             panel3.SuspendLayout();
-            MemberList.SuspendLayout();
-            panel8.SuspendLayout();
             deviceContainer.SuspendLayout();
             panel7.SuspendLayout();
             panel9.SuspendLayout();
@@ -81,11 +76,6 @@
             panel12.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // memberTransition
-            // 
-            memberTransition.Interval = 10;
-            memberTransition.Tick += memberTransition_Click;
             // 
             // menuTransition
             // 
@@ -107,7 +97,9 @@
             // 
             // panel1
             // 
+            panel1.AutoSize = true;
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(bt_logout);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -115,8 +107,23 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1282, 64);
+            panel1.Size = new Size(1465, 64);
             panel1.TabIndex = 1;
+            // 
+            // bt_logout
+            // 
+            bt_logout.Cursor = Cursors.Hand;
+            bt_logout.Dock = DockStyle.Right;
+            bt_logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bt_logout.Image = (Image)resources.GetObject("bt_logout.Image");
+            bt_logout.ImageAlign = ContentAlignment.MiddleRight;
+            bt_logout.Location = new Point(1299, 0);
+            bt_logout.Name = "bt_logout";
+            bt_logout.Size = new Size(166, 64);
+            bt_logout.TabIndex = 4;
+            bt_logout.Text = "Đăng xuất";
+            bt_logout.TextAlign = ContentAlignment.MiddleLeft;
+            bt_logout.Click += bt_logout_Click;
             // 
             // label2
             // 
@@ -124,7 +131,7 @@
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(661, 11);
             label2.Name = "label2";
-            label2.Size = new Size(392, 37);
+            label2.Size = new Size(575, 37);
             label2.TabIndex = 3;
             label2.Text = "Phần mềm quản lý thư quán";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -163,15 +170,13 @@
             sidebar.Location = new Point(0, 64);
             sidebar.Margin = new Padding(0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(357, 579);
+            sidebar.Size = new Size(407, 793);
             sidebar.TabIndex = 2;
             // 
             // memberContainer
             // 
             memberContainer.BackColor = Color.FromArgb(255, 192, 128);
             memberContainer.Controls.Add(panel3);
-            memberContainer.Controls.Add(MemberList);
-            memberContainer.Controls.Add(panel8);
             memberContainer.Location = new Point(0, 0);
             memberContainer.Margin = new Padding(0);
             memberContainer.Name = "memberContainer";
@@ -198,67 +203,14 @@
             ThanhVien_bt.Location = new Point(-54, -51);
             ThanhVien_bt.Margin = new Padding(0);
             ThanhVien_bt.Name = "ThanhVien_bt";
-            ThanhVien_bt.Padding = new Padding(10, 0, 0, 0);
-            ThanhVien_bt.Size = new Size(421, 195);
+            ThanhVien_bt.Padding = new Padding(11, 0, 0, 0);
+            ThanhVien_bt.Size = new Size(481, 259);
             ThanhVien_bt.TabIndex = 3;
-            ThanhVien_bt.Text = "     Thành viên";
+            ThanhVien_bt.Text = "     Thông tin thành viên";
             ThanhVien_bt.TextAlign = ContentAlignment.MiddleLeft;
             ThanhVien_bt.TextImageRelation = TextImageRelation.ImageBeforeText;
             ThanhVien_bt.UseVisualStyleBackColor = false;
             ThanhVien_bt.Click += ThanhVien_bt_Click;
-            // 
-            // MemberList
-            // 
-            MemberList.CausesValidation = false;
-            MemberList.Controls.Add(btn_member);
-            MemberList.Location = new Point(0, 99);
-            MemberList.Margin = new Padding(0);
-            MemberList.Name = "MemberList";
-            MemberList.Size = new Size(357, 99);
-            MemberList.TabIndex = 5;
-            // 
-            // btn_member
-            // 
-            btn_member.BackColor = Color.FromArgb(65, 65, 65);
-            btn_member.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_member.ForeColor = Color.White;
-            btn_member.Image = (Image)resources.GetObject("btn_member.Image");
-            btn_member.Location = new Point(-14, -51);
-            btn_member.Margin = new Padding(0);
-            btn_member.Name = "btn_member";
-            btn_member.Padding = new Padding(70, 0, 0, 0);
-            btn_member.Size = new Size(378, 195);
-            btn_member.TabIndex = 3;
-            btn_member.Text = "Danh sách thành viên";
-            btn_member.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_member.UseVisualStyleBackColor = false;
-            // 
-            // panel8
-            // 
-            panel8.CausesValidation = false;
-            panel8.Controls.Add(button2);
-            panel8.Location = new Point(0, 198);
-            panel8.Margin = new Padding(0);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(357, 99);
-            panel8.TabIndex = 6;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(65, 65, 65);
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(-11, -55);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Padding = new Padding(55, 0, 0, 0);
-            button2.Size = new Size(378, 195);
-            button2.TabIndex = 3;
-            button2.Text = "Xem lịch sử mượn";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
             // 
             // deviceContainer
             // 
@@ -479,12 +431,13 @@
             // 
             // contentContainer
             // 
+            contentContainer.AutoSize = true;
             contentContainer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             contentContainer.Dock = DockStyle.Fill;
-            contentContainer.Location = new Point(357, 64);
+            contentContainer.Location = new Point(407, 64);
             contentContainer.Margin = new Padding(0);
             contentContainer.Name = "contentContainer";
-            contentContainer.Size = new Size(925, 579);
+            contentContainer.Size = new Size(1058, 793);
             contentContainer.TabIndex = 3;
             contentContainer.Paint += contentContainer_Paint;
             // 
@@ -493,7 +446,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1282, 643);
+            ClientSize = new Size(1465, 857);
             Controls.Add(contentContainer);
             Controls.Add(sidebar);
             Controls.Add(panel1);
@@ -505,8 +458,6 @@
             sidebar.ResumeLayout(false);
             memberContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            MemberList.ResumeLayout(false);
-            panel8.ResumeLayout(false);
             deviceContainer.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -517,6 +468,7 @@
             panel12.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -533,10 +485,6 @@
         private FlowLayoutPanel memberContainer;
         private Panel panel3;
         private Button ThanhVien_bt;
-        private Panel MemberList;
-        private Button btn_member;
-        private Panel panel8;
-        private Button button2;
         private FlowLayoutPanel deviceContainer;
         private Panel panel7;
         private Button button6;
@@ -554,5 +502,7 @@
         private Panel contentContainer;
         private Panel panel2;
         private Button button1;
+        private Label label3;
+        private Label bt_logout;
     }
 }

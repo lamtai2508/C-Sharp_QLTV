@@ -1,6 +1,10 @@
-﻿namespace QLTV
+using qltv.GUI.UI_For_Admin;
+using qltv.GUI.UI_For_Login;
+
+
+namespace QLTV
 {
-    public partial class FormAdmin : Form
+    public partial class FormAdminDashboard : Form
     {
         bool menuExpand = true;
         bool deviceExpand = false;
@@ -9,22 +13,50 @@
         bool statisticsExpand = false;
 
 
-        public FormAdmin()
+        public FormAdminDashboard()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void bt_member_Click(object sender, EventArgs e)
         {
             memberTransition.Start();
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void bt_violation_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            violationTransition.Start();
         }
 
+        private void bt_device_transition_Click(object sender, EventArgs e)
+        {
+            deviceTransition.Start();
+        }
+        private void bt_menu_Click(object sender, EventArgs e)
+        {
+            menuTransition.Start();
+        }
+        private void bt_home_Click_1(object sender, EventArgs e)
+        {
+            contentContainer.Controls.Clear();
+
+            Home home = new Home();
+            home.TopLevel = false;
+            home.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(home);
+
+            home.Show();
+        }
+        private void bt_deviceList_Click(object sender, EventArgs e)
+        {
+            // Tải FormDevice vào contentContainer
+            FormDevice deviceForm = new FormDevice();
+            contentContainer.Controls.Clear();
+            deviceForm.TopLevel = false;
+            deviceForm.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(deviceForm);
+            deviceForm.Show();
+        }
         private void button6_Click(object sender, EventArgs e)
         {
             MemberList mbList = new MemberList();
@@ -78,17 +110,6 @@
                     {
                         violationContainer.Height -= 5;
                     }
-                    // thu nhỏ thống kê
-                    statisticsTransition.Start();
-                    if (statisticsContainer.Height <= 98)
-                    {
-                        statisticsTransition.Stop();
-                        statisticsExpand = false;
-                    }
-                    else
-                    {
-                        statisticsContainer.Height -= 5;
-                    }
                     menuTransition.Stop();
                     menuExpand = false;
                 }
@@ -104,26 +125,6 @@
             }
 
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            menuTransition.Start();
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            contentContainer.Controls.Clear();
-
-            Home home = new Home();
-            home.TopLevel = false;
-            home.Dock = DockStyle.Fill;
-            contentContainer.Controls.Add(home);
-
-            home.Show();
-        }
-        private void button6_Click_1(object sender, EventArgs e)
-        {
-            deviceTransition.Start();
-        }
         private void deviceTransition_Tick(object sender, EventArgs e)
         {
             if (deviceExpand == false)
@@ -137,7 +138,7 @@
                 }
 
                 deviceContainer.Height += 5;
-                if (deviceContainer.Height >= 385)
+                if (deviceContainer.Height >= 290)
                 {
                     deviceTransition.Stop();
                     deviceExpand = true;
@@ -165,7 +166,7 @@
                     menuExpand = true;
                 }
                 memberContainer.Height += 5;
-                if (memberContainer.Height >= 275)
+                if (memberContainer.Height >= 190)
                 {
                     memberTransition.Stop();
                     memberExpand = true;
@@ -180,11 +181,6 @@
                     memberExpand = false;
                 }
             }
-        }
-
-        private void deviceContainer_Paint(object sender, PaintEventArgs e)
-        {
-
         }
         private void violationTransition_Tick(object sender, EventArgs e)
         {
@@ -214,45 +210,10 @@
                 }
             }
         }
-
-        private void bt_violation_Click(object sender, EventArgs e)
+        private void bt_logout_Click(object sender, EventArgs e)
         {
-            violationTransition.Start();
-        }
-
-        private void statisticsTransiton_Tick(object sender, EventArgs e)
-        {
-            if (statisticsExpand == false)
-            {
-                // tự động phóng to menu khi click icon Member
-                menuTransition.Start();
-                if (sidebar.Width >= 355)
-                {
-                    menuTransition.Stop();
-                    menuExpand = true;
-                }
-                statisticsContainer.Height += 5;
-                if (statisticsContainer.Height >= 180)
-                {
-                    statisticsTransition.Stop();
-                    statisticsExpand = true;
-                }
-            }
-            else
-            {
-                statisticsContainer.Height -= 5;
-                if (statisticsContainer.Height <= 98)
-                {
-                    statisticsTransition.Stop();
-                    statisticsExpand = false;
-                }
-            }
-
-        }
-
-        private void bt_statistics_Click(object sender, EventArgs e)
-        {
-            statisticsTransition.Start();
+            this.Hide();
+            new Login().Show();
         }
     }
 }
