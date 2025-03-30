@@ -1,6 +1,6 @@
 ﻿namespace qltv.GUI.UI_For_User
 {
-    partial class FormUser
+    partial class FormUserDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUser));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserDashboard));
             memberTransition = new System.Windows.Forms.Timer(components);
             menuTransition = new System.Windows.Forms.Timer(components);
             deviceTransition = new System.Windows.Forms.Timer(components);

@@ -75,13 +75,13 @@ namespace qltv.GUI.UI_For_Login
                 if (account.role == 0)
                 {
                     this.Hide();
-                    new FormAdmin().Show();
+                    new FormAdminDashboard().Show();
                 }
                 // user
                 if (account.role == 1)
                 {
                     this.Hide();
-                    new FormUser().Show();
+                    new FormUserDashboard().Show();
                 }
             }
             else

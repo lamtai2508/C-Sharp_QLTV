@@ -13,13 +13,12 @@ using System.Windows.Forms;
 
 namespace qltv.GUI.UI_For_User
 {
-    public partial class FormUser : Form
+    public partial class FormUserDashboard : Form
     {
-        bool memberExpand = false;
         bool menuExpand = false;
         bool historyExpand = false;
 
-        public FormUser()
+        public FormUserDashboard()
         {
             InitializeComponent();
         }
@@ -51,17 +50,6 @@ namespace qltv.GUI.UI_For_User
                 if (sidebar.Width <= 76)
                 {
                     // tự động thu lại khi menu thu nhỏ
-                    // thu nhỏ member
-                    memberTransition.Start();
-                    if (memberContainer.Height <= 98)
-                    {
-                        memberTransition.Stop();
-                        memberExpand = false;
-                    }
-                    else
-                    {
-                        memberContainer.Height -= 5;
-                    }
                     menuTransition.Stop();
                     menuExpand = false;
                 }
