@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace qltv.GUI.UI_For_User
@@ -15,6 +8,12 @@ namespace qltv.GUI.UI_For_User
         public FormReserve()
         {
             InitializeComponent();
+        }
+
+        // Phương thức xử lý sự kiện khi form được tải lên
+        private void FormReserve_Load(object sender, EventArgs e)
+        {
+            // TODO: Thêm logic nếu cần khi form mở lên
         }
     }
 }

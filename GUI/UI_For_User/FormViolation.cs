@@ -1,56 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using QLTV.Resources;
 
 namespace qltv.GUI.UI_For_User
 {
     public partial class FormViolation : Form
     {
-        private DatabaseHelep dbHelper;
         public FormViolation()
         {
             InitializeComponent();
+            SetupForm();
+            SetupDataGridViewColumns();
+        }
+
+        private void SetupForm()
+        {
             this.FormBorderStyle = FormBorderStyle.None;
-            dbHelper = new DatabaseHelep();
             this.Dock = DockStyle.Fill;
+            this.Text = "Danh sách vi phạm";
         }
 
-        private void LoadData()
+        private void SetupDataGridViewColumns()
         {
-            // Retrieve data from the database and bind it to the DataGridView
-            dataGridView1.DataSource = UsersRepository.GetUser();
+            // Thêm các cột vào DataGridView
+            dataGridView1.Columns.Add("MemberID", "Mã thành viên");
+            dataGridView1.Columns.Add("MemberName", "Tên thành viên");
+            dataGridView1.Columns.Add("DeviceID", "Mã thiết bị");
+            dataGridView1.Columns.Add("DeviceName", "Tên thiết bị");
+            dataGridView1.Columns.Add("ViolationContent", "Nội dung vi phạm");
+            dataGridView1.Columns.Add("ViolationDate", "Ngày vi phạm");
+            dataGridView1.Columns.Add("Status", "Trạng thái");
+
+            // Cấu hình DataGridView
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.RowHeadersVisible = false;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            // Xử lý tìm kiếm (chỉ UI, không có logic thực tế)
+            if (!string.IsNullOrEmpty(txtSearch.Text))
+            {
+                MessageBox.Show("Đang tìm kiếm: " + txtSearch.Text, "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

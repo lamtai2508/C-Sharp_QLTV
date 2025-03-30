@@ -29,141 +29,111 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormViolation));
-            label1 = new Label();
-            dataGridView1 = new DataGridView();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            label2 = new Label();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
-            button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            SuspendLayout();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.picSearchIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
+            this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(286, 32);
-            label1.TabIndex = 0;
-            label1.Text = "LỊCH SỬ MƯỢN THIẾT BỊ";
-            label1.Click += label1_Click;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(340, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "DANH SÁCH THÀNH VIÊN VI PHẠM";
             // 
             // dataGridView1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 270);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1097, 378);
-            dataGridView1.TabIndex = 1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            this.dataGridView1.Anchor = (System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 100);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1080, 600);
+            this.dataGridView1.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // panelSearch
             // 
-            flowLayoutPanel1.AutoSize = true;
-            flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel1.Controls.Add(label2);
-            flowLayoutPanel1.Controls.Add(panel2);
-            flowLayoutPanel1.Controls.Add(button4);
-            flowLayoutPanel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            flowLayoutPanel1.Location = new Point(143, 206);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(684, 39);
-            flowLayoutPanel1.TabIndex = 2;
-            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
+            this.panelSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSearch.Controls.Add(this.txtSearch);
+            this.panelSearch.Controls.Add(this.btnSearch);
+            this.panelSearch.Controls.Add(this.picSearchIcon);
+            this.panelSearch.Location = new System.Drawing.Point(20, 60);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(1080, 30);
+            this.panelSearch.TabIndex = 2;
             // 
-            // label2
+            // txtSearch
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label2.Location = new Point(150, 0);
-            label2.Margin = new Padding(150, 0, 3, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(111, 28);
-            label2.TabIndex = 0;
-            label2.Text = "Tìm kiếm: ";
-            label2.Click += label2_Click;
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(900, 25);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.PlaceholderText = "Nhập từ khóa tìm kiếm...";
             // 
-            // panel2
+            // btnSearch
             // 
-            panel2.AutoSize = true;
-            panel2.BackColor = SystemColors.ControlDark;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(textBox1);
-            panel2.Location = new Point(267, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(340, 32);
-            panel2.TabIndex = 1;
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSearch.Location = new System.Drawing.Point(930, 0);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(100, 25);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // pictureBox1
+            // picSearchIcon
             // 
-            pictureBox1.BackColor = Color.White;
-            pictureBox1.Dock = DockStyle.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(308, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(30, 30);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(0, 0);
-            textBox1.Margin = new Padding(0);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(676, 26);
-            textBox1.TabIndex = 0;
-            // 
-            // button4
-            // 
-            button4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            button4.AutoSize = true;
-            button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(613, 3);
-            button4.Name = "button4";
-            button4.Padding = new Padding(10, 0, 10, 0);
-            button4.Size = new Size(68, 33);
-            button4.TabIndex = 3;
-            button4.Text = "Tìm";
-            button4.UseVisualStyleBackColor = true;
+            this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("picSearchIcon.Image")));
+            this.picSearchIcon.Location = new System.Drawing.Point(905, 5);
+            this.picSearchIcon.Name = "picSearchIcon";
+            this.picSearchIcon.Size = new System.Drawing.Size(20, 20);
+            this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSearchIcon.TabIndex = 2;
+            this.picSearchIcon.TabStop = false;
             // 
             // FormViolation
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1121, 751);
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(dataGridView1);
-            Controls.Add(label1);
-            Name = "FormViolation";
-            Text = "XemLichSu";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1120, 720);
+            this.Controls.Add(this.panelSearch);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblTitle);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "FormViolation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Danh sách vi phạm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelSearch.ResumeLayout(false);
+            this.panelSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private DataGridView dataGridView1;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Label label2;
-        private Panel panel2;
-        private PictureBox pictureBox1;
-        private TextBox textBox1;
-        private Button button4;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panelSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.PictureBox picSearchIcon;
     }
 }
