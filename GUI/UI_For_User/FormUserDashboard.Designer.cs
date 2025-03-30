@@ -242,7 +242,7 @@
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
             button6.Image = Properties.Resources.icons8_device_40;
-            button6.Location = new Point(-54, -51);
+            button6.Location = new Point(-54, -37);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
             button6.Padding = new Padding(25, 0, 0, 0);
@@ -401,6 +401,7 @@
             button10.TextImageRelation = TextImageRelation.ImageBeforeText;
             button10.UseVisualStyleBackColor = false;
             button10.Click += button10_Click;
+            button10.MouseCaptureChanged += button10_Click;
             // 
             // panel2
             // 
@@ -427,6 +428,7 @@
             button1.Text = "Lịch sử vi phạm";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             button1.MouseCaptureChanged += button1_Click;
             // 
             // contentContainer
@@ -441,7 +443,7 @@
             contentContainer.TabIndex = 3;
             contentContainer.Paint += contentContainer_Paint;
             // 
-            // FormUser
+            // FormUserDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -450,7 +452,7 @@
             Controls.Add(contentContainer);
             Controls.Add(sidebar);
             Controls.Add(panel1);
-            Name = "FormUser";
+            Name = "FormUserDashboard";
             Text = "FormUser";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

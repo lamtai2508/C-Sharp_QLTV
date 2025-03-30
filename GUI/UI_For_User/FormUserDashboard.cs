@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -122,6 +123,34 @@ namespace qltv.GUI.UI_For_User
         {
             this.Hide();
             new Login().Show();
+        }
+
+        private void FormUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            FormHistory fh = new FormHistory();
+            contentContainer.Controls.Clear();
+
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(fh);
+            fh.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            FormViolation fv = new FormViolation();
+            contentContainer.Controls.Clear();
+
+            fv.TopLevel = false;
+            fv.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(fv);
+            fv.Show();
         }
     }
 }
