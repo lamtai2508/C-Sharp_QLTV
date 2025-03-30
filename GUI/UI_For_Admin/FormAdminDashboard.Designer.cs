@@ -205,7 +205,7 @@
             memberContainer.Location = new Point(0, 98);
             memberContainer.Margin = new Padding(0);
             memberContainer.Name = "memberContainer";
-            memberContainer.Size = new Size(356, 98);
+            memberContainer.Size = new Size(356, 196);
             memberContainer.TabIndex = 5;
             // 
             // panel3
@@ -270,10 +270,10 @@
             deviceContainer.Controls.Add(panel7);
             deviceContainer.Controls.Add(panel9);
             deviceContainer.Controls.Add(panel10);
-            deviceContainer.Location = new Point(0, 196);
+            deviceContainer.Location = new Point(0, 294);
             deviceContainer.Margin = new Padding(0);
             deviceContainer.Name = "deviceContainer";
-            deviceContainer.Size = new Size(356, 98);
+            deviceContainer.Size = new Size(356, 294);
             deviceContainer.TabIndex = 7;
             // 
             // panel7
@@ -365,10 +365,10 @@
             violationContainer.Controls.Add(panel6);
             violationContainer.Controls.Add(panel12);
             violationContainer.Controls.Add(flowLayoutPanel1);
-            violationContainer.Location = new Point(0, 294);
+            violationContainer.Location = new Point(0, 588);
             violationContainer.Margin = new Padding(0);
             violationContainer.Name = "violationContainer";
-            violationContainer.Size = new Size(356, 98);
+            violationContainer.Size = new Size(356, 196);
             violationContainer.TabIndex = 8;
             // 
             // panel6
@@ -495,7 +495,7 @@
             // 
             statisticsContainer.BackColor = Color.FromArgb(255, 192, 128);
             statisticsContainer.Controls.Add(panel14);
-            statisticsContainer.Location = new Point(0, 392);
+            statisticsContainer.Location = new Point(0, 784);
             statisticsContainer.Margin = new Padding(0);
             statisticsContainer.Name = "statisticsContainer";
             statisticsContainer.Size = new Size(356, 98);
