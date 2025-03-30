@@ -1,4 +1,6 @@
-﻿using System;
+﻿using qltv.GUI.UI_For_Login;
+using QLTV;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,12 +22,17 @@ namespace qltv.GUI.UI_For_User
         {
             InitializeComponent();
         }
-
-
-
+        // event khi bấm vào button thông tin thành viên
         private void ThanhVien_bt_Click(object sender, EventArgs e)
         {
-            memberTransition.Start();
+            contentContainer.Controls.Clear();
+
+            InfoMember infomember = new InfoMember();
+            infomember.TopLevel = false;
+            infomember.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(infomember);
+
+            infomember.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -33,34 +40,7 @@ namespace qltv.GUI.UI_For_User
             menuTransition.Start();
         }
         // Hàm Transition cho button member
-        private void memberTransition_Click(object sender, EventArgs e)
-        {
-            if (memberExpand == false)
-            {
-                // tự động phóng to menu khi click icon Member
-                menuTransition.Start();
-                if (sidebar.Width >= 355)
-                {
-                    menuTransition.Stop();
-                    menuExpand = true;
-                }
-                memberContainer.Height += 5;
-                if (memberContainer.Height >= 275)
-                {
-                    memberTransition.Stop();
-                    memberExpand = true;
-                }
-            }
-            else
-            {
-                memberContainer.Height -= 5;
-                if (memberContainer.Height <= 98)
-                {
-                    memberTransition.Stop();
-                    memberExpand = false;
-                }
-            }
-        }
+
         //Hàm Transition cho menu
         private void menuTransition_Tick_1(object sender, EventArgs e)
         {
@@ -128,6 +108,11 @@ namespace qltv.GUI.UI_For_User
         private void bt_violation_Click(object sender, EventArgs e)
         {
             historyTransition.Start();
+        }
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Login().Show();
         }
     }
 }

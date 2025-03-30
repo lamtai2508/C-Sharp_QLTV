@@ -36,6 +36,7 @@
             statisticsTransition = new System.Windows.Forms.Timer(components);
             historyTransition = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
+            label3 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -43,10 +44,6 @@
             memberContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             ThanhVien_bt = new Button();
-            MemberList = new Panel();
-            btn_member = new Button();
-            panel8 = new Panel();
-            button2 = new Button();
             deviceContainer = new FlowLayoutPanel();
             panel7 = new Panel();
             button6 = new Button();
@@ -69,8 +66,6 @@
             sidebar.SuspendLayout();
             memberContainer.SuspendLayout();
             panel3.SuspendLayout();
-            MemberList.SuspendLayout();
-            panel8.SuspendLayout();
             deviceContainer.SuspendLayout();
             panel7.SuspendLayout();
             panel9.SuspendLayout();
@@ -81,11 +76,6 @@
             panel12.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // memberTransition
-            // 
-            memberTransition.Interval = 10;
-            memberTransition.Tick += memberTransition_Click;
             // 
             // menuTransition
             // 
@@ -107,7 +97,9 @@
             // 
             // panel1
             // 
+            panel1.AutoSize = true;
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -117,6 +109,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1282, 64);
             panel1.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.Cursor = Cursors.Hand;
+            label3.Dock = DockStyle.Right;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Image = (Image)resources.GetObject("label3.Image");
+            label3.ImageAlign = ContentAlignment.MiddleRight;
+            label3.Location = new Point(1137, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(145, 64);
+            label3.TabIndex = 4;
+            label3.Text = "Đăng xuất";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
+            label3.Click += LogOut_Click;
             // 
             // label2
             // 
@@ -163,15 +170,13 @@
             sidebar.Location = new Point(0, 64);
             sidebar.Margin = new Padding(0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(356, 579);
+            sidebar.Size = new Size(356, 679);
             sidebar.TabIndex = 2;
             // 
             // memberContainer
             // 
             memberContainer.BackColor = Color.FromArgb(255, 192, 128);
             memberContainer.Controls.Add(panel3);
-            memberContainer.Controls.Add(MemberList);
-            memberContainer.Controls.Add(panel8);
             memberContainer.Location = new Point(0, 0);
             memberContainer.Margin = new Padding(0);
             memberContainer.Name = "memberContainer";
@@ -198,67 +203,14 @@
             ThanhVien_bt.Location = new Point(-54, -50);
             ThanhVien_bt.Margin = new Padding(0);
             ThanhVien_bt.Name = "ThanhVien_bt";
-            ThanhVien_bt.Padding = new Padding(10, 0, 0, 0);
+            ThanhVien_bt.Padding = new Padding(38, 0, 0, 0);
             ThanhVien_bt.Size = new Size(421, 194);
             ThanhVien_bt.TabIndex = 3;
-            ThanhVien_bt.Text = "     Thành viên";
+            ThanhVien_bt.Text = "     Thông tin thành viên";
             ThanhVien_bt.TextAlign = ContentAlignment.MiddleLeft;
             ThanhVien_bt.TextImageRelation = TextImageRelation.ImageBeforeText;
             ThanhVien_bt.UseVisualStyleBackColor = false;
             ThanhVien_bt.Click += ThanhVien_bt_Click;
-            // 
-            // MemberList
-            // 
-            MemberList.CausesValidation = false;
-            MemberList.Controls.Add(btn_member);
-            MemberList.Location = new Point(0, 98);
-            MemberList.Margin = new Padding(0);
-            MemberList.Name = "MemberList";
-            MemberList.Size = new Size(356, 98);
-            MemberList.TabIndex = 5;
-            // 
-            // btn_member
-            // 
-            btn_member.BackColor = Color.FromArgb(65, 65, 65);
-            btn_member.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_member.ForeColor = Color.White;
-            btn_member.Image = (Image)resources.GetObject("btn_member.Image");
-            btn_member.Location = new Point(-14, -50);
-            btn_member.Margin = new Padding(0);
-            btn_member.Name = "btn_member";
-            btn_member.Padding = new Padding(70, 0, 0, 0);
-            btn_member.Size = new Size(378, 194);
-            btn_member.TabIndex = 3;
-            btn_member.Text = "Danh sách thành viên";
-            btn_member.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_member.UseVisualStyleBackColor = false;
-            // 
-            // panel8
-            // 
-            panel8.CausesValidation = false;
-            panel8.Controls.Add(button2);
-            panel8.Location = new Point(0, 196);
-            panel8.Margin = new Padding(0);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(356, 98);
-            panel8.TabIndex = 6;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(65, 65, 65);
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(-11, -55);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Padding = new Padding(55, 0, 0, 0);
-            button2.Size = new Size(378, 194);
-            button2.TabIndex = 3;
-            button2.Text = "Xem lịch sử mượn";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
             // 
             // deviceContainer
             // 
@@ -476,12 +428,13 @@
             // 
             // contentContainer
             // 
+            contentContainer.AutoSize = true;
             contentContainer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             contentContainer.Dock = DockStyle.Fill;
             contentContainer.Location = new Point(356, 64);
             contentContainer.Margin = new Padding(0);
             contentContainer.Name = "contentContainer";
-            contentContainer.Size = new Size(926, 579);
+            contentContainer.Size = new Size(926, 679);
             contentContainer.TabIndex = 3;
             // 
             // FormUser
@@ -489,7 +442,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1282, 643);
+            ClientSize = new Size(1282, 743);
             Controls.Add(contentContainer);
             Controls.Add(sidebar);
             Controls.Add(panel1);
@@ -501,8 +454,6 @@
             sidebar.ResumeLayout(false);
             memberContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            MemberList.ResumeLayout(false);
-            panel8.ResumeLayout(false);
             deviceContainer.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -513,6 +464,7 @@
             panel12.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -529,10 +481,6 @@
         private FlowLayoutPanel memberContainer;
         private Panel panel3;
         private Button ThanhVien_bt;
-        private Panel MemberList;
-        private Button btn_member;
-        private Panel panel8;
-        private Button button2;
         private FlowLayoutPanel deviceContainer;
         private Panel panel7;
         private Button button6;
@@ -550,5 +498,6 @@
         private Panel contentContainer;
         private Panel panel2;
         private Button button1;
+        private Label label3;
     }
 }
