@@ -1,4 +1,5 @@
-﻿using qltv.GUI.UI_For_Admin;
+using qltv.GUI.UI_For_Admin;
+
 
 namespace QLTV
 {
@@ -111,17 +112,7 @@ namespace QLTV
             menuTransition.Start();
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            contentContainer.Controls.Clear();
 
-            Home home = new Home();
-            home.TopLevel = false;
-            home.Dock = DockStyle.Fill;
-            contentContainer.Controls.Add(home);
-
-            home.Show();
-        }
         private void button6_Click_1(object sender, EventArgs e)
         {
             // Bắt đầu animation cho menu thiết bị
@@ -176,7 +167,7 @@ namespace QLTV
                     menuExpand = true;
                 }
                 memberContainer.Height += 5;
-                if (memberContainer.Height >= 275)
+                if (memberContainer.Height >= 195)
                 {
                     memberTransition.Stop();
                     memberExpand = true;
@@ -264,6 +255,23 @@ namespace QLTV
         private void bt_statistics_Click(object sender, EventArgs e)
         {
             statisticsTransition.Start();
+        }
+
+        private void Home_Click_1(object sender, EventArgs e)
+        {
+            contentContainer.Controls.Clear();
+
+            Home home = new Home();
+            home.TopLevel = false;
+            home.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(home);
+
+            home.Show();
+        }
+        private void bt_logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Login().Show();
         }
     }
 }

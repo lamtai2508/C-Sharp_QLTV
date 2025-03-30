@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace qltv.GUI.UI_For_Login
 {
@@ -22,11 +23,6 @@ namespace qltv.GUI.UI_For_Login
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void tb_user_Enter(object sender, EventArgs e)
@@ -91,6 +87,18 @@ namespace qltv.GUI.UI_For_Login
             else
             {
                 MessageBox.Show(password);
+            }
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bt_Login_Click(sender, e);
             }
         }
     }

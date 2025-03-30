@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             panel1 = new Panel();
+            bt_logout = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -42,8 +43,6 @@
             ThanhVien_bt = new Button();
             MemberList = new Panel();
             btn_member = new Button();
-            panel8 = new Panel();
-            button2 = new Button();
             deviceContainer = new FlowLayoutPanel();
             panel7 = new Panel();
             button6 = new Button();
@@ -86,7 +85,6 @@
             memberContainer.SuspendLayout();
             panel3.SuspendLayout();
             MemberList.SuspendLayout();
-            panel8.SuspendLayout();
             deviceContainer.SuspendLayout();
             panel7.SuspendLayout();
             panel9.SuspendLayout();
@@ -109,6 +107,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(bt_logout);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -118,6 +117,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1500, 64);
             panel1.TabIndex = 0;
+            // 
+            // bt_logout
+            // 
+            bt_logout.Cursor = Cursors.Hand;
+            bt_logout.Dock = DockStyle.Right;
+            bt_logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bt_logout.Image = (Image)resources.GetObject("bt_logout.Image");
+            bt_logout.ImageAlign = ContentAlignment.MiddleRight;
+            bt_logout.Location = new Point(1355, 0);
+            bt_logout.Name = "bt_logout";
+            bt_logout.Size = new Size(145, 64);
+            bt_logout.TabIndex = 5;
+            bt_logout.Text = "Đăng xuất";
+            bt_logout.TextAlign = ContentAlignment.MiddleLeft;
+            bt_logout.Click += bt_logout_Click;
             // 
             // label2
             // 
@@ -196,14 +210,13 @@
             bt_home.TextAlign = ContentAlignment.MiddleLeft;
             bt_home.TextImageRelation = TextImageRelation.ImageBeforeText;
             bt_home.UseVisualStyleBackColor = false;
-            bt_home.Click += button4_Click_1;
+            bt_home.Click += Home_Click_1;
             // 
             // memberContainer
             // 
             memberContainer.BackColor = Color.FromArgb(255, 192, 128);
             memberContainer.Controls.Add(panel3);
             memberContainer.Controls.Add(MemberList);
-            memberContainer.Controls.Add(panel8);
             memberContainer.Location = new Point(0, 98);
             memberContainer.Margin = new Padding(0);
             memberContainer.Name = "memberContainer";
@@ -265,33 +278,6 @@
             btn_member.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_member.UseVisualStyleBackColor = false;
             btn_member.Click += button6_Click;
-            // 
-            // panel8
-            // 
-            panel8.CausesValidation = false;
-            panel8.Controls.Add(button2);
-            panel8.Location = new Point(0, 196);
-            panel8.Margin = new Padding(0);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(356, 98);
-            panel8.TabIndex = 6;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(65, 65, 65);
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(-11, -55);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Padding = new Padding(55, 0, 0, 0);
-            button2.Size = new Size(378, 194);
-            button2.TabIndex = 3;
-            button2.Text = "Xem lịch sử mượn";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
             // 
             // deviceContainer
             // 
@@ -734,7 +720,6 @@
             memberContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
             MemberList.ResumeLayout(false);
-            panel8.ResumeLayout(false);
             deviceContainer.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -771,8 +756,6 @@
         private System.Windows.Forms.FlowLayoutPanel memberContainer;
         private System.Windows.Forms.Panel MemberList;
         private System.Windows.Forms.Button btn_member;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Panel contentContainer;
         private FlowLayoutPanel deviceContainer;
@@ -807,6 +790,7 @@
         private Panel panel17;
         private Button button14;
         private System.Windows.Forms.Timer statisticsTransition;
+        private Label bt_logout;
     }
 }
 

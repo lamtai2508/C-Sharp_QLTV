@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
+            label5 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             pictureBox1 = new PictureBox();
             tb_user = new TextBox();
@@ -51,6 +52,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.MenuBar;
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(flowLayoutPanel2);
@@ -65,6 +67,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(582, 483);
             panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Cursor = Cursors.Hand;
+            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(100, 50, 20);
+            label5.Location = new Point(411, 410);
+            label5.Name = "label5";
+            label5.Size = new Size(133, 23);
+            label5.TabIndex = 10;
+            label5.Text = "Hủy đăng nhập";
+            label5.Click += Exit_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -214,6 +229,7 @@
             MaximumSize = new Size(600, 530);
             Name = "Login";
             Text = "Login";
+            KeyDown += Login_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
@@ -239,5 +255,6 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private PictureBox pictureBox2;
         private TextBox tb_password;
+        private Label label5;
     }
 }
