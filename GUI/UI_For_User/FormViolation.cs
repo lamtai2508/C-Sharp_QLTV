@@ -52,5 +52,10 @@ namespace qltv.GUI.UI_For_User
         {
 
         }
+
+        private void FormViolation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

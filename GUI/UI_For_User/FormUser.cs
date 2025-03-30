@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace qltv.GUI.UI_For_User
         public FormUser()
         {
             InitializeComponent();
+            this.FormClosing += new FormClosingEventHandler(FormUser_FormClosing); // Add the FormClosing event handler
         }
 
-
+        private void FormUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit(); // Exit the application when the form is closing
+        }
 
         private void ThanhVien_bt_Click(object sender, EventArgs e)
         {
@@ -146,6 +151,36 @@ namespace qltv.GUI.UI_For_User
             fr.Dock = DockStyle.Fill;
             contentContainer.Controls.Add(fr);
             fr.Show();
+        }
+
+        //FormHistory Button click event
+        private void button10_Click(object sender, EventArgs e)
+        {
+            // Add your event handling code here
+            FormHistory fh = new FormHistory();
+            contentContainer.Controls.Clear();
+
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(fh);
+            fh.Show();
+        }
+
+        //FormViolation click event
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Add your event handling code here
+            FormViolation fv = new FormViolation();
+            contentContainer.Controls.Clear();
+
+            fv.TopLevel = false;
+            fv.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(fv);
+            fv.Show();
+        }
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

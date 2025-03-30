@@ -47,9 +47,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 42);
+            label1.Location = new Point(0, 56);
             label1.Name = "label1";
-            label1.Size = new Size(286, 32);
+            label1.Size = new Size(357, 41);
             label1.TabIndex = 0;
             label1.Text = "LỊCH SỬ MƯỢN THIẾT BỊ";
             label1.Click += label1_Click;
@@ -57,9 +57,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 270);
+            dataGridView1.Location = new Point(56, 282);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1097, 378);
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(989, 398);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
@@ -71,9 +73,10 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(button4);
             flowLayoutPanel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            flowLayoutPanel1.Location = new Point(143, 206);
+            flowLayoutPanel1.Location = new Point(172, 188);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(684, 39);
+            flowLayoutPanel1.Size = new Size(791, 52);
             flowLayoutPanel1.TabIndex = 2;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
@@ -81,10 +84,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label2.Location = new Point(150, 0);
-            label2.Margin = new Padding(150, 0, 3, 0);
+            label2.Location = new Point(171, 0);
+            label2.Margin = new Padding(171, 0, 3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(111, 28);
+            label2.Size = new Size(139, 35);
             label2.TabIndex = 0;
             label2.Text = "Tìm kiếm: ";
             label2.Click += label2_Click;
@@ -96,9 +99,10 @@
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(textBox1);
-            panel2.Location = new Point(267, 3);
+            panel2.Location = new Point(316, 4);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(340, 32);
+            panel2.Size = new Size(388, 42);
             panel2.TabIndex = 1;
             // 
             // pictureBox1
@@ -106,9 +110,10 @@
             pictureBox1.BackColor = Color.White;
             pictureBox1.Dock = DockStyle.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(308, 0);
+            pictureBox1.Location = new Point(352, 0);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.Size = new Size(34, 40);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -119,7 +124,7 @@
             textBox1.Location = new Point(0, 0);
             textBox1.Margin = new Padding(0);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(676, 26);
+            textBox1.Size = new Size(772, 30);
             textBox1.TabIndex = 0;
             // 
             // button4
@@ -127,24 +132,28 @@
             button4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button4.AutoSize = true;
             button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(613, 3);
+            button4.Location = new Point(710, 4);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Padding = new Padding(10, 0, 10, 0);
-            button4.Size = new Size(68, 33);
+            button4.Padding = new Padding(11, 0, 11, 0);
+            button4.Size = new Size(78, 44);
             button4.TabIndex = 3;
             button4.Text = "Tìm";
             button4.UseVisualStyleBackColor = true;
             // 
             // FormViolation
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1121, 751);
+            ClientSize = new Size(1115, 711);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormViolation";
-            Text = "XemLichSu";
+            Text = "FormViolation";
+            Load += FormViolation_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
