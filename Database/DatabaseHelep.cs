@@ -10,7 +10,7 @@ namespace QLTV.Resources
 {
     class DatabaseHelep
     {
-        private static String ConnectionString = "server=localhost;user=root;password=;database=qltv;port=3306";
+        private static String ConnectionString = "server=localhost;user=root;password='';database=qltv;port=3306";
         private static MySqlConnection conn;
         public static MySqlConnection GetConnection()
         {

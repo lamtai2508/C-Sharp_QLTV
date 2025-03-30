@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             panel1 = new Panel();
+            bt_logout = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -77,7 +78,6 @@
             deviceTransition = new System.Windows.Forms.Timer(components);
             violationTransition = new System.Windows.Forms.Timer(components);
             statisticsTransition = new System.Windows.Forms.Timer(components);
-            label3 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             sidebar.SuspendLayout();
@@ -107,7 +107,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(label3);
+            panel1.Controls.Add(bt_logout);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -117,6 +117,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1500, 64);
             panel1.TabIndex = 0;
+            // 
+            // bt_logout
+            // 
+            bt_logout.Cursor = Cursors.Hand;
+            bt_logout.Dock = DockStyle.Right;
+            bt_logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bt_logout.Image = (Image)resources.GetObject("bt_logout.Image");
+            bt_logout.ImageAlign = ContentAlignment.MiddleRight;
+            bt_logout.Location = new Point(1355, 0);
+            bt_logout.Name = "bt_logout";
+            bt_logout.Size = new Size(145, 64);
+            bt_logout.TabIndex = 5;
+            bt_logout.Text = "Đăng xuất";
+            bt_logout.TextAlign = ContentAlignment.MiddleLeft;
+            bt_logout.Click += bt_logout_Click;
             // 
             // label2
             // 
@@ -685,20 +700,6 @@
             statisticsTransition.Interval = 10;
             statisticsTransition.Tick += statisticsTransiton_Tick;
             // 
-            // label3
-            // 
-            label3.Cursor = Cursors.Hand;
-            label3.Dock = DockStyle.Right;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Image = (Image)resources.GetObject("label3.Image");
-            label3.ImageAlign = ContentAlignment.MiddleRight;
-            label3.Location = new Point(1355, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(145, 64);
-            label3.TabIndex = 5;
-            label3.Text = "Đăng xuất";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // FormAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -789,7 +790,7 @@
         private Panel panel17;
         private Button button14;
         private System.Windows.Forms.Timer statisticsTransition;
-        private Label label3;
+        private Label bt_logout;
     }
 }
 

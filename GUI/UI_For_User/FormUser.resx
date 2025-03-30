@@ -133,10 +133,10 @@
     <value>705, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="bt_logout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAMlJREFUSEvtlkEKwkAQBPsTin5FfID6bC+CeooH7/oQZSTCWgSz04J7SUFdNpka
+        DAAACwwBP0AiyAAAAMlJREFUSEvtlkEKwkAQBPsTin5FfID6bC+CeooH7/oQZSTCWgSz04J7SUFdNpka
         CCREmmjETtJd0sM0ZreM1vDL0rc3RmtgxDUNA65pGHBNw4BrGgZc0zDgWrKXdJY0x/kHDLiWHPuzy7fl
         DLiWzCR1/flV0hLXXzDgSkaXMzDkikMDcIaesgPhmkMDcIZai2skfNQL3sCAa8no0oAB15J4rHH299fp
         0OoDUgUDrmkYcE3DgGsaBlzTNPvZi1/TGGSs1pjdMDrRlCcIgb66A1yDvQAAAABJRU5ErkJggg==

@@ -36,7 +36,7 @@
             statisticsTransition = new System.Windows.Forms.Timer(components);
             historyTransition = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
-            label3 = new Label();
+            bt_logout = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -99,7 +99,7 @@
             // 
             panel1.AutoSize = true;
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(label3);
+            panel1.Controls.Add(bt_logout);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -107,23 +107,23 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1282, 64);
+            panel1.Size = new Size(1465, 64);
             panel1.TabIndex = 1;
             // 
-            // label3
+            // bt_logout
             // 
-            label3.Cursor = Cursors.Hand;
-            label3.Dock = DockStyle.Right;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Image = (Image)resources.GetObject("label3.Image");
-            label3.ImageAlign = ContentAlignment.MiddleRight;
-            label3.Location = new Point(1137, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(145, 64);
-            label3.TabIndex = 4;
-            label3.Text = "Đăng xuất";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
-            label3.Click += LogOut_Click;
+            bt_logout.Cursor = Cursors.Hand;
+            bt_logout.Dock = DockStyle.Right;
+            bt_logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bt_logout.Image = (Image)resources.GetObject("bt_logout.Image");
+            bt_logout.ImageAlign = ContentAlignment.MiddleRight;
+            bt_logout.Location = new Point(1299, 0);
+            bt_logout.Name = "bt_logout";
+            bt_logout.Size = new Size(166, 64);
+            bt_logout.TabIndex = 4;
+            bt_logout.Text = "Đăng xuất";
+            bt_logout.TextAlign = ContentAlignment.MiddleLeft;
+            bt_logout.Click += bt_logout_Click;
             // 
             // label2
             // 
@@ -131,7 +131,7 @@
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(661, 11);
             label2.Name = "label2";
-            label2.Size = new Size(392, 38);
+            label2.Size = new Size(575, 37);
             label2.TabIndex = 3;
             label2.Text = "Phần mềm quản lý thư quán";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -143,7 +143,7 @@
             pictureBox1.Location = new Point(45, 16);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(31, 34);
+            pictureBox1.Size = new Size(31, 35);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -153,7 +153,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(92, 19);
+            label1.Location = new Point(91, 19);
             label1.Name = "label1";
             label1.Size = new Size(99, 31);
             label1.TabIndex = 0;
@@ -170,7 +170,7 @@
             sidebar.Location = new Point(0, 64);
             sidebar.Margin = new Padding(0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(356, 679);
+            sidebar.Size = new Size(407, 793);
             sidebar.TabIndex = 2;
             // 
             // memberContainer
@@ -180,7 +180,7 @@
             memberContainer.Location = new Point(0, 0);
             memberContainer.Margin = new Padding(0);
             memberContainer.Name = "memberContainer";
-            memberContainer.Size = new Size(356, 98);
+            memberContainer.Size = new Size(357, 99);
             memberContainer.TabIndex = 5;
             // 
             // panel3
@@ -190,7 +190,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(356, 98);
+            panel3.Size = new Size(357, 99);
             panel3.TabIndex = 4;
             // 
             // ThanhVien_bt
@@ -200,11 +200,11 @@
             ThanhVien_bt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ThanhVien_bt.ForeColor = Color.White;
             ThanhVien_bt.Image = (Image)resources.GetObject("ThanhVien_bt.Image");
-            ThanhVien_bt.Location = new Point(-54, -50);
+            ThanhVien_bt.Location = new Point(-54, -51);
             ThanhVien_bt.Margin = new Padding(0);
             ThanhVien_bt.Name = "ThanhVien_bt";
-            ThanhVien_bt.Padding = new Padding(38, 0, 0, 0);
-            ThanhVien_bt.Size = new Size(421, 194);
+            ThanhVien_bt.Padding = new Padding(11, 0, 0, 0);
+            ThanhVien_bt.Size = new Size(481, 259);
             ThanhVien_bt.TabIndex = 3;
             ThanhVien_bt.Text = "     Thông tin thành viên";
             ThanhVien_bt.TextAlign = ContentAlignment.MiddleLeft;
@@ -219,10 +219,10 @@
             deviceContainer.Controls.Add(panel9);
             deviceContainer.Controls.Add(panel10);
             deviceContainer.Controls.Add(panel11);
-            deviceContainer.Location = new Point(0, 98);
+            deviceContainer.Location = new Point(0, 99);
             deviceContainer.Margin = new Padding(0);
             deviceContainer.Name = "deviceContainer";
-            deviceContainer.Size = new Size(356, 98);
+            deviceContainer.Size = new Size(357, 99);
             deviceContainer.TabIndex = 7;
             // 
             // panel7
@@ -232,7 +232,7 @@
             panel7.Location = new Point(0, 0);
             panel7.Margin = new Padding(0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(356, 98);
+            panel7.Size = new Size(357, 99);
             panel7.TabIndex = 4;
             // 
             // button6
@@ -242,25 +242,26 @@
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
             button6.Image = Properties.Resources.icons8_device_40;
-            button6.Location = new Point(-54, -50);
+            button6.Location = new Point(-54, -51);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
             button6.Padding = new Padding(25, 0, 0, 0);
-            button6.Size = new Size(421, 194);
+            button6.Size = new Size(421, 195);
             button6.TabIndex = 3;
             button6.Text = "     Đặt chỗ thiết bị";
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.TextImageRelation = TextImageRelation.ImageBeforeText;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // panel9
             // 
             panel9.CausesValidation = false;
             panel9.Controls.Add(button7);
-            panel9.Location = new Point(0, 98);
+            panel9.Location = new Point(0, 99);
             panel9.Margin = new Padding(0);
             panel9.Name = "panel9";
-            panel9.Size = new Size(356, 98);
+            panel9.Size = new Size(357, 99);
             panel9.TabIndex = 5;
             // 
             // button7
@@ -269,11 +270,11 @@
             button7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button7.ForeColor = Color.White;
             button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.Location = new Point(-14, -50);
+            button7.Location = new Point(-14, -51);
             button7.Margin = new Padding(0);
             button7.Name = "button7";
             button7.Padding = new Padding(45, 0, 0, 0);
-            button7.Size = new Size(378, 194);
+            button7.Size = new Size(378, 195);
             button7.TabIndex = 3;
             button7.Text = "Danh sách thiết bị";
             button7.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -283,10 +284,10 @@
             // 
             panel10.CausesValidation = false;
             panel10.Controls.Add(button8);
-            panel10.Location = new Point(0, 196);
+            panel10.Location = new Point(0, 198);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
-            panel10.Size = new Size(356, 98);
+            panel10.Size = new Size(357, 99);
             panel10.TabIndex = 6;
             // 
             // button8
@@ -295,11 +296,11 @@
             button8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.ForeColor = Color.White;
             button8.Image = (Image)resources.GetObject("button8.Image");
-            button8.Location = new Point(-14, -50);
+            button8.Location = new Point(-14, -51);
             button8.Margin = new Padding(0);
             button8.Name = "button8";
             button8.Padding = new Padding(55, 0, 0, 0);
-            button8.Size = new Size(378, 194);
+            button8.Size = new Size(378, 195);
             button8.TabIndex = 3;
             button8.Text = "Xử lý đặt chỗ thiết bị";
             button8.TextAlign = ContentAlignment.MiddleLeft;
@@ -310,10 +311,10 @@
             // 
             panel11.CausesValidation = false;
             panel11.Controls.Add(button9);
-            panel11.Location = new Point(0, 294);
+            panel11.Location = new Point(0, 297);
             panel11.Margin = new Padding(0);
             panel11.Name = "panel11";
-            panel11.Size = new Size(356, 98);
+            panel11.Size = new Size(357, 99);
             panel11.TabIndex = 7;
             // 
             // button9
@@ -322,11 +323,11 @@
             button9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button9.ForeColor = Color.White;
             button9.Image = (Image)resources.GetObject("button9.Image");
-            button9.Location = new Point(-14, -50);
+            button9.Location = new Point(-14, -51);
             button9.Margin = new Padding(0);
             button9.Name = "button9";
             button9.Padding = new Padding(45, 0, 0, 0);
-            button9.Size = new Size(378, 194);
+            button9.Size = new Size(378, 195);
             button9.TabIndex = 3;
             button9.Text = "Xem lịch sử mượn";
             button9.TextAlign = ContentAlignment.MiddleLeft;
@@ -339,10 +340,10 @@
             historyContainer.Controls.Add(panel6);
             historyContainer.Controls.Add(panel12);
             historyContainer.Controls.Add(panel2);
-            historyContainer.Location = new Point(0, 196);
+            historyContainer.Location = new Point(0, 198);
             historyContainer.Margin = new Padding(0);
             historyContainer.Name = "historyContainer";
-            historyContainer.Size = new Size(356, 98);
+            historyContainer.Size = new Size(357, 99);
             historyContainer.TabIndex = 8;
             // 
             // panel6
@@ -352,7 +353,7 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(356, 98);
+            panel6.Size = new Size(357, 99);
             panel6.TabIndex = 4;
             // 
             // bt_violation
@@ -362,11 +363,11 @@
             bt_violation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_violation.ForeColor = Color.White;
             bt_violation.Image = Properties.Resources.icons8_important_user_40;
-            bt_violation.Location = new Point(-54, -50);
+            bt_violation.Location = new Point(-54, -51);
             bt_violation.Margin = new Padding(0);
             bt_violation.Name = "bt_violation";
-            bt_violation.Padding = new Padding(12, 0, 0, 0);
-            bt_violation.Size = new Size(421, 194);
+            bt_violation.Padding = new Padding(11, 0, 0, 0);
+            bt_violation.Size = new Size(421, 195);
             bt_violation.TabIndex = 3;
             bt_violation.Text = "     Xem lịch sử";
             bt_violation.TextAlign = ContentAlignment.MiddleLeft;
@@ -378,10 +379,10 @@
             // 
             panel12.CausesValidation = false;
             panel12.Controls.Add(button10);
-            panel12.Location = new Point(0, 98);
+            panel12.Location = new Point(0, 99);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Size = new Size(356, 98);
+            panel12.Size = new Size(357, 99);
             panel12.TabIndex = 5;
             // 
             // button10
@@ -390,11 +391,11 @@
             button10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button10.ForeColor = Color.White;
             button10.Image = (Image)resources.GetObject("button10.Image");
-            button10.Location = new Point(-14, -50);
+            button10.Location = new Point(-14, -51);
             button10.Margin = new Padding(0);
             button10.Name = "button10";
             button10.Padding = new Padding(45, 0, 0, 0);
-            button10.Size = new Size(378, 194);
+            button10.Size = new Size(378, 195);
             button10.TabIndex = 3;
             button10.Text = "Lịch sử mượn thiết bị";
             button10.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -404,10 +405,10 @@
             // 
             panel2.CausesValidation = false;
             panel2.Controls.Add(button1);
-            panel2.Location = new Point(0, 196);
+            panel2.Location = new Point(0, 198);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(356, 98);
+            panel2.Size = new Size(357, 99);
             panel2.TabIndex = 6;
             // 
             // button1
@@ -416,11 +417,11 @@
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(-14, -50);
+            button1.Location = new Point(-14, -51);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
             button1.Padding = new Padding(30, 0, 0, 0);
-            button1.Size = new Size(378, 194);
+            button1.Size = new Size(378, 195);
             button1.TabIndex = 3;
             button1.Text = "Lịch sử vi phạm";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -431,18 +432,19 @@
             contentContainer.AutoSize = true;
             contentContainer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             contentContainer.Dock = DockStyle.Fill;
-            contentContainer.Location = new Point(356, 64);
+            contentContainer.Location = new Point(407, 64);
             contentContainer.Margin = new Padding(0);
             contentContainer.Name = "contentContainer";
-            contentContainer.Size = new Size(926, 679);
+            contentContainer.Size = new Size(1058, 793);
             contentContainer.TabIndex = 3;
+            contentContainer.Paint += contentContainer_Paint;
             // 
             // FormUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1282, 743);
+            ClientSize = new Size(1465, 857);
             Controls.Add(contentContainer);
             Controls.Add(sidebar);
             Controls.Add(panel1);
@@ -499,5 +501,6 @@
         private Panel panel2;
         private Button button1;
         private Label label3;
+        private Label bt_logout;
     }
 }

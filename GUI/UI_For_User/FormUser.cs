@@ -1,6 +1,7 @@
 ﻿using qltv.GUI.UI_For_Login;
 using QLTV;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,11 +106,29 @@ namespace qltv.GUI.UI_For_User
             }
         }
 
+
         private void bt_violation_Click(object sender, EventArgs e)
         {
             historyTransition.Start();
         }
-        private void LogOut_Click(object sender, EventArgs e)
+
+        private void contentContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FormReserve fr = new FormReserve();
+            contentContainer.Controls.Clear();
+
+            fr.TopLevel = false;
+            fr.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(fr);
+            fr.Show();
+        }
+
+        private void bt_logout_Click(object sender, EventArgs e)
         {
             this.Hide();
             new Login().Show();

@@ -1,4 +1,6 @@
-﻿namespace QLTV
+﻿using qltv.GUI.UI_For_Login;
+
+namespace QLTV
 {
     public partial class FormAdmin : Form
     {
@@ -255,6 +257,11 @@
             contentContainer.Controls.Add(home);
 
             home.Show();
+        }
+        private void bt_logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Login().Show();
         }
     }
 }
