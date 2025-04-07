@@ -6,12 +6,12 @@ namespace qltv.GUI.UI_For_User
 {
     public partial class FormReserve : Form
     {
-        private DatabaseHelep dbHelper;
+        private DatabaseHelper dbHelper;
         public FormReserve()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            dbHelper = new DatabaseHelep();
+            dbHelper = new DatabaseHelper();
             this.Dock = DockStyle.Fill;
 
         }

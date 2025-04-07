@@ -17,7 +17,7 @@ namespace qltv.DAO
         {
 
             string query = "select * from account where account_id = @account_id ";
-            using (MySqlConnection conn = DatabaseHelep.GetConnection())
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);

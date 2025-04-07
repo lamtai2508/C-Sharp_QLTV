@@ -1,4 +1,6 @@
-﻿using QLTV.Resources;
+﻿using qltv.BUS;
+using qltv.DAO;
+using QLTV.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +15,17 @@ namespace QLTV
 {
     public partial class MemberList : Form
     {
-        private DatabaseHelep dbHelper;
+        private DatabaseHelper dbHelper;
         public MemberList()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            dbHelper = new DatabaseHelep();
+            dbHelper = new DatabaseHelper();
             this.Dock = DockStyle.Fill;
         }
         private void LoadData()
         {
-            members_table.DataSource = UsersRepository.GetMember();
+            members_table.DataSource = MemberBUS.GetAllMenber();
         }
 
         private void label1_Click(object sender, EventArgs e)

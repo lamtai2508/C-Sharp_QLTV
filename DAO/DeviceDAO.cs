@@ -12,7 +12,7 @@ namespace qltv.DAO
         public static DataTable GetAllDevices()
         {
             string query = "SELECT * FROM devices";
-            return DatabaseHelep.GetData(query);
+            return DatabaseHelper.GetData(query);
         }
 
         // Lấy thiết bị theo ID
@@ -20,7 +20,7 @@ namespace qltv.DAO
         {
             string query = "SELECT * FROM devices WHERE device_id = @device_id";
 
-            using (MySqlConnection conn = DatabaseHelep.GetConnection())
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -47,7 +47,7 @@ namespace qltv.DAO
             string query = "INSERT INTO devices (device_id, device_name, device_type, status) " +
                           "VALUES (@device_id, @device_name, @device_type, @status)";
 
-            using (MySqlConnection conn = DatabaseHelep.GetConnection())
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 try
                 {
@@ -73,7 +73,7 @@ namespace qltv.DAO
             string query = "UPDATE devices SET device_name = @device_name, device_type = @device_type, " +
                           "status = @status WHERE device_id = @device_id";
 
-            using (MySqlConnection conn = DatabaseHelep.GetConnection())
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 try
                 {
@@ -98,7 +98,7 @@ namespace qltv.DAO
         {
             string query = "DELETE FROM devices WHERE device_id = @device_id";
 
-            using (MySqlConnection conn = DatabaseHelep.GetConnection())
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 try
                 {
@@ -121,7 +121,7 @@ namespace qltv.DAO
             string query = "SELECT * FROM devices WHERE device_id LIKE @keyword " +
                           "OR device_name LIKE @keyword OR device_type LIKE @keyword";
 
-            using (MySqlConnection conn = DatabaseHelep.GetConnection())
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);

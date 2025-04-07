@@ -14,7 +14,7 @@ namespace qltv.DTO
 
         public string number_phone { get; set; }
 
-        public string dob { get; set; }
+        public DateTime dob { get; set; }
 
         public string email { get; set; }
 
@@ -22,7 +22,7 @@ namespace qltv.DTO
 
         public MemberDTO() { }
 
-        public MemberDTO(string member_id, string full_name, string gender, string number_phone, string dob, string email , string status)
+        public MemberDTO(string member_id, string full_name, string gender, string number_phone, DateTime dob, string email , string status)
         {
             this.member_id = member_id;
             this.full_name = full_name;
