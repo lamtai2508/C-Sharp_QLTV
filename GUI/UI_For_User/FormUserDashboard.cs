@@ -144,13 +144,7 @@ namespace qltv.GUI.UI_For_User
         private void button1_Click(object sender, EventArgs e)
         {
 
-            FormViolation fv = new FormViolation();
-            contentContainer.Controls.Clear();
-
-            fv.TopLevel = false;
-            fv.Dock = DockStyle.Fill;
-            contentContainer.Controls.Add(fv);
-            fv.Show();
+            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace QLTV
         }
         private void LoadData()
         {
-            members_table.DataSource = UsersRepository.GetUser();
+            members_table.DataSource = UsersRepository.GetMember();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,11 +38,6 @@ namespace QLTV
         private void MemberList_Load(object sender, EventArgs e)
         {
             LoadData();
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

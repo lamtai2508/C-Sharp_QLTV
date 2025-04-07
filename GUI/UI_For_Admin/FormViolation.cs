@@ -42,7 +42,7 @@ namespace qltv.GUI.UI_For_User
             // Xử lý tìm kiếm (chỉ UI, không có logic thực tế)
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
-                MessageBox.Show("Đang tìm kiếm: " + txtSearch.Text, "Thông báo", 
+                MessageBox.Show("Đang tìm kiếm: " + txtSearch.Text, "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

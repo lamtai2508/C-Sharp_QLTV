@@ -41,50 +41,34 @@
             memberContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             bt_member = new Button();
-            MemberList = new Panel();
-            btn_member = new Button();
             deviceContainer = new FlowLayoutPanel();
             panel7 = new Panel();
             bt_device_transition = new Button();
             panel9 = new Panel();
             bt_deviceList = new Button();
             panel10 = new Panel();
-            button8 = new Button();
+            bt_borrweddevice = new Button();
             violationContainer = new FlowLayoutPanel();
             panel6 = new Panel();
-            bt_violation = new Button();
-            panel12 = new Panel();
-            button10 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            panel5 = new Panel();
-            button1 = new Button();
-            panel13 = new Panel();
-            button5 = new Button();
+            bt_violationList = new Button();
             statisticsContainer = new FlowLayoutPanel();
             panel14 = new Panel();
             bt_statistics = new Button();
-            memberTransition = new System.Windows.Forms.Timer(components);
             menuTransition = new System.Windows.Forms.Timer(components);
             contentContainer = new Panel();
             deviceTransition = new System.Windows.Forms.Timer(components);
-            violationTransition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bt_menu).BeginInit();
             sidebar.SuspendLayout();
             panel2.SuspendLayout();
             memberContainer.SuspendLayout();
             panel3.SuspendLayout();
-            MemberList.SuspendLayout();
             deviceContainer.SuspendLayout();
             panel7.SuspendLayout();
             panel9.SuspendLayout();
             panel10.SuspendLayout();
             violationContainer.SuspendLayout();
             panel6.SuspendLayout();
-            panel12.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            panel5.SuspendLayout();
-            panel13.SuspendLayout();
             statisticsContainer.SuspendLayout();
             panel14.SuspendLayout();
             SuspendLayout();
@@ -188,7 +172,7 @@
             bt_home.Location = new Point(-54, -50);
             bt_home.Margin = new Padding(0);
             bt_home.Name = "bt_home";
-            bt_home.Padding = new Padding(10, 0, 0, 0);
+            bt_home.Padding = new Padding(15, 0, 0, 0);
             bt_home.Size = new Size(421, 194);
             bt_home.TabIndex = 4;
             bt_home.Text = "    Trang chủ";
@@ -201,11 +185,10 @@
             // 
             memberContainer.BackColor = Color.FromArgb(255, 192, 128);
             memberContainer.Controls.Add(panel3);
-            memberContainer.Controls.Add(MemberList);
             memberContainer.Location = new Point(0, 98);
             memberContainer.Margin = new Padding(0);
             memberContainer.Name = "memberContainer";
-            memberContainer.Size = new Size(356, 196);
+            memberContainer.Size = new Size(356, 98);
             memberContainer.TabIndex = 5;
             // 
             // panel3
@@ -228,41 +211,14 @@
             bt_member.Location = new Point(-54, -50);
             bt_member.Margin = new Padding(0);
             bt_member.Name = "bt_member";
-            bt_member.Padding = new Padding(10, 0, 0, 0);
+            bt_member.Padding = new Padding(50, 0, 0, 0);
             bt_member.Size = new Size(421, 194);
             bt_member.TabIndex = 3;
-            bt_member.Text = "     Thành viên";
+            bt_member.Text = "     Danh sách thành viên";
             bt_member.TextAlign = ContentAlignment.MiddleLeft;
             bt_member.TextImageRelation = TextImageRelation.ImageBeforeText;
             bt_member.UseVisualStyleBackColor = false;
             bt_member.Click += bt_member_Click;
-            // 
-            // MemberList
-            // 
-            MemberList.CausesValidation = false;
-            MemberList.Controls.Add(btn_member);
-            MemberList.Location = new Point(0, 98);
-            MemberList.Margin = new Padding(0);
-            MemberList.Name = "MemberList";
-            MemberList.Size = new Size(356, 98);
-            MemberList.TabIndex = 5;
-            // 
-            // btn_member
-            // 
-            btn_member.BackColor = Color.FromArgb(65, 65, 65);
-            btn_member.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_member.ForeColor = Color.White;
-            btn_member.Image = (Image)resources.GetObject("btn_member.Image");
-            btn_member.Location = new Point(-14, -50);
-            btn_member.Margin = new Padding(0);
-            btn_member.Name = "btn_member";
-            btn_member.Padding = new Padding(70, 0, 0, 0);
-            btn_member.Size = new Size(378, 194);
-            btn_member.TabIndex = 3;
-            btn_member.Text = "Danh sách thành viên";
-            btn_member.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_member.UseVisualStyleBackColor = false;
-            btn_member.Click += button6_Click;
             // 
             // deviceContainer
             // 
@@ -270,7 +226,7 @@
             deviceContainer.Controls.Add(panel7);
             deviceContainer.Controls.Add(panel9);
             deviceContainer.Controls.Add(panel10);
-            deviceContainer.Location = new Point(0, 294);
+            deviceContainer.Location = new Point(0, 196);
             deviceContainer.Margin = new Padding(0);
             deviceContainer.Name = "deviceContainer";
             deviceContainer.Size = new Size(356, 294);
@@ -335,167 +291,75 @@
             // panel10
             // 
             panel10.CausesValidation = false;
-            panel10.Controls.Add(button8);
+            panel10.Controls.Add(bt_borrweddevice);
             panel10.Location = new Point(0, 196);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
             panel10.Size = new Size(356, 98);
             panel10.TabIndex = 6;
             // 
-            // button8
+            // bt_borrweddevice
             // 
-            button8.BackColor = Color.FromArgb(65, 65, 65);
-            button8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.White;
-            button8.Image = (Image)resources.GetObject("button8.Image");
-            button8.Location = new Point(-14, -50);
-            button8.Margin = new Padding(0);
-            button8.Name = "button8";
-            button8.Padding = new Padding(55, 0, 0, 0);
-            button8.Size = new Size(378, 194);
-            button8.TabIndex = 3;
-            button8.Text = "Xử lý đặt chỗ thiết bị";
-            button8.TextAlign = ContentAlignment.MiddleLeft;
-            button8.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button8.UseVisualStyleBackColor = false;
+            bt_borrweddevice.BackColor = Color.FromArgb(65, 65, 65);
+            bt_borrweddevice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bt_borrweddevice.ForeColor = Color.White;
+            bt_borrweddevice.Image = (Image)resources.GetObject("bt_borrweddevice.Image");
+            bt_borrweddevice.Location = new Point(-14, -50);
+            bt_borrweddevice.Margin = new Padding(0);
+            bt_borrweddevice.Name = "bt_borrweddevice";
+            bt_borrweddevice.Padding = new Padding(55, 0, 0, 0);
+            bt_borrweddevice.Size = new Size(378, 194);
+            bt_borrweddevice.TabIndex = 3;
+            bt_borrweddevice.Text = "Xử lý đặt chỗ thiết bị";
+            bt_borrweddevice.TextAlign = ContentAlignment.MiddleLeft;
+            bt_borrweddevice.TextImageRelation = TextImageRelation.ImageBeforeText;
+            bt_borrweddevice.UseVisualStyleBackColor = false;
+            bt_borrweddevice.Click += bt_borrweddevice_Click;
             // 
             // violationContainer
             // 
             violationContainer.BackColor = Color.FromArgb(255, 192, 128);
             violationContainer.Controls.Add(panel6);
-            violationContainer.Controls.Add(panel12);
-            violationContainer.Controls.Add(flowLayoutPanel1);
-            violationContainer.Location = new Point(0, 588);
+            violationContainer.Location = new Point(0, 490);
             violationContainer.Margin = new Padding(0);
             violationContainer.Name = "violationContainer";
-            violationContainer.Size = new Size(356, 196);
+            violationContainer.Size = new Size(356, 98);
             violationContainer.TabIndex = 8;
             // 
             // panel6
             // 
             panel6.Anchor = AnchorStyles.Top;
-            panel6.Controls.Add(bt_violation);
+            panel6.Controls.Add(bt_violationList);
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
             panel6.Size = new Size(356, 98);
             panel6.TabIndex = 4;
             // 
-            // bt_violation
+            // bt_violationList
             // 
-            bt_violation.BackColor = Color.FromArgb(18, 17, 22);
-            bt_violation.Cursor = Cursors.Hand;
-            bt_violation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bt_violation.ForeColor = Color.White;
-            bt_violation.Image = qltv.Properties.Resources.icons8_important_user_40;
-            bt_violation.Location = new Point(-54, -50);
-            bt_violation.Margin = new Padding(0);
-            bt_violation.Name = "bt_violation";
-            bt_violation.Padding = new Padding(10, 0, 0, 0);
-            bt_violation.Size = new Size(421, 194);
-            bt_violation.TabIndex = 3;
-            bt_violation.Text = "     Vi phạm";
-            bt_violation.TextAlign = ContentAlignment.MiddleLeft;
-            bt_violation.TextImageRelation = TextImageRelation.ImageBeforeText;
-            bt_violation.UseVisualStyleBackColor = false;
-            bt_violation.Click += bt_violation_Click;
-            // 
-            // panel12
-            // 
-            panel12.CausesValidation = false;
-            panel12.Controls.Add(button10);
-            panel12.Location = new Point(0, 98);
-            panel12.Margin = new Padding(0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(356, 98);
-            panel12.TabIndex = 5;
-            // 
-            // button10
-            // 
-            button10.BackColor = Color.FromArgb(65, 65, 65);
-            button10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.ForeColor = Color.White;
-            button10.Image = (Image)resources.GetObject("button10.Image");
-            button10.Location = new Point(-14, -50);
-            button10.Margin = new Padding(0);
-            button10.Name = "button10";
-            button10.Padding = new Padding(45, 0, 0, 0);
-            button10.Size = new Size(378, 194);
-            button10.TabIndex = 3;
-            button10.Text = "Danh sách vi phạm";
-            button10.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button10.UseVisualStyleBackColor = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(255, 192, 128);
-            flowLayoutPanel1.Controls.Add(panel5);
-            flowLayoutPanel1.Controls.Add(panel13);
-            flowLayoutPanel1.Location = new Point(0, 196);
-            flowLayoutPanel1.Margin = new Padding(0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(356, 59);
-            flowLayoutPanel1.TabIndex = 9;
-            // 
-            // panel5
-            // 
-            panel5.Anchor = AnchorStyles.Top;
-            panel5.Controls.Add(button1);
-            panel5.Location = new Point(0, 0);
-            panel5.Margin = new Padding(0);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(356, 98);
-            panel5.TabIndex = 4;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(18, 17, 22);
-            button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Image = qltv.Properties.Resources.icons8_important_user_40;
-            button1.Location = new Point(-54, -50);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(421, 194);
-            button1.TabIndex = 3;
-            button1.Text = "     Vi phạm";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // panel13
-            // 
-            panel13.CausesValidation = false;
-            panel13.Controls.Add(button5);
-            panel13.Location = new Point(0, 98);
-            panel13.Margin = new Padding(0);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(356, 98);
-            panel13.TabIndex = 5;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.FromArgb(65, 65, 65);
-            button5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(-14, -50);
-            button5.Margin = new Padding(0);
-            button5.Name = "button5";
-            button5.Padding = new Padding(45, 0, 0, 0);
-            button5.Size = new Size(378, 194);
-            button5.TabIndex = 3;
-            button5.Text = "Danh sách vi phạm";
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = false;
+            bt_violationList.BackColor = Color.FromArgb(18, 17, 22);
+            bt_violationList.Cursor = Cursors.Hand;
+            bt_violationList.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bt_violationList.ForeColor = Color.White;
+            bt_violationList.Image = qltv.Properties.Resources.icons8_important_user_40;
+            bt_violationList.Location = new Point(-54, -50);
+            bt_violationList.Margin = new Padding(0);
+            bt_violationList.Name = "bt_violationList";
+            bt_violationList.Padding = new Padding(10, 0, 0, 0);
+            bt_violationList.Size = new Size(421, 194);
+            bt_violationList.TabIndex = 3;
+            bt_violationList.Text = "     Vi phạm";
+            bt_violationList.TextAlign = ContentAlignment.MiddleLeft;
+            bt_violationList.TextImageRelation = TextImageRelation.ImageBeforeText;
+            bt_violationList.UseVisualStyleBackColor = false;
+            bt_violationList.Click += bt_violationList_Click;
             // 
             // statisticsContainer
             // 
             statisticsContainer.BackColor = Color.FromArgb(255, 192, 128);
             statisticsContainer.Controls.Add(panel14);
-            statisticsContainer.Location = new Point(0, 784);
+            statisticsContainer.Location = new Point(0, 588);
             statisticsContainer.Margin = new Padding(0);
             statisticsContainer.Name = "statisticsContainer";
             statisticsContainer.Size = new Size(356, 98);
@@ -529,11 +393,6 @@
             bt_statistics.TextImageRelation = TextImageRelation.ImageBeforeText;
             bt_statistics.UseVisualStyleBackColor = false;
             // 
-            // memberTransition
-            // 
-            memberTransition.Interval = 10;
-            memberTransition.Tick += MemberTransition_Tick;
-            // 
             // menuTransition
             // 
             menuTransition.Interval = 10;
@@ -554,11 +413,6 @@
             deviceTransition.Interval = 10;
             deviceTransition.Tick += deviceTransition_Tick;
             // 
-            // violationTransition
-            // 
-            violationTransition.Interval = 10;
-            violationTransition.Tick += violationTransition_Tick;
-            // 
             // FormAdminDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -578,17 +432,12 @@
             panel2.ResumeLayout(false);
             memberContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            MemberList.ResumeLayout(false);
             deviceContainer.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel10.ResumeLayout(false);
             violationContainer.ResumeLayout(false);
             panel6.ResumeLayout(false);
-            panel12.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel13.ResumeLayout(false);
             statisticsContainer.ResumeLayout(false);
             panel14.ResumeLayout(false);
             ResumeLayout(false);
@@ -605,11 +454,8 @@
         private System.Windows.Forms.Button bt_member;
         private System.Windows.Forms.Button bt_home;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Timer memberTransition;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.FlowLayoutPanel memberContainer;
-        private System.Windows.Forms.Panel MemberList;
-        private System.Windows.Forms.Button btn_member;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Panel contentContainer;
         private FlowLayoutPanel deviceContainer;
@@ -618,19 +464,11 @@
         private Panel panel9;
         private Button bt_deviceList;
         private Panel panel10;
-        private Button button8;
+        private Button bt_borrweddevice;
         private System.Windows.Forms.Timer deviceTransition;
         private FlowLayoutPanel violationContainer;
         private Panel panel6;
-        private Button bt_violation;
-        private Panel panel12;
-        private Button button10;
-        private System.Windows.Forms.Timer violationTransition;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel5;
-        private Button button1;
-        private Panel panel13;
-        private Button button5;
+        private Button bt_violationList;
         private FlowLayoutPanel statisticsContainer;
         private Panel panel14;
         private Button bt_statistics;

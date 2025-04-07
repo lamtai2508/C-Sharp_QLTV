@@ -242,7 +242,7 @@
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
             button6.Image = Properties.Resources.icons8_device_40;
-            button6.Location = new Point(-54, -51);
+            button6.Location = new Point(-26, -43);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
             button6.Padding = new Padding(25, 0, 0, 0);
@@ -367,7 +367,7 @@
             bt_violation.Margin = new Padding(0);
             bt_violation.Name = "bt_violation";
             bt_violation.Padding = new Padding(11, 0, 0, 0);
-            bt_violation.Size = new Size(390, 177);
+            bt_violation.Size = new Size(390, 164);
             bt_violation.TabIndex = 3;
             bt_violation.Text = "     Xem lịch sử";
             bt_violation.TextAlign = ContentAlignment.MiddleLeft;

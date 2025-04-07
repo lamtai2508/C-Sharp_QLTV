@@ -73,10 +73,10 @@
             members_table.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             members_table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             members_table.GridColor = Color.LavenderBlush;
-            members_table.Location = new Point(0, 318);
+            members_table.Location = new Point(12, 318);
             members_table.Name = "members_table";
             members_table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            members_table.Size = new Size(1260, 413);
+            members_table.Size = new Size(1236, 413);
             members_table.TabIndex = 1;
             // 
             // panel2
@@ -152,9 +152,10 @@
             // button1
             // 
             button1.AutoSize = true;
-            button1.BackColor = Color.FromArgb(128, 255, 128);
+            button1.BackColor = Color.FromArgb(49, 176, 182);
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(200, 3);
             button1.Margin = new Padding(200, 3, 30, 3);
             button1.Name = "button1";
@@ -166,9 +167,10 @@
             // button2
             // 
             button2.AutoSize = true;
-            button2.BackColor = Color.FromArgb(128, 255, 128);
+            button2.BackColor = Color.FromArgb(49, 176, 182);
             button2.Cursor = Cursors.Hand;
             button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
             button2.Location = new Point(383, 3);
             button2.Name = "button2";
             button2.Size = new Size(150, 41);
@@ -179,9 +181,10 @@
             // button3
             // 
             button3.AutoSize = true;
-            button3.BackColor = Color.FromArgb(128, 255, 128);
+            button3.BackColor = Color.FromArgb(49, 176, 182);
             button3.Cursor = Cursors.Hand;
             button3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
             button3.Location = new Point(566, 3);
             button3.Margin = new Padding(30, 3, 3, 3);
             button3.Name = "button3";
@@ -193,9 +196,10 @@
             // button5
             // 
             button5.AutoSize = true;
-            button5.BackColor = Color.FromArgb(128, 255, 128);
+            button5.BackColor = Color.FromArgb(49, 176, 182);
             button5.Cursor = Cursors.Hand;
             button5.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
             button5.Location = new Point(749, 3);
             button5.Margin = new Padding(30, 3, 30, 3);
             button5.Name = "button5";
@@ -278,7 +282,6 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(370, 34);
             textBox5.TabIndex = 9;
-            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // textBox4
             // 

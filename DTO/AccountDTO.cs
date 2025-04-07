@@ -16,9 +16,9 @@ namespace qltv.DTO
 
         public accountDTO(string account_id, string password, int role)
         {
-            account_id = account_id;
-            password = password;
-            role = role;
+            this.account_id = account_id;
+            this.password = password;
+            this.role = role;
         }
     } 
 }

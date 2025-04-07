@@ -10,9 +10,15 @@ namespace QLTV.Resources
     public class UsersRepository
     {
         //Lấy dữ liệu bảng member trong database
-        public static DataTable GetUser()
+        public static DataTable GetMember()
         {
             String query = "SELECT * FROM members";
+            return DatabaseHelep.GetData(query);
+        }
+
+        public static DataTable GetBorrewedDevice()
+        {
+            String query = "Select * from borreweddeivces";
             return DatabaseHelep.GetData(query);
         }
     }

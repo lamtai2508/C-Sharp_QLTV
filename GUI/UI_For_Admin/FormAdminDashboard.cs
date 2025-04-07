@@ -1,5 +1,6 @@
 using qltv.GUI.UI_For_Admin;
 using qltv.GUI.UI_For_Login;
+using qltv.GUI.UI_For_User;
 
 
 namespace QLTV
@@ -19,15 +20,6 @@ namespace QLTV
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        private void bt_member_Click(object sender, EventArgs e)
-        {
-            memberTransition.Start();
-        }
-        private void bt_violation_Click(object sender, EventArgs e)
-        {
-            violationTransition.Start();
-        }
-
         private void bt_device_transition_Click(object sender, EventArgs e)
         {
             deviceTransition.Start();
@@ -36,6 +28,19 @@ namespace QLTV
         {
             menuTransition.Start();
         }
+        //event hiện thị form danh sách thành viên
+        private void bt_member_Click(object sender, EventArgs e)
+        {
+            MemberList mbList = new MemberList();
+
+            contentContainer.Controls.Clear();
+
+            mbList.TopLevel = false;
+            mbList.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(mbList);
+            mbList.Show();
+        }
+        //event hiện thị form trang chủ
         private void bt_home_Click_1(object sender, EventArgs e)
         {
             contentContainer.Controls.Clear();
@@ -57,17 +62,26 @@ namespace QLTV
             contentContainer.Controls.Add(deviceForm);
             deviceForm.Show();
         }
-        private void button6_Click(object sender, EventArgs e)
+        // event hien thị form lịch sử vi phạm
+        private void bt_violationList_Click(object sender, EventArgs e)
         {
-            MemberList mbList = new MemberList();
-
+            FormViolation fv = new FormViolation();
             contentContainer.Controls.Clear();
 
-            mbList.TopLevel = false;
-            mbList.Dock = DockStyle.Fill;
-            contentContainer.Controls.Add(mbList);
-            mbList.Show();
+            fv.TopLevel = false;
+            fv.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(fv);
+            fv.Show();
+        }
+        private void bt_borrweddevice_Click(object sender, EventArgs e)
+        {
+            FormBorrowedDevices BD = new FormBorrowedDevices();
+            contentContainer.Controls.Clear();
 
+            BD.TopLevel = false;
+            BD.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(BD);
+            BD.Show();
         }
         private void menuTransition_Tick(object sender, EventArgs e)
         {
@@ -77,17 +91,6 @@ namespace QLTV
                 if (sidebar.Width <= 76)
                 {
                     // tự động thu lại khi menu thu nhỏ
-                    // thu nhỏ member
-                    memberTransition.Start();
-                    if (memberContainer.Height <= 98)
-                    {
-                        memberTransition.Stop();
-                        memberExpand = false;
-                    }
-                    else
-                    {
-                        memberContainer.Height -= 5;
-                    }
                     // thu nhỏ device
                     deviceTransition.Start();
                     if (deviceContainer.Height <= 98)
@@ -98,17 +101,6 @@ namespace QLTV
                     else
                     {
                         deviceContainer.Height -= 5;
-                    }
-                    // thu nhỏ vi phạm
-                    violationTransition.Start();
-                    if (violationContainer.Height <= 98)
-                    {
-                        violationTransition.Stop();
-                        violationExpand = false;
-                    }
-                    else
-                    {
-                        violationContainer.Height -= 5;
                     }
                     menuTransition.Stop();
                     menuExpand = false;
@@ -151,62 +143,6 @@ namespace QLTV
                 {
                     deviceTransition.Stop();
                     deviceExpand = false;
-                }
-            }
-        }
-        private void MemberTransition_Tick(object sender, EventArgs e)
-        {
-            if (memberExpand == false)
-            {
-                // tự động phóng to menu khi click icon Member
-                menuTransition.Start();
-                if (sidebar.Width >= 355)
-                {
-                    menuTransition.Stop();
-                    menuExpand = true;
-                }
-                memberContainer.Height += 5;
-                if (memberContainer.Height >= 190)
-                {
-                    memberTransition.Stop();
-                    memberExpand = true;
-                }
-            }
-            else
-            {
-                memberContainer.Height -= 5;
-                if (memberContainer.Height <= 98)
-                {
-                    memberTransition.Stop();
-                    memberExpand = false;
-                }
-            }
-        }
-        private void violationTransition_Tick(object sender, EventArgs e)
-        {
-            if (violationExpand == false)
-            {
-                // tự động phóng to menu khi click icon Member
-                menuTransition.Start();
-                if (sidebar.Width >= 355)
-                {
-                    menuTransition.Stop();
-                    menuExpand = true;
-                }
-                violationContainer.Height += 5;
-                if (violationContainer.Height >= 180)
-                {
-                    violationTransition.Stop();
-                    violationExpand = true;
-                }
-            }
-            else
-            {
-                violationContainer.Height -= 5;
-                if (violationContainer.Height <= 98)
-                {
-                    violationTransition.Stop();
-                    violationExpand = false;
                 }
             }
         }
