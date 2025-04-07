@@ -1,6 +1,6 @@
 ﻿namespace qltv.GUI.UI_For_User
 {
-    partial class FormReserve
+    partial class FormHistory
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReserve));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistory));
             label1 = new Label();
+            dataGridView1 = new DataGridView();
             flowLayoutPanel1 = new FlowLayoutPanel();
             label2 = new Label();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             button4 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -44,12 +46,21 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(14, 12);
+            label1.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(24, 22);
             label1.Name = "label1";
-            label1.Size = new Size(179, 37);
+            label1.Size = new Size(334, 38);
             label1.TabIndex = 0;
-            label1.Text = "ĐẶT THIẾT BỊ";
+            label1.Text = "LỊCH SỬ MƯỢN THIẾT BỊ";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(24, 272);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(973, 337);
+            dataGridView1.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -59,10 +70,10 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(button4);
             flowLayoutPanel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            flowLayoutPanel1.Location = new Point(14, 106);
+            flowLayoutPanel1.Location = new Point(122, 152);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(850, 39);
-            flowLayoutPanel1.TabIndex = 3;
+            flowLayoutPanel1.Size = new Size(712, 39);
+            flowLayoutPanel1.TabIndex = 2;
             // 
             // label2
             // 
@@ -84,7 +95,7 @@
             panel2.Controls.Add(textBox1);
             panel2.Location = new Point(295, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(478, 32);
+            panel2.Size = new Size(340, 32);
             panel2.TabIndex = 1;
             // 
             // pictureBox1
@@ -92,7 +103,7 @@
             pictureBox1.BackColor = Color.White;
             pictureBox1.Dock = DockStyle.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(446, 0);
+            pictureBox1.Location = new Point(308, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(30, 30);
             pictureBox1.TabIndex = 1;
@@ -105,7 +116,7 @@
             textBox1.Location = new Point(0, 0);
             textBox1.Margin = new Padding(0);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(952, 30);
+            textBox1.Size = new Size(676, 30);
             textBox1.TabIndex = 0;
             // 
             // button4
@@ -113,7 +124,7 @@
             button4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button4.AutoSize = true;
             button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(779, 3);
+            button4.Location = new Point(641, 3);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 10, 0);
             button4.Size = new Size(68, 33);
@@ -121,18 +132,18 @@
             button4.Text = "Tìm";
             button4.UseVisualStyleBackColor = true;
             // 
-            // FormReserve
+            // FormHistory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            ControlBox = false;
+            ClientSize = new Size(1024, 646);
             Controls.Add(flowLayoutPanel1);
+            Controls.Add(dataGridView1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "FormReserve";
-            Text = "DatThietBi";
+            Name = "FormHistory";
+            Text = "FormHistory";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -145,6 +156,7 @@
         #endregion
 
         private Label label1;
+        private DataGridView dataGridView1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label2;
         private Panel panel2;

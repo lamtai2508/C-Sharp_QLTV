@@ -46,5 +46,10 @@ namespace qltv.GUI.UI_For_User
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void FormViolation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -170,7 +170,7 @@
             sidebar.Location = new Point(0, 64);
             sidebar.Margin = new Padding(0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(407, 793);
+            sidebar.Size = new Size(357, 793);
             sidebar.TabIndex = 2;
             // 
             // memberContainer
@@ -200,11 +200,11 @@
             ThanhVien_bt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ThanhVien_bt.ForeColor = Color.White;
             ThanhVien_bt.Image = (Image)resources.GetObject("ThanhVien_bt.Image");
-            ThanhVien_bt.Location = new Point(-54, -51);
+            ThanhVien_bt.Location = new Point(-14, -29);
             ThanhVien_bt.Margin = new Padding(0);
             ThanhVien_bt.Name = "ThanhVien_bt";
             ThanhVien_bt.Padding = new Padding(11, 0, 0, 0);
-            ThanhVien_bt.Size = new Size(481, 259);
+            ThanhVien_bt.Size = new Size(404, 171);
             ThanhVien_bt.TabIndex = 3;
             ThanhVien_bt.Text = "     Thông tin thành viên";
             ThanhVien_bt.TextAlign = ContentAlignment.MiddleLeft;
@@ -242,11 +242,11 @@
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
             button6.Image = Properties.Resources.icons8_device_40;
-            button6.Location = new Point(-54, -51);
+            button6.Location = new Point(-25, -36);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
             button6.Padding = new Padding(25, 0, 0, 0);
-            button6.Size = new Size(421, 195);
+            button6.Size = new Size(390, 156);
             button6.TabIndex = 3;
             button6.Text = "     Đặt chỗ thiết bị";
             button6.TextAlign = ContentAlignment.MiddleLeft;
@@ -363,11 +363,11 @@
             bt_violation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_violation.ForeColor = Color.White;
             bt_violation.Image = Properties.Resources.icons8_important_user_40;
-            bt_violation.Location = new Point(-54, -51);
+            bt_violation.Location = new Point(-25, -51);
             bt_violation.Margin = new Padding(0);
             bt_violation.Name = "bt_violation";
             bt_violation.Padding = new Padding(11, 0, 0, 0);
-            bt_violation.Size = new Size(421, 195);
+            bt_violation.Size = new Size(390, 177);
             bt_violation.TabIndex = 3;
             bt_violation.Text = "     Xem lịch sử";
             bt_violation.TextAlign = ContentAlignment.MiddleLeft;
@@ -400,6 +400,8 @@
             button10.Text = "Lịch sử mượn thiết bị";
             button10.TextImageRelation = TextImageRelation.ImageBeforeText;
             button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
+            button10.MouseCaptureChanged += button10_Click;
             // 
             // panel2
             // 
@@ -426,20 +428,22 @@
             button1.Text = "Lịch sử vi phạm";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            button1.MouseCaptureChanged += button1_Click;
             // 
             // contentContainer
             // 
             contentContainer.AutoSize = true;
             contentContainer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             contentContainer.Dock = DockStyle.Fill;
-            contentContainer.Location = new Point(407, 64);
+            contentContainer.Location = new Point(357, 64);
             contentContainer.Margin = new Padding(0);
             contentContainer.Name = "contentContainer";
-            contentContainer.Size = new Size(1058, 793);
+            contentContainer.Size = new Size(1108, 793);
             contentContainer.TabIndex = 3;
             contentContainer.Paint += contentContainer_Paint;
             // 
-            // FormUser
+            // FormUserDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -448,7 +452,7 @@
             Controls.Add(contentContainer);
             Controls.Add(sidebar);
             Controls.Add(panel1);
-            Name = "FormUser";
+            Name = "FormUserDashboard";
             Text = "FormUser";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

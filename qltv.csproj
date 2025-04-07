@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
+    <None Include="Properties\DataSources\QLTV.Resources.UsersRepository.datasource" />
   </ItemGroup>
 
 </Project>
