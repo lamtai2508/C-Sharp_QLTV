@@ -242,7 +242,7 @@
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
             button6.Image = Properties.Resources.icons8_device_40;
-            button6.Location = new Point(-25, -36);
+            button6.Location = new Point(-54, -51);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
             button6.Padding = new Padding(25, 0, 0, 0);
