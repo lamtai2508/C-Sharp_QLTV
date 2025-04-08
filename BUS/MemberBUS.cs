@@ -35,28 +35,21 @@ namespace qltv.BUS
         // Hàm thêm thành viên nếu thành viên ko tồn tại!
         public static bool Addmember(MemberDTO member)
         {
-            string condition = $"member_id = @member_id";
-            if(IsEmptyInput(member) == true)
+            //Kiểm tra xem các dữ liệu có để trống không
+            if (IsEmptyInput(member))
             {
-                if (DatabaseHelper.CheckIfExists("member", condition))
+                //kiểm tra xem thành viên có tồn tại hay chưa
+                string condition = "member_id = @member_id";
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@member_id", member.member_id }
+                };
+                //nếu tồn tại, thông báo lỗi
+                if (DatabaseHelper.CheckIfExists("members", condition, parameters))
                 {
                     MessageBox.Show("Thành viên đã tồn tại!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
                 }
-                else
-                {
-                    bool isAdd = MemberDAO.AddMember(member);
-                    if (isAdd)
-                    {
-                        MessageBox.Show("Thêm thành viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm thành viên thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-                    return isAdd;
-                }
+                return MemberDAO.AddMember(member);
             }
             MessageBox.Show("Không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;

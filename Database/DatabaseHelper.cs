@@ -11,11 +11,10 @@ namespace QLTV.Resources
     class DatabaseHelper
     {
         private static String ConnectionString = "server=localhost;user=root;password='';database=qltv;port=3306";
-        private static MySqlConnection conn;
         // Hàm kết nối database
         public static MySqlConnection GetConnection()
         {
-            return conn = new MySqlConnection(ConnectionString);
+            return new MySqlConnection(ConnectionString);
         }
         // Hàm lấy dữ liệu từ bảng 
         public static DataTable GetData(string query)
@@ -42,52 +41,57 @@ namespace QLTV.Resources
         // Hàm thực thi INSERT, UPDATE, DELETE
         public static bool ExecuteQuery(string query, Dictionary<string, object> parameters)
         {
-            try
+            using (MySqlConnection conn = GetConnection())
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                // Thêm parameters vào để dễ sử dụng
-                foreach (var param in parameters)
+                try
                 {
-                    cmd.Parameters.AddWithValue(param.Key, param.Value);
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // Thêm parameters vào để dễ sử dụng
+                        foreach (var param in parameters)
+                        {
+                            cmd.Parameters.AddWithValue(param.Key, param.Value);
+                        }
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
                 }
-
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                conn.Close();
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi: " + ex.ToString());
+                    return false;
+                }
             }
         }
         // Hàm kiểm tra xem phần từ có tồn tại không. 
-        public static bool CheckIfExists(string tablename, string condition)
+        public static bool CheckIfExists(string tablename, string condition, Dictionary<string, object> parameters = null)
         {
             string query = $"select Count(*) From {tablename} where {condition}";
-
-            try
+            using (MySqlConnection conn = GetConnection())
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                return count > 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi" + ex.Message);
-                return false;
-            }
-            finally
-            {
-                conn.Close();
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        if (parameters != null)
+                        {
+                            foreach (var param in parameters)
+                            {
+                                cmd.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                            }
+                        }
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.ToString());
+                    return false;
+                }
             }
         }
-
     }
 }

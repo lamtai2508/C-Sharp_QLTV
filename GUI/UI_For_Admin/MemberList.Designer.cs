@@ -36,19 +36,19 @@
             label1 = new Label();
             panel8 = new Panel();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            button1 = new Button();
+            btnAdd = new Button();
             button2 = new Button();
             button3 = new Button();
-            button5 = new Button();
+            btn_loaddata = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             button4 = new Button();
             panel3 = new Panel();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            tbEmail = new TextBox();
+            tbDob = new TextBox();
+            tbNumberphone = new TextBox();
+            tbGender = new TextBox();
+            tbFullname = new TextBox();
+            tbMaTV = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -122,7 +122,6 @@
             label1.Size = new Size(139, 35);
             label1.TabIndex = 0;
             label1.Text = "Tìm kiếm: ";
-            label1.Click += label1_Click;
             // 
             // panel8
             // 
@@ -140,29 +139,30 @@
             // 
             flowLayoutPanel2.AutoSize = true;
             flowLayoutPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel2.Controls.Add(button1);
+            flowLayoutPanel2.Controls.Add(btnAdd);
             flowLayoutPanel2.Controls.Add(button2);
             flowLayoutPanel2.Controls.Add(button3);
-            flowLayoutPanel2.Controls.Add(button5);
+            flowLayoutPanel2.Controls.Add(btn_loaddata);
             flowLayoutPanel2.Location = new Point(12, 265);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(929, 47);
             flowLayoutPanel2.TabIndex = 1;
             // 
-            // button1
+            // btnAdd
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.FromArgb(49, 176, 182);
-            button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(200, 3);
-            button1.Margin = new Padding(200, 3, 30, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 41);
-            button1.TabIndex = 0;
-            button1.Text = "Thêm";
-            button1.UseVisualStyleBackColor = false;
+            btnAdd.AutoSize = true;
+            btnAdd.BackColor = Color.FromArgb(49, 176, 182);
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(200, 3);
+            btnAdd.Margin = new Padding(200, 3, 30, 3);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(150, 41);
+            btnAdd.TabIndex = 0;
+            btnAdd.Text = "Thêm";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // button2
             // 
@@ -193,20 +193,21 @@
             button3.Text = "Xóa";
             button3.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btn_loaddata
             // 
-            button5.AutoSize = true;
-            button5.BackColor = Color.FromArgb(49, 176, 182);
-            button5.Cursor = Cursors.Hand;
-            button5.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Location = new Point(749, 3);
-            button5.Margin = new Padding(30, 3, 30, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(150, 41);
-            button5.TabIndex = 3;
-            button5.Text = "Làm mới";
-            button5.UseVisualStyleBackColor = false;
+            btn_loaddata.AutoSize = true;
+            btn_loaddata.BackColor = Color.FromArgb(49, 176, 182);
+            btn_loaddata.Cursor = Cursors.Hand;
+            btn_loaddata.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_loaddata.ForeColor = Color.White;
+            btn_loaddata.Location = new Point(749, 3);
+            btn_loaddata.Margin = new Padding(30, 3, 30, 3);
+            btn_loaddata.Name = "btn_loaddata";
+            btn_loaddata.Size = new Size(150, 41);
+            btn_loaddata.TabIndex = 3;
+            btn_loaddata.Text = "Làm mới";
+            btn_loaddata.UseVisualStyleBackColor = false;
+            btn_loaddata.Click += btn_loaddata_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -239,12 +240,12 @@
             // 
             panel3.AutoSize = true;
             panel3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel3.Controls.Add(textBox7);
-            panel3.Controls.Add(textBox6);
-            panel3.Controls.Add(textBox5);
-            panel3.Controls.Add(textBox4);
-            panel3.Controls.Add(textBox3);
-            panel3.Controls.Add(textBox2);
+            panel3.Controls.Add(tbEmail);
+            panel3.Controls.Add(tbDob);
+            panel3.Controls.Add(tbNumberphone);
+            panel3.Controls.Add(tbGender);
+            panel3.Controls.Add(tbFullname);
+            panel3.Controls.Add(tbMaTV);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(label5);
@@ -259,53 +260,53 @@
             panel3.Size = new Size(1260, 220);
             panel3.TabIndex = 1;
             // 
-            // textBox7
+            // tbEmail
             // 
-            textBox7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox7.Location = new Point(778, 156);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(370, 34);
-            textBox7.TabIndex = 11;
+            tbEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbEmail.Location = new Point(778, 156);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(370, 34);
+            tbEmail.TabIndex = 11;
             // 
-            // textBox6
+            // tbDob
             // 
-            textBox6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox6.Location = new Point(778, 96);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(370, 34);
-            textBox6.TabIndex = 10;
+            tbDob.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbDob.Location = new Point(778, 96);
+            tbDob.Name = "tbDob";
+            tbDob.Size = new Size(370, 34);
+            tbDob.TabIndex = 10;
             // 
-            // textBox5
+            // tbNumberphone
             // 
-            textBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox5.Location = new Point(778, 36);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(370, 34);
-            textBox5.TabIndex = 9;
+            tbNumberphone.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbNumberphone.Location = new Point(778, 36);
+            tbNumberphone.Name = "tbNumberphone";
+            tbNumberphone.Size = new Size(370, 34);
+            tbNumberphone.TabIndex = 9;
             // 
-            // textBox4
+            // tbGender
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox4.Location = new Point(241, 156);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(370, 34);
-            textBox4.TabIndex = 8;
+            tbGender.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbGender.Location = new Point(241, 156);
+            tbGender.Name = "tbGender";
+            tbGender.Size = new Size(370, 34);
+            tbGender.TabIndex = 8;
             // 
-            // textBox3
+            // tbFullname
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox3.Location = new Point(241, 96);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(370, 34);
-            textBox3.TabIndex = 7;
+            tbFullname.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbFullname.Location = new Point(241, 96);
+            tbFullname.Name = "tbFullname";
+            tbFullname.Size = new Size(370, 34);
+            tbFullname.TabIndex = 7;
             // 
-            // textBox2
+            // tbMaTV
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox2.Location = new Point(241, 36);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(370, 34);
-            textBox2.TabIndex = 4;
+            tbMaTV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbMaTV.Location = new Point(241, 36);
+            tbMaTV.Name = "tbMaTV";
+            tbMaTV.Size = new Size(370, 34);
+            tbMaTV.TabIndex = 4;
             // 
             // label7
             // 
@@ -405,22 +406,22 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel3;
         private FlowLayoutPanel flowLayoutPanel2;
-        private Button button1;
+        private Button btnAdd;
         private Button button2;
         private Button button3;
         private Button button4;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox tbEmail;
+        private TextBox tbDob;
+        private TextBox tbNumberphone;
+        private TextBox tbGender;
+        private TextBox tbFullname;
+        private TextBox tbMaTV;
         private Label label7;
         private Label label6;
         private Label label5;
-        private Button button5;
+        private Button btn_loaddata;
     }
 }

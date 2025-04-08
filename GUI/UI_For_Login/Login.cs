@@ -71,22 +71,26 @@ namespace qltv.GUI.UI_For_Login
 
             if (account != null)
             {
-                // admin
+                // đăng nhập thành công vào admin
                 if (account.role == 0)
                 {
                     this.Hide();
-                    new FormAdminDashboard().Show();
+                    new FormAdminDashboard().ShowDialog();
+
+                    this.Close();   
                 }
-                // user
+                // Đăng nhập thành công vào user
                 if (account.role == 1)
                 {
                     this.Hide();
-                    new FormUserDashboard().Show();
+                    new FormUserDashboard().ShowDialog();
+
+                    this.Close();
                 }
             }
             else
             {
-                MessageBox.Show(password);
+                MessageBox.Show("Đăng nhập thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
