@@ -39,7 +39,7 @@ namespace QLTV.Resources
         }
 
         // Hàm thực thi INSERT, UPDATE, DELETE
-        public static bool ExecuteQuery(string query, Dictionary<string, object> parameters)
+        public static bool ExecuteNonQuery(string query, Dictionary<string, object> parameters)
         {
             using (MySqlConnection conn = GetConnection())
             {

@@ -17,26 +17,11 @@ namespace qltv.BUS
         {
             return MemberDAO.GetALLMember();
         }
-        // Hàm kiểm tra xem dữ liệu có để trống hay ko. 
-        public static bool IsEmptyInput(MemberDTO member)
-        {
-            if (string.IsNullOrEmpty(member.member_id) ||
-                string.IsNullOrEmpty(member.full_name) ||
-                string.IsNullOrEmpty(member.gender) ||
-                string.IsNullOrEmpty(member.number_phone) ||
-                member.dob == DateTime.MinValue ||
-                string.IsNullOrEmpty(member.email)
-                )
-            {
-                return false;
-            }
-            return true;
-        }
         // Hàm thêm thành viên nếu thành viên ko tồn tại!
         public static bool Addmember(MemberDTO member)
         {
             //Kiểm tra xem các dữ liệu có để trống không
-            if (IsEmptyInput(member))
+            if (MemberDAO.IsEmptyInput(member))
             {
                 //kiểm tra xem thành viên có tồn tại hay chưa
                 string condition = "member_id = @member_id";
@@ -53,6 +38,24 @@ namespace qltv.BUS
             }
             MessageBox.Show("Không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
+        }
+        // Hàm sửa thông tin thành viên
+        public static bool UpdateMember(MemberDTO member)
+        {
+            if (MemberDAO.IsEmptyInput(member))
+            {
+                return MemberDAO.UpdateMember(member);
+            }
+            else
+            {
+                MessageBox.Show("Không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+        // Hàm xóa thông tin thành viên
+        public static bool DeleteMember(string member_id)
+        {
+            return MemberDAO.DeleteMember(member_id);
         }
     }
 }

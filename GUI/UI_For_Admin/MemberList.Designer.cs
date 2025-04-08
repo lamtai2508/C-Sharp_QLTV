@@ -37,8 +37,8 @@
             panel8 = new Panel();
             flowLayoutPanel2 = new FlowLayoutPanel();
             btnAdd = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            btn_update = new Button();
+            btn_delete = new Button();
             btn_loaddata = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             button4 = new Button();
@@ -78,6 +78,7 @@
             members_table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             members_table.Size = new Size(1236, 413);
             members_table.TabIndex = 1;
+            members_table.CellClick += members_table_CellClick;
             // 
             // panel2
             // 
@@ -140,8 +141,8 @@
             flowLayoutPanel2.AutoSize = true;
             flowLayoutPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel2.Controls.Add(btnAdd);
-            flowLayoutPanel2.Controls.Add(button2);
-            flowLayoutPanel2.Controls.Add(button3);
+            flowLayoutPanel2.Controls.Add(btn_update);
+            flowLayoutPanel2.Controls.Add(btn_delete);
             flowLayoutPanel2.Controls.Add(btn_loaddata);
             flowLayoutPanel2.Location = new Point(12, 265);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -164,34 +165,36 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
-            // button2
+            // btn_update
             // 
-            button2.AutoSize = true;
-            button2.BackColor = Color.FromArgb(49, 176, 182);
-            button2.Cursor = Cursors.Hand;
-            button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(383, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 41);
-            button2.TabIndex = 1;
-            button2.Text = "Sửa";
-            button2.UseVisualStyleBackColor = false;
+            btn_update.AutoSize = true;
+            btn_update.BackColor = Color.FromArgb(49, 176, 182);
+            btn_update.Cursor = Cursors.Hand;
+            btn_update.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_update.ForeColor = Color.White;
+            btn_update.Location = new Point(383, 3);
+            btn_update.Name = "btn_update";
+            btn_update.Size = new Size(150, 41);
+            btn_update.TabIndex = 1;
+            btn_update.Text = "Sửa";
+            btn_update.UseVisualStyleBackColor = false;
+            btn_update.Click += btn_update_Click;
             // 
-            // button3
+            // btn_delete
             // 
-            button3.AutoSize = true;
-            button3.BackColor = Color.FromArgb(49, 176, 182);
-            button3.Cursor = Cursors.Hand;
-            button3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(566, 3);
-            button3.Margin = new Padding(30, 3, 3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(150, 41);
-            button3.TabIndex = 2;
-            button3.Text = "Xóa";
-            button3.UseVisualStyleBackColor = false;
+            btn_delete.AutoSize = true;
+            btn_delete.BackColor = Color.FromArgb(49, 176, 182);
+            btn_delete.Cursor = Cursors.Hand;
+            btn_delete.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_delete.ForeColor = Color.White;
+            btn_delete.Location = new Point(566, 3);
+            btn_delete.Margin = new Padding(30, 3, 3, 3);
+            btn_delete.Name = "btn_delete";
+            btn_delete.Size = new Size(150, 41);
+            btn_delete.TabIndex = 2;
+            btn_delete.Text = "Xóa";
+            btn_delete.UseVisualStyleBackColor = false;
+            btn_delete.Click += btn_delete_Click;
             // 
             // btn_loaddata
             // 
@@ -407,8 +410,8 @@
         private Panel panel3;
         private FlowLayoutPanel flowLayoutPanel2;
         private Button btnAdd;
-        private Button button2;
-        private Button button3;
+        private Button btn_update;
+        private Button btn_delete;
         private Button button4;
         private Label label4;
         private Label label3;
