@@ -27,7 +27,16 @@ namespace QLTV
         // Load data của bảng
         private void LoadData()
         {
-            members_table.DataSource = MemberBUS.GetAllMenber();
+            members_table.DataSource = MemberBUS.GetAllMember();
+            // Đổi tên header 
+            members_table.Columns["member_id"].HeaderText = "Mã thành viên";
+            members_table.Columns["full_name"].HeaderText = "Tên thành viên";
+            members_table.Columns["gender"].HeaderText = "Giới tính";
+            members_table.Columns["number_phone"].HeaderText = "Số điện thoại";
+            members_table.Columns["dob"].HeaderText = "Ngày sinh";
+            members_table.Columns["email"].HeaderText = "Email";
+            members_table.Columns["status"].HeaderText = "Trạng thái";
+
         }
         // Xoa tất cả các textbox input
         private void ClearInput()

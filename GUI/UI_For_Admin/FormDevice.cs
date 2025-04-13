@@ -39,6 +39,11 @@ namespace qltv.GUI.UI_For_Admin
         private void LoadDevices()
         {
             dgvDevices.DataSource = DeviceBUS.GetAllDevices();
+            // Đổi tên header
+            dgvDevices.Columns["device_id"].HeaderText = "Mã thiết bị";
+            dgvDevices.Columns["device_name"].HeaderText = "Tên thiết bị";
+            dgvDevices.Columns["device_type"].HeaderText = "Phân loại";
+            dgvDevices.Columns["status"].HeaderText = "Trạng thái";
         }
 
         private void ClearInputs()

@@ -16,7 +16,8 @@ namespace qltv.DAO
         // lấy tất cả dữ liệu của bảng member
         public static DataTable GetALLMember() 
         {
-            string query = "select * from members";
+            // Lấy tất cả trừ admin ra
+            string query = "select * from members where member_id != 'admin1'";
             return DatabaseHelper.GetData(query);
         }
         // Lấy thông tin thành viên dựa theo mã thành viên

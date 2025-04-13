@@ -13,7 +13,7 @@ namespace qltv.BUS
     internal class MemberBUS
     {
         // Lấy toàn bộ dữ liêu bảng member
-        public static DataTable GetAllMenber()
+        public static DataTable GetAllMember()
         {
             return MemberDAO.GetALLMember();
         }

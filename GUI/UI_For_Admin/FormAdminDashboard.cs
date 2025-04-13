@@ -87,6 +87,7 @@ namespace QLTV
         {
             if (menuExpand)
             {
+                contentContainer.Controls.Clear();
                 sidebar.Width -= 5;
                 if (sidebar.Width <= 76)
                 {
@@ -108,6 +109,7 @@ namespace QLTV
             }
             else
             {
+                contentContainer.Controls.Clear();
                 sidebar.Width += 5;
                 if (sidebar.Width >= 355)
                 {
@@ -149,7 +151,8 @@ namespace QLTV
         private void bt_logout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Login().Show();
+            new Login().ShowDialog();
+            this.Close();
         }
     }
 }

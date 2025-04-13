@@ -1,4 +1,5 @@
-﻿using System;
+﻿using qltv.BUS;
+using System;
 using System.Windows.Forms;
 
 namespace qltv.GUI.UI_For_User
@@ -18,18 +19,19 @@ namespace qltv.GUI.UI_For_User
             this.Dock = DockStyle.Fill;
             this.Text = "Danh sách vi phạm";
         }
-
         private void SetupDataGridViewColumns()
         {
-            // Thêm các cột vào DataGridView
-            dataGridView1.Columns.Add("MemberID", "Mã thành viên");
-            dataGridView1.Columns.Add("MemberName", "Tên thành viên");
-            dataGridView1.Columns.Add("DeviceID", "Mã thiết bị");
-            dataGridView1.Columns.Add("DeviceName", "Tên thiết bị");
-            dataGridView1.Columns.Add("ViolationContent", "Nội dung vi phạm");
-            dataGridView1.Columns.Add("ViolationDate", "Ngày vi phạm");
-            dataGridView1.Columns.Add("Status", "Trạng thái");
-
+            dataGridView1.DataSource = ViolationBUS.GetAllViolation();
+            // Đổi tên header 
+            dataGridView1.Columns["violation_id"].HeaderText = "Mã vi phạm";
+            dataGridView1.Columns["member_id"].HeaderText = "Mã thành viên";
+            //dataGridView1.Columns["full_name"].HeaderText = "Tên thành viên";
+            dataGridView1.Columns["violation_type"].HeaderText = "Mô tả";
+            dataGridView1.Columns["penalty"].HeaderText = "Xử phạt";
+            dataGridView1.Columns["violation_date"].HeaderText = "Ngày vi phạm";
+            dataGridView1.Columns["block_date"].HeaderText = "Ngày khóa";
+            dataGridView1.Columns["unblock_date"].HeaderText = "Ngày mở";
+            dataGridView1.Columns["status"].HeaderText = "Trạng thái";
             // Cấu hình DataGridView
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ReadOnly = true;

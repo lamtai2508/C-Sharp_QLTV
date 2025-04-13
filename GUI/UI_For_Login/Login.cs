@@ -77,7 +77,7 @@ namespace qltv.GUI.UI_For_Login
                     this.Hide();
                     new FormAdminDashboard().ShowDialog();
 
-                    this.Close();   
+                    this.Close();
                 }
                 // Đăng nhập thành công vào user
                 if (account.role == 1)

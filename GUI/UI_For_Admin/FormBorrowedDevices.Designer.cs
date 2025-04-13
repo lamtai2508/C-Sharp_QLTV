@@ -55,7 +55,7 @@
             table_BDL.Size = new Size(981, 457);
             table_BDL.TabIndex = 1;
             // 
-            // FormBorrewedDevices
+            // FormBorrowedDevices
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -63,7 +63,7 @@
             ClientSize = new Size(1005, 600);
             Controls.Add(table_BDL);
             Controls.Add(textBox1);
-            Name = "FormBorrewedDevices";
+            Name = "FormBorrowedDevices";
             Text = "BorrewedDevices";
             Load += FormBorrewedDevices_Load;
             ((System.ComponentModel.ISupportInitialize)table_BDL).EndInit();
