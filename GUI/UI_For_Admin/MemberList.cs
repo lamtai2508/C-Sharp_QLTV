@@ -139,7 +139,7 @@ namespace QLTV
         {
             string member_id = tbMaTV.Text;
 
-            if(member_id == null)
+            if (member_id == null)
             {
                 MessageBox.Show("Vui lòng cho thành viên muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

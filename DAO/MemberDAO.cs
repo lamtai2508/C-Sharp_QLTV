@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace qltv.DAO
 {
-    internal class MemberDAO
+    public class MemberDAO
     {
         // lấy tất cả dữ liệu của bảng member
         public static DataTable GetALLMember() 

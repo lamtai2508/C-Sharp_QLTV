@@ -1,4 +1,5 @@
-﻿using qltv.BUS;
+﻿using MySqlX.XDevAPI;
+using qltv.BUS;
 using qltv.DTO;
 using qltv.GUI.UI_For_User;
 using QLTV;
@@ -82,9 +83,12 @@ namespace qltv.GUI.UI_For_Login
                 // Đăng nhập thành công vào user
                 if (account.role == 1)
                 {
+                    Session.CurrentMember = new MemberDTO()
+                    {
+                        member_id = username
+                    };
                     this.Hide();
                     new FormUserDashboard().ShowDialog();
-
                     this.Close();
                 }
             }

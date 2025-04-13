@@ -30,18 +30,20 @@
         {
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            label13 = new Label();
-            label12 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
+            txtStatus = new TextBox();
             label3 = new Label();
+            txtEmail = new TextBox();
+            txtDob = new TextBox();
+            txtNumberPhone = new TextBox();
+            txtGender = new TextBox();
+            txtFullName = new TextBox();
+            label12 = new Label();
+            label10 = new Label();
+            label8 = new Label();
+            label6 = new Label();
+            label4 = new Label();
             label2 = new Label();
+            txtMemberid = new TextBox();
             button1 = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -60,179 +62,173 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.AutoSize = true;
-            tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.35484F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80.6451645F));
-            tableLayoutPanel1.Controls.Add(label13, 1, 5);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.86246F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.1375351F));
+            tableLayoutPanel1.Controls.Add(txtStatus, 1, 6);
+            tableLayoutPanel1.Controls.Add(label3, 0, 6);
+            tableLayoutPanel1.Controls.Add(txtEmail, 1, 5);
+            tableLayoutPanel1.Controls.Add(txtDob, 1, 4);
+            tableLayoutPanel1.Controls.Add(txtNumberPhone, 1, 3);
+            tableLayoutPanel1.Controls.Add(txtGender, 1, 2);
+            tableLayoutPanel1.Controls.Add(txtFullName, 1, 1);
             tableLayoutPanel1.Controls.Add(label12, 0, 5);
-            tableLayoutPanel1.Controls.Add(label11, 1, 4);
             tableLayoutPanel1.Controls.Add(label10, 0, 4);
-            tableLayoutPanel1.Controls.Add(label9, 1, 3);
             tableLayoutPanel1.Controls.Add(label8, 0, 3);
-            tableLayoutPanel1.Controls.Add(label7, 1, 2);
             tableLayoutPanel1.Controls.Add(label6, 0, 2);
-            tableLayoutPanel1.Controls.Add(label5, 1, 1);
             tableLayoutPanel1.Controls.Add(label4, 0, 1);
-            tableLayoutPanel1.Controls.Add(label3, 1, 0);
             tableLayoutPanel1.Controls.Add(label2, 0, 0);
+            tableLayoutPanel1.Controls.Add(txtMemberid, 1, 0);
             tableLayoutPanel1.Location = new Point(116, 86);
             tableLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 6;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6666679F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
-            tableLayoutPanel1.Size = new Size(1279, 384);
+            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2853069F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.285305F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.285305F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.285305F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.285305F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.285305F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2881613F));
+            tableLayoutPanel1.Size = new Size(1085, 476);
             tableLayoutPanel1.TabIndex = 12;
             // 
-            // label13
+            // txtStatus
             // 
-            label13.AutoSize = true;
-            label13.Dock = DockStyle.Left;
-            label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(251, 315);
-            label13.Margin = new Padding(4, 0, 4, 0);
-            label13.Name = "label13";
-            label13.Size = new Size(107, 69);
-            label13.TabIndex = 11;
-            label13.Text = "Hoạt động";
-            label13.TextAlign = ContentAlignment.MiddleCenter;
+            txtStatus.BorderStyle = BorderStyle.None;
+            txtStatus.Location = new Point(196, 417);
+            txtStatus.Margin = new Padding(3, 15, 3, 3);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(430, 31);
+            txtStatus.TabIndex = 19;
+            // 
+            // label3
+            // 
+            label3.Dock = DockStyle.Left;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(4, 402);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 74);
+            label3.TabIndex = 18;
+            label3.Text = "Trạng thái";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Location = new Point(196, 350);
+            txtEmail.Margin = new Padding(3, 15, 3, 3);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(430, 31);
+            txtEmail.TabIndex = 17;
+            // 
+            // txtDob
+            // 
+            txtDob.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtDob.BorderStyle = BorderStyle.None;
+            txtDob.Location = new Point(196, 283);
+            txtDob.Margin = new Padding(3, 15, 3, 3);
+            txtDob.Name = "txtDob";
+            txtDob.Size = new Size(430, 31);
+            txtDob.TabIndex = 16;
+            // 
+            // txtNumberPhone
+            // 
+            txtNumberPhone.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtNumberPhone.BorderStyle = BorderStyle.None;
+            txtNumberPhone.Location = new Point(196, 216);
+            txtNumberPhone.Margin = new Padding(3, 15, 3, 3);
+            txtNumberPhone.Name = "txtNumberPhone";
+            txtNumberPhone.Size = new Size(430, 31);
+            txtNumberPhone.TabIndex = 15;
+            // 
+            // txtGender
+            // 
+            txtGender.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtGender.BorderStyle = BorderStyle.None;
+            txtGender.Location = new Point(196, 149);
+            txtGender.Margin = new Padding(3, 15, 3, 3);
+            txtGender.Name = "txtGender";
+            txtGender.Size = new Size(430, 31);
+            txtGender.TabIndex = 14;
+            // 
+            // txtFullName
+            // 
+            txtFullName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtFullName.BorderStyle = BorderStyle.None;
+            txtFullName.Font = new Font("Segoe UI", 13.8F);
+            txtFullName.Location = new Point(196, 82);
+            txtFullName.Margin = new Padding(3, 15, 3, 3);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(430, 31);
+            txtFullName.TabIndex = 13;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Dock = DockStyle.Left;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new Point(4, 315);
+            label12.Location = new Point(4, 335);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(98, 69);
+            label12.Size = new Size(59, 67);
             label12.TabIndex = 10;
-            label12.Text = "Trạng thái";
+            label12.Text = "Email";
             label12.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Dock = DockStyle.Left;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(251, 252);
-            label11.Margin = new Padding(4, 0, 4, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(236, 63);
-            label11.TabIndex = 9;
-            label11.Text = "NguyenVanA@gmail.com";
-            label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Dock = DockStyle.Left;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(4, 252);
+            label10.Location = new Point(4, 268);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(59, 63);
+            label10.Size = new Size(99, 67);
             label10.TabIndex = 8;
-            label10.Text = "Email";
+            label10.Text = "Ngày sinh";
             label10.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Dock = DockStyle.Left;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(251, 189);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(116, 63);
-            label9.TabIndex = 7;
-            label9.Text = "2002-10-02";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Dock = DockStyle.Left;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(4, 189);
+            label8.Location = new Point(4, 201);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(99, 63);
+            label8.Size = new Size(128, 67);
             label8.TabIndex = 6;
-            label8.Text = "Ngày sinh";
+            label8.Text = "Số điện thoại";
             label8.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Dock = DockStyle.Left;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(251, 126);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(122, 63);
-            label7.TabIndex = 5;
-            label7.Text = "0123456789";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Left;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(4, 126);
+            label6.Location = new Point(4, 134);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(128, 63);
+            label6.Size = new Size(87, 67);
             label6.TabIndex = 4;
-            label6.Text = "Số điện thoại";
+            label6.Text = "Giới tính";
             label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Left;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(251, 63);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(54, 63);
-            label5.TabIndex = 3;
-            label5.Text = "Nam";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Left;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(4, 63);
+            label4.Location = new Point(4, 67);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(87, 63);
+            label4.Size = new Size(96, 67);
             label4.TabIndex = 2;
-            label4.Text = "Giới tính";
+            label4.Text = "Họ và tên";
             label4.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Left;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(251, 0);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(136, 63);
-            label3.TabIndex = 1;
-            label3.Text = "Nguyễn Văn A";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -242,17 +238,28 @@
             label2.Location = new Point(4, 0);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(96, 63);
+            label2.Size = new Size(136, 67);
             label2.TabIndex = 0;
-            label2.Text = "Họ và tên";
+            label2.Text = "Mã thành viên";
             label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtMemberid
+            // 
+            txtMemberid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtMemberid.BorderStyle = BorderStyle.None;
+            txtMemberid.Font = new Font("Segoe UI", 13.8F);
+            txtMemberid.Location = new Point(196, 15);
+            txtMemberid.Margin = new Padding(3, 15, 3, 3);
+            txtMemberid.Name = "txtMemberid";
+            txtMemberid.Size = new Size(430, 31);
+            txtMemberid.TabIndex = 12;
             // 
             // button1
             // 
             button1.AutoSize = true;
             button1.BackColor = Color.FromArgb(224, 224, 224);
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(116, 580);
+            button1.Location = new Point(116, 741);
             button1.Margin = new Padding(5, 4, 5, 4);
             button1.Name = "button1";
             button1.Size = new Size(247, 59);
@@ -275,6 +282,7 @@
             Margin = new Padding(5, 4, 5, 4);
             Name = "InfoMember";
             Text = "InfoMember";
+            Load += InfoMember_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -286,17 +294,19 @@
         private Label label1;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label2;
-        private Label label13;
         private Label label12;
-        private Label label11;
         private Label label10;
-        private Label label9;
         private Label label8;
-        private Label label7;
         private Label label6;
-        private Label label5;
         private Label label4;
-        private Label label3;
         private Button button1;
+        private Label label3;
+        private TextBox txtEmail;
+        private TextBox txtDob;
+        private TextBox txtNumberPhone;
+        private TextBox txtGender;
+        private TextBox txtFullName;
+        private TextBox txtMemberid;
+        private TextBox txtStatus;
     }
 }
