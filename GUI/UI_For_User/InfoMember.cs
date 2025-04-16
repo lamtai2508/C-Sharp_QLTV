@@ -23,14 +23,14 @@ namespace qltv.GUI.UI_For_User
         public void LoadData()
         {
             //Lấy thông tin của thành viên sau khi đăng nhập thành công.
-            Session.CurrentMember = MemberDAO.GetMemberById(Session.CurrentMember.member_id);
-            txtMemberid.Text = Session.CurrentMember.member_id;
-            txtFullName.Text = Session.CurrentMember.full_name;
-            txtGender.Text = Session.CurrentMember.gender;
-            txtNumberPhone.Text = Session.CurrentMember.number_phone;
-            txtDob.Text = Session.CurrentMember.dob.ToString("yyyy-MM-dd");
-            txtEmail.Text = Session.CurrentMember.email;
-            txtStatus.Text = Session.CurrentMember.status;
+            //Session.CurrentMember = MemberDAO.GetMemberById(Session.CurrentMember.member_id);
+            //txtMemberid.Text = Session.CurrentMember.member_id;
+            //txtFullName.Text = Session.CurrentMember.full_name;
+            //txtGender.Text = Session.CurrentMember.gender;
+            //txtNumberPhone.Text = Session.CurrentMember.number_phone;
+            //txtDob.Text = Session.CurrentMember.dob.ToString("yyyy-MM-dd");
+            //txtEmail.Text = Session.CurrentMember.email;
+            //txtStatus.Text = Session.CurrentMember.status;
 
         }
 

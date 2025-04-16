@@ -83,10 +83,10 @@ namespace qltv.GUI.UI_For_Login
                 // Đăng nhập thành công vào user
                 if (account.role == 1)
                 {
-                    Session.CurrentMember = new MemberDTO()
-                    {
-                        member_id = username
-                    };
+                    //Session.CurrentMember = new MemberDTO()
+                    //{
+                    //    member_id = username
+                    //};
                     this.Hide();
                     new FormUserDashboard().ShowDialog();
                     this.Close();

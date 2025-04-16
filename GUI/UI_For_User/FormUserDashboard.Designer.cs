@@ -241,7 +241,7 @@
             button6.Cursor = Cursors.Hand;
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Image = Properties.Resources.icons8_device_40;
+            //button6.Image = Properties.Resources.icons8_device_40;
             button6.Location = new Point(-26, -43);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
@@ -362,7 +362,7 @@
             bt_violation.Cursor = Cursors.Hand;
             bt_violation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_violation.ForeColor = Color.White;
-            bt_violation.Image = Properties.Resources.icons8_important_user_40;
+            //bt_violation.Image = Properties.Resources.icons8_important_user_40;
             bt_violation.Location = new Point(-25, -51);
             bt_violation.Margin = new Padding(0);
             bt_violation.Name = "bt_violation";
@@ -504,7 +504,6 @@
         private Panel contentContainer;
         private Panel panel2;
         private Button button1;
-        private Label label3;
         private Label bt_logout;
     }
 }

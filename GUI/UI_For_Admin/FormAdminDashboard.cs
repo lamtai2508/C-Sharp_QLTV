@@ -9,10 +9,6 @@ namespace QLTV
     {
         bool menuExpand = true;
         bool deviceExpand = false;
-        bool memberExpand = false;
-        bool violationExpand = false;
-        bool statisticsExpand = false;
-
 
         public FormAdminDashboard()
         {

@@ -168,7 +168,7 @@
             bt_home.BackColor = Color.FromArgb(18, 17, 22);
             bt_home.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_home.ForeColor = Color.White;
-            bt_home.Image = qltv.Properties.Resources.icons8_home_40;
+            bt_home.Image = qltv_Winform.Properties.Resources.icons8_home_40;
             bt_home.Location = new Point(-54, -50);
             bt_home.Margin = new Padding(0);
             bt_home.Name = "bt_home";
@@ -248,7 +248,7 @@
             bt_device_transition.Cursor = Cursors.Hand;
             bt_device_transition.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_device_transition.ForeColor = Color.White;
-            bt_device_transition.Image = qltv.Properties.Resources.icons8_device_40;
+            bt_device_transition.Image = qltv_Winform.Properties.Resources.icons8_device_40;
             bt_device_transition.Location = new Point(-54, -50);
             bt_device_transition.Margin = new Padding(0);
             bt_device_transition.Name = "bt_device_transition";
@@ -342,7 +342,7 @@
             bt_violationList.Cursor = Cursors.Hand;
             bt_violationList.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_violationList.ForeColor = Color.White;
-            bt_violationList.Image = qltv.Properties.Resources.icons8_important_user_40;
+            bt_violationList.Image = qltv_Winform.Properties.Resources.icons8_important_user_40;
             bt_violationList.Location = new Point(-54, -50);
             bt_violationList.Margin = new Padding(0);
             bt_violationList.Name = "bt_violationList";
@@ -381,7 +381,7 @@
             bt_statistics.Cursor = Cursors.Hand;
             bt_statistics.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bt_statistics.ForeColor = Color.White;
-            bt_statistics.Image = qltv.Properties.Resources.icons8_statistics_40;
+            bt_statistics.Image = qltv_Winform.Properties.Resources.icons8_statistics_40;
             bt_statistics.Location = new Point(-54, -50);
             bt_statistics.Margin = new Padding(0);
             bt_statistics.Name = "bt_statistics";
