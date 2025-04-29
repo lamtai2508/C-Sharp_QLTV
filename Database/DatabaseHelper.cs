@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace QLTV.Resources
 {
     class DatabaseHelper
     {
-        private static String ConnectionString = "server=localhost;user=root;password='';database=qltv;port=3306";
+        private static string ConnectionString = "server=localhost;user=root;password='';database=qltv;port=3306";
+
         // Hàm kết nối database
         public static MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);
         }
-        // Hàm lấy dữ liệu từ bảng 
+
+        // Hàm lấy dữ liệu từ bảng (không có tham số)
         public static DataTable GetData(string query)
         {
             DataTable dt = new DataTable();
@@ -38,6 +38,36 @@ namespace QLTV.Resources
             return dt;
         }
 
+        // Hàm lấy dữ liệu từ bảng (có tham số)
+        public static DataTable GetData(string query, Dictionary<string, object> parameters)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection conn = GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        foreach (var param in parameters)
+                        {
+                            cmd.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                        }
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
         // Hàm thực thi INSERT, UPDATE, DELETE
         public static bool ExecuteNonQuery(string query, Dictionary<string, object> parameters)
         {
@@ -48,10 +78,9 @@ namespace QLTV.Resources
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        // Thêm parameters vào để dễ sử dụng
                         foreach (var param in parameters)
                         {
-                            cmd.Parameters.AddWithValue(param.Key, param.Value);
+                            cmd.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
                         }
                         cmd.ExecuteNonQuery();
                         return true;
@@ -64,10 +93,11 @@ namespace QLTV.Resources
                 }
             }
         }
-        // Hàm kiểm tra xem phần từ có tồn tại không. 
+
+        // Hàm kiểm tra dữ liệu có tồn tại hay không
         public static bool CheckIfExists(string tablename, string condition, Dictionary<string, object> parameters = null)
         {
-            string query = $"select Count(*) From {tablename} where {condition}";
+            string query = $"SELECT COUNT(*) FROM {tablename} WHERE {condition}";
             using (MySqlConnection conn = GetConnection())
             {
                 try
@@ -88,7 +118,7 @@ namespace QLTV.Resources
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi: " + ex.ToString());
+                    MessageBox.Show("Lỗi: " + ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
