@@ -392,6 +392,7 @@
             bt_statistics.TextAlign = ContentAlignment.MiddleLeft;
             bt_statistics.TextImageRelation = TextImageRelation.ImageBeforeText;
             bt_statistics.UseVisualStyleBackColor = false;
+            bt_statistics.Click += bt_statistics_Click;
             // 
             // menuTransition
             // 
@@ -475,4 +476,3 @@
         private Label bt_logout;
     }
 }
-
