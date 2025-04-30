@@ -1,7 +1,10 @@
 ﻿using qltv.BUS;
 using qltv.DTO;
+using QLTV.Resources;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace qltv.GUI.UI_For_Admin
@@ -22,6 +25,10 @@ namespace qltv.GUI.UI_For_Admin
             this.btnSearch.Click += new EventHandler(this.btnSearch_Click);
             this.dgvDevices.CellClick += new DataGridViewCellEventHandler(this.dgvDevices_CellClick);
             this.Load += new EventHandler(this.FormDevice_Load);
+
+            // Thêm các nút mới và sự kiện
+            this.btnImportExcel.Click += new EventHandler(this.btnImportExcel_Click);
+            this.btnBulkDelete.Click += new EventHandler(this.btnBulkDelete_Click);
         }
 
         private void FormDevice_Load(object sender, EventArgs e)
@@ -30,9 +37,10 @@ namespace qltv.GUI.UI_For_Admin
             LoadDevices();
 
             // Thiết lập dropdown trạng thái
-            cmbStatus.Items.Add("Available");
-            cmbStatus.Items.Add("Reserved");
-            cmbStatus.Items.Add("Loaned");
+            cmbStatus.Items.Clear();
+            cmbStatus.Items.Add("Bình thường");
+            cmbStatus.Items.Add("Được đặt chỗ");
+            cmbStatus.Items.Add("Đang được mượn");
             cmbStatus.SelectedIndex = 0;
         }
 
@@ -57,6 +65,12 @@ namespace qltv.GUI.UI_For_Admin
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtDeviceId.Text) || string.IsNullOrEmpty(txtDeviceName.Text) || string.IsNullOrEmpty(txtDeviceType.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin thiết bị!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DeviceDTO device = new DeviceDTO
             {
                 device_id = txtDeviceId.Text,
@@ -73,7 +87,7 @@ namespace qltv.GUI.UI_For_Admin
             }
             else
             {
-                MessageBox.Show("Thêm thiết bị thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thêm thiết bị thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -140,6 +154,10 @@ namespace qltv.GUI.UI_For_Admin
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
                 dgvDevices.DataSource = DeviceBUS.SearchDevices(txtSearch.Text);
+                if (dgvDevices.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy thiết bị nào phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -155,10 +173,63 @@ namespace qltv.GUI.UI_For_Admin
                 txtDeviceId.Text = row.Cells["device_id"].Value.ToString();
                 txtDeviceName.Text = row.Cells["device_name"].Value.ToString();
                 txtDeviceType.Text = row.Cells["device_type"].Value.ToString();
-                cmbStatus.SelectedItem = row.Cells["status"].Value.ToString();
+
+                string status = row.Cells["status"].Value.ToString();
+                for (int i = 0; i < cmbStatus.Items.Count; i++)
+                {
+                    if (cmbStatus.Items[i].ToString() == status)
+                    {
+                        cmbStatus.SelectedIndex = i;
+                        break;
+                    }
+                }
 
                 // Vô hiệu hóa chỉnh sửa ID thiết bị khi chọn thiết bị đã tồn tại
                 txtDeviceId.Enabled = false;
+            }
+        }
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.csv";
+                    openFileDialog.Title = "Chọn file Excel chứa danh sách thiết bị";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = openFileDialog.FileName;
+
+                        // Hiển thị form nhập Excel
+                        using (ImportExcelForm importForm = new ImportExcelForm(filePath))
+                        {
+                            if (importForm.ShowDialog() == DialogResult.OK)
+                            {
+                                // Nếu nhập thành công, làm mới danh sách thiết bị
+                                LoadDevices();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi nhập thiết bị từ Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Phương thức xóa nhiều thiết bị theo điều kiện
+        private void btnBulkDelete_Click(object sender, EventArgs e)
+        {
+            using (FormBulkDeleteDevices bulkDeleteForm = new FormBulkDeleteDevices())
+            {
+                if (bulkDeleteForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Nếu xóa thành công, làm mới danh sách
+                    LoadDevices();
+                }
             }
         }
     }

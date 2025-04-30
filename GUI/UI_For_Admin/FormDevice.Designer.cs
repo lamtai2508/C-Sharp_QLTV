@@ -45,6 +45,8 @@
             lblSearch = new Label();
             txtSearch = new TextBox();
             btnSearch = new Button();
+            btnImportExcel = new Button();
+            btnBulkDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvDevices).BeginInit();
             SuspendLayout();
             // 
@@ -144,13 +146,13 @@
             dgvDevices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDevices.BackgroundColor = SystemColors.ButtonHighlight;
             dgvDevices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDevices.Location = new Point(20, 400);
+            dgvDevices.Location = new Point(20, 450);
             dgvDevices.Margin = new Padding(3, 4, 3, 4);
             dgvDevices.Name = "dgvDevices";
             dgvDevices.ReadOnly = true;
             dgvDevices.RowHeadersWidth = 51;
             dgvDevices.RowTemplate.Height = 24;
-            dgvDevices.Size = new Size(760, 138);
+            dgvDevices.Size = new Size(900, 200);
             dgvDevices.TabIndex = 16;
             // 
             // btnAdd
@@ -205,7 +207,7 @@
             // 
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSearch.Location = new Point(20, 325);
+            lblSearch.Location = new Point(20, 380);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(100, 28);
             lblSearch.TabIndex = 13;
@@ -214,16 +216,16 @@
             // txtSearch
             // 
             txtSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(160, 325);
+            txtSearch.Location = new Point(160, 380);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(250, 34);
+            txtSearch.Size = new Size(300, 34);
             txtSearch.TabIndex = 14;
             // 
             // btnSearch
             // 
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSearch.Location = new Point(420, 325);
+            btnSearch.Location = new Point(470, 380);
             btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(100, 42);
@@ -231,11 +233,37 @@
             btnSearch.Text = "Tìm";
             btnSearch.UseVisualStyleBackColor = true;
             // 
+            // btnImportExcel
+            // 
+            btnImportExcel.BackColor = Color.FromArgb(192, 192, 255);
+            btnImportExcel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnImportExcel.Location = new Point(610, 100);
+            btnImportExcel.Margin = new Padding(3, 4, 3, 4);
+            btnImportExcel.Name = "btnImportExcel";
+            btnImportExcel.Size = new Size(200, 50);
+            btnImportExcel.TabIndex = 17;
+            btnImportExcel.Text = "Nhập từ Excel";
+            btnImportExcel.UseVisualStyleBackColor = false;
+            // 
+            // btnBulkDelete
+            // 
+            btnBulkDelete.BackColor = Color.FromArgb(255, 192, 192);
+            btnBulkDelete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBulkDelete.Location = new Point(610, 162);
+            btnBulkDelete.Margin = new Padding(3, 4, 3, 4);
+            btnBulkDelete.Name = "btnBulkDelete";
+            btnBulkDelete.Size = new Size(200, 50);
+            btnBulkDelete.TabIndex = 18;
+            btnBulkDelete.Text = "Xóa hàng loạt";
+            btnBulkDelete.UseVisualStyleBackColor = false;
+            // 
             // FormDevice
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 562);
+            ClientSize = new Size(940, 670);
+            Controls.Add(btnBulkDelete);
+            Controls.Add(btnImportExcel);
             Controls.Add(dgvDevices);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -281,5 +309,7 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dgvDevices;
+        private System.Windows.Forms.Button btnImportExcel;
+        private System.Windows.Forms.Button btnBulkDelete;
     }
 }

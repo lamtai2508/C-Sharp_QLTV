@@ -2,6 +2,7 @@
 using qltv.DTO;
 using QLTV.Resources;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace qltv.DAO
@@ -132,6 +133,44 @@ namespace qltv.DAO
                 adapter.Fill(dt);
 
                 return dt;
+            }
+        }
+
+        // Xóa nhiều thiết bị theo điều kiện
+        public static int DeleteDevicesByCondition(string conditionType, string value)
+        {
+            string query = "";
+
+            switch (conditionType)
+            {
+                case "Xóa theo loại thiết bị":
+                    query = "DELETE FROM devices WHERE device_type = @value";
+                    break;
+                case "Xóa theo trạng thái":
+                    query = "DELETE FROM devices WHERE status = @value";
+                    break;
+                case "Xóa theo mã thiết bị (bắt đầu bằng)":
+                    query = "DELETE FROM devices WHERE device_id LIKE @value";
+                    value = value + "%";
+                    break;
+                default:
+                    return 0;
+            }
+
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@value", value);
+
+                    return cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
     }

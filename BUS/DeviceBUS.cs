@@ -1,6 +1,7 @@
 ﻿using qltv.DAO;
 using qltv.DTO;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace qltv.BUS
@@ -28,6 +29,13 @@ namespace qltv.BUS
                 string.IsNullOrEmpty(device.device_type))
             {
                 return false;
+            }
+
+            // Kiểm tra xem thiết bị đã tồn tại chưa
+            DeviceDTO existingDevice = DeviceDAO.GetDeviceById(device.device_id);
+            if (existingDevice != null)
+            {
+                return false; // Thiết bị đã tồn tại
             }
 
             return DeviceDAO.AddDevice(device);
@@ -62,6 +70,40 @@ namespace qltv.BUS
         public static DataTable SearchDevices(string keyword)
         {
             return DeviceDAO.SearchDevices(keyword);
+        }
+
+        // Lấy danh sách các loại thiết bị
+        public static List<string> GetDeviceTypes()
+        {
+            List<string> deviceTypes = new List<string>();
+            DataTable dt = DeviceDAO.GetAllDevices();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string deviceType = row["device_type"].ToString();
+                if (!deviceTypes.Contains(deviceType))
+                {
+                    deviceTypes.Add(deviceType);
+                }
+            }
+
+            return deviceTypes;
+        }
+
+        // Lấy danh sách trạng thái thiết bị
+        public static List<string> GetDeviceStatuses()
+        {
+            List<string> statuses = new List<string>();
+            statuses.Add("Bình thường");
+            statuses.Add("Được đặt chỗ");
+            statuses.Add("Đang được mượn");
+            return statuses;
+        }
+
+        // Xóa nhiều thiết bị theo điều kiện
+        public static int DeleteDevicesByCondition(string condition, string value)
+        {
+            return DeviceDAO.DeleteDevicesByCondition(condition, value);
         }
     }
 }
