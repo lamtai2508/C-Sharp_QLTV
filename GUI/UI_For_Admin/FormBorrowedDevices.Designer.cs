@@ -30,6 +30,10 @@
         {
             textBox1 = new TextBox();
             table_BDL = new DataGridView();
+            btnAccept = new Button();
+            btnReject = new Button();
+            btnRefresh = new Button();
+            lblStatus = new Label();
             ((System.ComponentModel.ISupportInitialize)table_BDL).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +45,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(466, 61);
             textBox1.TabIndex = 0;
-            textBox1.Text = " Xử lý mượn thiết bị";
+            textBox1.Text = " Xử lý đặt chỗ thiết bị";
             // 
             // table_BDL
             // 
@@ -49,10 +53,10 @@
             table_BDL.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             table_BDL.BackgroundColor = Color.White;
             table_BDL.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_BDL.Location = new Point(12, 117);
+            table_BDL.Location = new Point(12, 150);
             table_BDL.Name = "table_BDL";
             table_BDL.RowHeadersWidth = 51;
-            table_BDL.Size = new Size(981, 457);
+            table_BDL.Size = new Size(981, 425);
             table_BDL.TabIndex = 1;
             // 
             // FormBorrowedDevices
@@ -75,5 +79,9 @@
 
         private TextBox textBox1;
         private DataGridView table_BDL;
+        private Button btnAccept;
+        private Button btnReject;
+        private Button btnRefresh;
+        private Label lblStatus;
     }
 }
