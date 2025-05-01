@@ -29,7 +29,7 @@ namespace QLTV
         //event hiện thị form danh sách thành viên
         private void bt_member_Click(object sender, EventArgs e)
         {
-            MemberList mbList = new MemberList();
+            FormMember mbList = new FormMember();
 
             contentContainer.Controls.Clear();
 

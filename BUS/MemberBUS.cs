@@ -57,5 +57,15 @@ namespace qltv.BUS
         {
             return MemberDAO.DeleteMember(member_id);
         }
+        // Hàm tìm kiếm thành viên
+        public static DataTable SearchMembers(string keyword)
+        {
+            return MemberDAO.SearchMembers(keyword);
+        }
+        // Hàm xóa nhiều thành viên theo điều kiện
+        public static int DeleteMembersByCondition(string condition, string value)
+        {
+            return MemberDAO.DeleteMembersByCondition(condition, value);
+        }
     }
 }

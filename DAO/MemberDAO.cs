@@ -48,6 +48,64 @@ namespace qltv.DAO
             }
             return null;
         }
+        // Hàm tìm kiếm thành viên theo id, name, ngày sinh, trạng thái
+        public static DataTable SearchMembers(string keyword)
+        {
+            string query = "SELECT * FROM members WHERE member_id LIKE @keyword " +
+                          "OR full_name LIKE @keyword " +
+                          "OR dob LIKE @keyword " +
+                          "OR status LIKE @keyword ";
+
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                DataTable dt = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                return dt;
+            }
+        }
+        // Xóa nhiều thành viên theo điều kiện
+        public static int DeleteMembersByCondition(string conditionType, string value)
+        {
+            string query = "";
+
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd;
+                    switch (conditionType)
+                    {
+                        case "Xóa thành viên theo năm":
+                            query = "DELETE FROM members WHERE YEAR(dob) = @year";
+                            cmd = new MySqlCommand(query, conn);
+                            if (!int.TryParse(value, out int year))
+                                return 0; // value không phải số năm hợp lệ
+                            cmd.Parameters.AddWithValue("@year", year);
+                            break;
+                        case "Xóa thành viên theo trạng thái":
+                            query = "DELETE FROM members WHERE status = @status";
+                            cmd = new MySqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@status", value);
+                            break;
+                        default:
+                            return 0;
+                    }
+                    return cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+        }
+
         // Hàm kiểm tra xem dữ liệu có để trống hay ko. 
         public static bool IsEmptyInput(MemberDTO member)
         {

@@ -197,7 +197,7 @@
             // 
             cbStatus.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbStatus.Items.AddRange(new object[] { "Đang hoạt động", "Khóa tạm thời", "Khóa vĩnh viễn" });
+            cbStatus.Items.AddRange(new object[] { "Cánh cáo", "Phạt đền bù", "Khóa tạm thời", "Khóa vĩnh viễn" });
             cbStatus.Location = new Point(778, 156);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(370, 36);
@@ -209,7 +209,7 @@
             lblViolationId.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblViolationId.Location = new Point(81, 36);
             lblViolationId.Name = "lblViolationId";
-            lblViolationId.Size = new Size(120, 28);
+            lblViolationId.Size = new Size(124, 28);
             lblViolationId.TabIndex = 0;
             lblViolationId.Text = "Mã vi phạm";
             // 
@@ -219,7 +219,7 @@
             lblMemberId.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblMemberId.Location = new Point(81, 96);
             lblMemberId.Name = "lblMemberId";
-            lblMemberId.Size = new Size(120, 28);
+            lblMemberId.Size = new Size(149, 28);
             lblMemberId.TabIndex = 1;
             lblMemberId.Text = "Mã thành viên";
             // 
@@ -229,7 +229,7 @@
             lblViolationDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblViolationDate.Location = new Point(81, 156);
             lblViolationDate.Name = "lblViolationDate";
-            lblViolationDate.Size = new Size(120, 28);
+            lblViolationDate.Size = new Size(144, 28);
             lblViolationDate.TabIndex = 2;
             lblViolationDate.Text = "Ngày vi phạm";
             // 
@@ -239,7 +239,7 @@
             lblViolationType.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblViolationType.Location = new Point(634, 36);
             lblViolationType.Name = "lblViolationType";
-            lblViolationType.Size = new Size(80, 28);
+            lblViolationType.Size = new Size(68, 28);
             lblViolationType.TabIndex = 3;
             lblViolationType.Text = "Mô tả";
             // 
@@ -249,7 +249,7 @@
             lblPenalty.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblPenalty.Location = new Point(634, 96);
             lblPenalty.Name = "lblPenalty";
-            lblPenalty.Size = new Size(90, 28);
+            lblPenalty.Size = new Size(87, 28);
             lblPenalty.TabIndex = 4;
             lblPenalty.Text = "Xử phạt";
             // 
@@ -259,7 +259,7 @@
             lblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblStatus.Location = new Point(634, 156);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(90, 28);
+            lblStatus.Size = new Size(108, 28);
             lblStatus.TabIndex = 5;
             lblStatus.Text = "Trạng thái";
             // 

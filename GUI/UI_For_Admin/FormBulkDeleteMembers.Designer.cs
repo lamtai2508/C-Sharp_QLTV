@@ -1,6 +1,6 @@
-﻿namespace qltv.GUI.UI_For_Admin
+﻿namespace qltv_Winform.GUI.UI_For_Admin
 {
-    partial class ImportExcelForm
+    partial class FormBulkDeleteMembers
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // ImportExcelForm
+            // FormBulkDeleteMembers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 600);
-            Name = "ImportExcelForm";
-            Text = "Nhập dữ liệu từ Excel";
+            ClientSize = new Size(800, 450);
+            Name = "FormBulkDeleteMembers";
+            Text = "FormBulkDeleteMembers";
             ResumeLayout(false);
         }
 

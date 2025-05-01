@@ -15,168 +15,172 @@ namespace qltv.GUI.UI_For_Admin
 
         private void InitializeComponent()
         {
-            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
-            this.btn_Filter = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.table_MemberStats = new System.Windows.Forms.DataGridView();
-            this.table_DeviceBorrowing = new System.Windows.Forms.DataGridView();
-            this.table_CurrentBorrowed = new System.Windows.Forms.DataGridView();
-            this.table_Violations = new System.Windows.Forms.DataGridView();
-            this.lbl_TotalCompensation = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.table_MemberStats)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_DeviceBorrowing)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_CurrentBorrowed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_Violations)).BeginInit();
-            this.SuspendLayout();
+            dateTimePickerStart = new DateTimePicker();
+            dateTimePickerEnd = new DateTimePicker();
+            btn_Filter = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            table_MemberStats = new DataGridView();
+            table_DeviceBorrowing = new DataGridView();
+            table_CurrentBorrowed = new DataGridView();
+            table_Violations = new DataGridView();
+            lbl_TotalCompensation = new Label();
+            ((System.ComponentModel.ISupportInitialize)table_MemberStats).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)table_DeviceBorrowing).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)table_CurrentBorrowed).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)table_Violations).BeginInit();
+            SuspendLayout();
             // 
             // dateTimePickerStart
             // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(50, 20);
-            this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePickerStart.TabIndex = 0;
+            dateTimePickerStart.Location = new Point(50, 20);
+            dateTimePickerStart.Name = "dateTimePickerStart";
+            dateTimePickerStart.Size = new Size(200, 27);
+            dateTimePickerStart.TabIndex = 0;
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(300, 20);
-            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePickerEnd.TabIndex = 1;
+            dateTimePickerEnd.Location = new Point(300, 20);
+            dateTimePickerEnd.Name = "dateTimePickerEnd";
+            dateTimePickerEnd.Size = new Size(200, 27);
+            dateTimePickerEnd.TabIndex = 1;
             // 
             // btn_Filter
             // 
-            this.btn_Filter.Location = new System.Drawing.Point(550, 20);
-            this.btn_Filter.Name = "btn_Filter";
-            this.btn_Filter.Size = new System.Drawing.Size(100, 30);
-            this.btn_Filter.TabIndex = 2;
-            this.btn_Filter.Text = "Lọc";
-            this.btn_Filter.UseVisualStyleBackColor = true;
-            this.btn_Filter.Click += new System.EventHandler(this.btn_Filter_Click);
+            btn_Filter.Location = new Point(550, 20);
+            btn_Filter.Name = "btn_Filter";
+            btn_Filter.Size = new Size(100, 30);
+            btn_Filter.TabIndex = 2;
+            btn_Filter.Text = "Lọc";
+            btn_Filter.UseVisualStyleBackColor = true;
+            btn_Filter.Click += btn_Filter_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 28);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Số lượng thành viên";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.Location = new Point(50, 70);
+            label1.Name = "label1";
+            label1.Size = new Size(204, 28);
+            label1.TabIndex = 3;
+            label1.Text = "Số lượng thành viên";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(50, 250);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 28);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Thiết bị được mượn";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label2.Location = new Point(50, 250);
+            label2.Name = "label2";
+            label2.Size = new Size(202, 28);
+            label2.TabIndex = 4;
+            label2.Text = "Thiết bị được mượn";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(50, 430);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(250, 28);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Thiết bị đang được mượn";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label3.Location = new Point(50, 430);
+            label3.Name = "label3";
+            label3.Size = new Size(256, 28);
+            label3.TabIndex = 5;
+            label3.Text = "Thiết bị đang được mượn";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(50, 610);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(250, 28);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Xử lý vi phạm";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label4.Location = new Point(50, 610);
+            label4.Name = "label4";
+            label4.Size = new Size(143, 28);
+            label4.TabIndex = 6;
+            label4.Text = "Xử lý vi phạm";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
-            this.label5.Location = new System.Drawing.Point(50, 650);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 23);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Tổng tiền bồi thường:";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F);
+            label5.Location = new Point(50, 650);
+            label5.Name = "label5";
+            label5.Size = new Size(177, 23);
+            label5.TabIndex = 7;
+            label5.Text = "Tổng tiền bồi thường:";
             // 
             // table_MemberStats
             // 
-            this.table_MemberStats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_MemberStats.Location = new System.Drawing.Point(50, 110);
-            this.table_MemberStats.Name = "table_MemberStats";
-            this.table_MemberStats.Size = new System.Drawing.Size(900, 120);
-            this.table_MemberStats.TabIndex = 8;
+            table_MemberStats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            table_MemberStats.Location = new Point(50, 110);
+            table_MemberStats.Name = "table_MemberStats";
+            table_MemberStats.RowHeadersWidth = 51;
+            table_MemberStats.Size = new Size(900, 120);
+            table_MemberStats.TabIndex = 8;
             // 
             // table_DeviceBorrowing
             // 
-            this.table_DeviceBorrowing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_DeviceBorrowing.Location = new System.Drawing.Point(50, 290);
-            this.table_DeviceBorrowing.Name = "table_DeviceBorrowing";
-            this.table_DeviceBorrowing.Size = new System.Drawing.Size(900, 120);
-            this.table_DeviceBorrowing.TabIndex = 9;
+            table_DeviceBorrowing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            table_DeviceBorrowing.Location = new Point(50, 290);
+            table_DeviceBorrowing.Name = "table_DeviceBorrowing";
+            table_DeviceBorrowing.RowHeadersWidth = 51;
+            table_DeviceBorrowing.Size = new Size(900, 120);
+            table_DeviceBorrowing.TabIndex = 9;
             // 
             // table_CurrentBorrowed
             // 
-            this.table_CurrentBorrowed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_CurrentBorrowed.Location = new System.Drawing.Point(50, 470);
-            this.table_CurrentBorrowed.Name = "table_CurrentBorrowed";
-            this.table_CurrentBorrowed.Size = new System.Drawing.Size(900, 120);
-            this.table_CurrentBorrowed.TabIndex = 10;
+            table_CurrentBorrowed.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            table_CurrentBorrowed.Location = new Point(50, 470);
+            table_CurrentBorrowed.Name = "table_CurrentBorrowed";
+            table_CurrentBorrowed.RowHeadersWidth = 51;
+            table_CurrentBorrowed.Size = new Size(900, 120);
+            table_CurrentBorrowed.TabIndex = 10;
             // 
             // table_Violations
             // 
-            this.table_Violations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_Violations.Location = new System.Drawing.Point(50, 680);
-            this.table_Violations.Name = "table_Violations";
-            this.table_Violations.Size = new System.Drawing.Size(900, 120);
-            this.table_Violations.TabIndex = 11;
+            table_Violations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            table_Violations.Location = new Point(50, 680);
+            table_Violations.Name = "table_Violations";
+            table_Violations.RowHeadersWidth = 51;
+            table_Violations.Size = new Size(900, 120);
+            table_Violations.TabIndex = 11;
             // 
             // lbl_TotalCompensation
             // 
-            this.lbl_TotalCompensation.AutoSize = true;
-            this.lbl_TotalCompensation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lbl_TotalCompensation.Location = new System.Drawing.Point(200, 650);
-            this.lbl_TotalCompensation.Name = "lbl_TotalCompensation";
-            this.lbl_TotalCompensation.Size = new System.Drawing.Size(200, 23);
-            this.lbl_TotalCompensation.TabIndex = 12;
-            this.lbl_TotalCompensation.Text = "Tổng tiền bồi thường: 0";
+            lbl_TotalCompensation.AutoSize = true;
+            lbl_TotalCompensation.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbl_TotalCompensation.Location = new Point(200, 650);
+            lbl_TotalCompensation.Name = "lbl_TotalCompensation";
+            lbl_TotalCompensation.Size = new Size(203, 23);
+            lbl_TotalCompensation.TabIndex = 12;
+            lbl_TotalCompensation.Text = "Tổng tiền bồi thường: 0";
             // 
             // FormStatistical
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 850);
-            this.Controls.Add(this.lbl_TotalCompensation);
-            this.Controls.Add(this.table_Violations);
-            this.Controls.Add(this.table_CurrentBorrowed);
-            this.Controls.Add(this.table_DeviceBorrowing);
-            this.Controls.Add(this.table_MemberStats);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_Filter);
-            this.Controls.Add(this.dateTimePickerEnd);
-            this.Controls.Add(this.dateTimePickerStart);
-            this.Name = "FormStatistical";
-            this.Text = "Thống kê";
-            this.Load += new System.EventHandler(this.FormStatistical_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.table_MemberStats)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_DeviceBorrowing)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_CurrentBorrowed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table_Violations)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1000, 850);
+            Controls.Add(lbl_TotalCompensation);
+            Controls.Add(table_Violations);
+            Controls.Add(table_CurrentBorrowed);
+            Controls.Add(table_DeviceBorrowing);
+            Controls.Add(table_MemberStats);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btn_Filter);
+            Controls.Add(dateTimePickerEnd);
+            Controls.Add(dateTimePickerStart);
+            Name = "FormStatistical";
+            Text = "Thống kê";
+            Load += FormStatistical_Load;
+            ((System.ComponentModel.ISupportInitialize)table_MemberStats).EndInit();
+            ((System.ComponentModel.ISupportInitialize)table_DeviceBorrowing).EndInit();
+            ((System.ComponentModel.ISupportInitialize)table_CurrentBorrowed).EndInit();
+            ((System.ComponentModel.ISupportInitialize)table_Violations).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.DateTimePicker dateTimePickerStart;

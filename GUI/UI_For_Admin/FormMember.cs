@@ -1,7 +1,9 @@
 ﻿using qltv.BUS;
 using qltv.DAO;
 using qltv.DTO;
+using qltv.GUI.UI_For_Admin;
 using QLTV.Resources;
+using qltv_Winform.GUI.UI_For_Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +16,10 @@ using System.Windows.Forms;
 
 namespace QLTV
 {
-    public partial class MemberList : Form
+    public partial class FormMember : Form
     {
         private DatabaseHelper dbHelper;
-        public MemberList()
+        public FormMember()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -155,6 +157,65 @@ namespace QLTV
             else
             {
                 MessageBox.Show("Xóa thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        // event tìm kiếm thành viên
+        private void btSearch_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbSearch.Text))
+            {
+                members_table.DataSource = MemberBUS.SearchMembers(tbSearch.Text);
+                if (members_table.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy thành viên nào phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                LoadData();
+            }
+        }
+        //
+        private void btDeleteMuti_Click(object sender, EventArgs e)
+        {
+            using (FormBulkDeleteMembers bulkMemberForm = new FormBulkDeleteMembers())
+            {
+                if (bulkMemberForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Nếu xóa thành công, làm mới danh sách
+                    LoadData();
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.csv";
+                    openFileDialog.Title = "Chọn file Excel chứa danh sách thành viên";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = openFileDialog.FileName;
+
+                        // Hiển thị form nhập Excel
+                        using (FormImportMemberExcel importForm = new FormImportMemberExcel(filePath))
+                        {
+                            if (importForm.ShowDialog() == DialogResult.OK)
+                            {
+                                // Nếu nhập thành công, làm mới danh sách thành viên
+                                LoadData();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi nhập thành viên từ Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
