@@ -59,6 +59,34 @@
             table_BDL.Size = new Size(981, 425);
             table_BDL.TabIndex = 1;
             // 
+            // btnAccept
+            // 
+            btnAccept.Location = new Point(0, 0);
+            btnAccept.Name = "btnAccept";
+            btnAccept.Size = new Size(75, 23);
+            btnAccept.TabIndex = 0;
+            // 
+            // btnReject
+            // 
+            btnReject.Location = new Point(0, 0);
+            btnReject.Name = "btnReject";
+            btnReject.Size = new Size(75, 23);
+            btnReject.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(0, 0);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 0;
+            // 
+            // lblStatus
+            // 
+            lblStatus.Location = new Point(0, 0);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(100, 23);
+            lblStatus.TabIndex = 0;
+            // 
             // FormBorrowedDevices
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);

@@ -165,7 +165,7 @@ namespace qltv.GUI.UI_For_Admin
                         DeviceDTO device = DeviceBUS.GetDeviceById(deviceId);
                         if (device != null)
                         {
-                            device.status = "Được đặt chỗ";
+                            device.status = "Đang được mượn";
                             DeviceBUS.UpdateDevice(device);
                         }
                     }
@@ -193,6 +193,17 @@ namespace qltv.GUI.UI_For_Admin
                 if (ReservationBUS.UpdateReservationStatus(selectedReservationId, "Từ chối"))
                 {
                     MessageBox.Show("Từ chối đơn đặt chỗ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DataGridViewRow selectedRow = FindRowByReservationId(selectedReservationId);
+                    if (selectedRow != null)
+                    {
+                        string deviceId = selectedRow.Cells["device_id"].Value.ToString();
+                        DeviceDTO device = DeviceBUS.GetDeviceById(deviceId);
+                        if (device != null)
+                        {
+                            device.status = "Có sẵn";
+                            DeviceBUS.UpdateDevice(device);
+                        }
+                    }
                     load_data();
                 }
                 else

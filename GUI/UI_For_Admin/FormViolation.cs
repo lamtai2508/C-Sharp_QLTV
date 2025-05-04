@@ -29,14 +29,24 @@ namespace qltv.GUI.UI_For_User
         private void SetupDataGridViewColumns()
         {
             dataGridView1.DataSource = ViolationBUS.GetAllViolation();
-            // Đổi tên header 
-            dataGridView1.Columns["violation_id"].HeaderText = "Mã vi phạm";
-            dataGridView1.Columns["member_id"].HeaderText = "Mã thành viên";
-            dataGridView1.Columns["violation_date"].HeaderText = "Ngày vi phạm";
-            dataGridView1.Columns["violation_type"].HeaderText = "Mô tả";
-            dataGridView1.Columns["penalty"].HeaderText = "Xử phạt";
-            dataGridView1.Columns["status"].HeaderText = "Trạng thái";
-            // Cấu hình DataGridView
+            if (dataGridView1.Columns["violation_id"] != null)
+                dataGridView1.Columns["violation_id"].HeaderText = "Mã vi phạm";
+            if (dataGridView1.Columns["member_id"] != null)
+                dataGridView1.Columns["member_id"].HeaderText = "Mã thành viên";
+            if (dataGridView1.Columns["violation_date"] != null)
+                dataGridView1.Columns["violation_date"].HeaderText = "Ngày vi phạm";
+            if (dataGridView1.Columns["violation_type"] != null)
+                dataGridView1.Columns["violation_type"].HeaderText = "Mô tả";
+            if (dataGridView1.Columns["penalty"] != null)
+                dataGridView1.Columns["penalty"].HeaderText = "Xử phạt";
+            if (dataGridView1.Columns["status"] != null)
+                dataGridView1.Columns["status"].HeaderText = "Trạng thái";
+            if (dataGridView1.Columns["block_date"] != null)
+                dataGridView1.Columns["block_date"].HeaderText = "Ngày khóa";
+            if (dataGridView1.Columns["unblock_date"] != null)
+                dataGridView1.Columns["unblock_date"].HeaderText = "Ngày mở khóa";
+            if (dataGridView1.Columns["warning_count"] != null)
+                dataGridView1.Columns["warning_count"].HeaderText = "Số lần cảnh cáo";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
@@ -45,7 +55,9 @@ namespace qltv.GUI.UI_For_User
 
         private void SetupComboBox()
         {
-            cbStatus.SelectedIndex = 0; // Default to first item
+            cbStatus.Items.Clear(); // Xóa các mục hiện có để tránh lặp
+            cbStatus.Items.AddRange(new object[] { "Đang hoạt động", "Khóa tạm thời", "Khóa vĩnh viễn" });
+            cbStatus.SelectedIndex = 0;
         }
 
         private string GenerateNextViolationId()
@@ -56,7 +68,6 @@ namespace qltv.GUI.UI_For_User
                 return "V001";
             }
 
-            // Extract the numeric part and increment
             string numericPart = Regex.Match(maxId, @"\d+").Value;
             int number = int.Parse(numericPart) + 1;
             return $"V{number:D3}";
@@ -75,27 +86,37 @@ namespace qltv.GUI.UI_For_User
             tbViolationType.Text = "";
             tbPenalty.Text = "";
             cbStatus.SelectedIndex = 0;
+            tbBlockDate.Text = "";
+            tbUnblockDate.Text = "";
             tbViolationId.Enabled = false;
             tbMemberId.Enabled = true;
-            tbViolationDate.Enabled = true;
+            tbViolationDate.Enabled = false;
+            tbBlockDate.Enabled = false;
+            tbUnblockDate.Enabled = cbStatus.SelectedItem?.ToString() == "Khóa tạm thời";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!DateTime.TryParse(tbViolationDate.Text, out DateTime violationDateValue))
             {
-                MessageBox.Show("Ngày vi phạm không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ngày vi phạm không hợp lệ! Vui lòng nhập đúng định dạng yyyy-MM-dd.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ViolationDTO dto = new ViolationDTO()
+            string blockDate = string.IsNullOrEmpty(tbBlockDate.Text) ? null : DateTime.Parse(tbBlockDate.Text).ToString("yyyy-MM-dd");
+            string unblockDate = string.IsNullOrEmpty(tbUnblockDate.Text) ? null : DateTime.Parse(tbUnblockDate.Text).ToString("yyyy-MM-dd");
+
+            ViolationDTO dto = new ViolationDTO
             {
                 violation_id = tbViolationId.Text,
                 member_id = tbMemberId.Text,
                 violation_date = violationDateValue.ToString("yyyy-MM-dd"),
                 violation_type = tbViolationType.Text,
                 penalty = tbPenalty.Text,
-                status = cbStatus.SelectedItem.ToString()
+                status = cbStatus.SelectedItem?.ToString() ?? "Đang hoạt động",
+                block_date = blockDate,
+                unblock_date = unblockDate,
+                warning_count = 0
             };
 
             if (ViolationBUS.AddViolation(dto))
@@ -114,18 +135,24 @@ namespace qltv.GUI.UI_For_User
         {
             if (!DateTime.TryParse(tbViolationDate.Text, out DateTime violationDateValue))
             {
-                MessageBox.Show("Ngày vi phạm không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ngày vi phạm không hợp lệ! Vui lòng nhập đúng định dạng yyyy-MM-dd.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ViolationDTO dto = new ViolationDTO()
+            string blockDate = string.IsNullOrEmpty(tbBlockDate.Text) ? null : DateTime.Parse(tbBlockDate.Text).ToString("yyyy-MM-dd");
+            string unblockDate = string.IsNullOrEmpty(tbUnblockDate.Text) ? null : DateTime.Parse(tbUnblockDate.Text).ToString("yyyy-MM-dd");
+
+            ViolationDTO dto = new ViolationDTO
             {
                 violation_id = tbViolationId.Text,
                 member_id = tbMemberId.Text,
                 violation_date = violationDateValue.ToString("yyyy-MM-dd"),
                 violation_type = tbViolationType.Text,
                 penalty = tbPenalty.Text,
-                status = cbStatus.SelectedItem.ToString()
+                status = cbStatus.SelectedItem?.ToString() ?? "Đang hoạt động",
+                block_date = blockDate,
+                unblock_date = unblockDate,
+                warning_count = ViolationDAO.GetWarningCount(tbMemberId.Text) // Giữ nguyên warning_count hiện tại
             };
 
             if (ViolationBUS.UpdateViolation(dto))
@@ -194,15 +221,32 @@ namespace qltv.GUI.UI_For_User
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                tbViolationId.Text = row.Cells["violation_id"].Value.ToString();
-                tbMemberId.Text = row.Cells["member_id"].Value.ToString();
-                tbViolationDate.Text = row.Cells["violation_date"].Value.ToString();
-                tbViolationType.Text = row.Cells["violation_type"].Value.ToString();
-                tbPenalty.Text = row.Cells["penalty"].Value.ToString();
-                cbStatus.SelectedItem = row.Cells["status"].Value.ToString();
+                tbViolationId.Text = row.Cells["violation_id"]?.Value?.ToString() ?? "";
+                tbMemberId.Text = row.Cells["member_id"]?.Value?.ToString() ?? "";
+                tbViolationDate.Text = row.Cells["violation_date"]?.Value?.ToString() ?? "";
+                tbViolationType.Text = row.Cells["violation_type"]?.Value?.ToString() ?? "";
+                tbPenalty.Text = row.Cells["penalty"]?.Value?.ToString() ?? "";
+                cbStatus.SelectedItem = row.Cells["status"]?.Value?.ToString() ?? "Đang hoạt động";
+                tbBlockDate.Text = row.Cells["block_date"]?.Value?.ToString() ?? "";
+                tbUnblockDate.Text = row.Cells["unblock_date"]?.Value?.ToString() ?? "";
                 tbViolationId.Enabled = false;
                 tbMemberId.Enabled = false;
                 tbViolationDate.Enabled = false;
+                tbBlockDate.Enabled = false;
+                tbUnblockDate.Enabled = cbStatus.SelectedItem?.ToString() == "Khóa tạm thời";
+            }
+        }
+
+        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbUnblockDate.Enabled = cbStatus.SelectedItem?.ToString() == "Khóa tạm thời";
+            if (cbStatus.SelectedItem?.ToString() == "Khóa tạm thời" && string.IsNullOrEmpty(tbUnblockDate.Text))
+            {
+                tbUnblockDate.Text = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd");
+            }
+            else if (cbStatus.SelectedItem?.ToString() != "Khóa tạm thời")
+            {
+                tbUnblockDate.Text = "";
             }
         }
 
