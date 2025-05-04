@@ -106,7 +106,7 @@ CREATE TABLE `memberhistory` (
 -- Cấu trúc bảng cho bảng `members`
 --
 
-CREATE TABLE `members` (
+CREATE TABLE `members` (    
     `member_id` VARCHAR(10) NOT NULL,
     `full_name` VARCHAR(30) NOT NULL,
     `gender` VARCHAR(4) NOT NULL,

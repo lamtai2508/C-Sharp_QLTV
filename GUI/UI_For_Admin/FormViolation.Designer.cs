@@ -49,7 +49,9 @@
             panelInput.SuspendLayout();
             flowLayoutPanelButtons.SuspendLayout();
             SuspendLayout();
-
+            // 
+            // lblTitle
+            // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.Location = new Point(20, 20);
@@ -57,7 +59,9 @@
             lblTitle.Size = new Size(528, 41);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "DANH SÁCH THÀNH VIÊN VI PHẠM";
-
+            // 
+            // dataGridView1
+            // 
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -70,7 +74,9 @@
             dataGridView1.Size = new Size(1080, 330);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
-
+            // 
+            // panelSearch
+            // 
             panelSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelSearch.Controls.Add(txtSearch);
             panelSearch.Controls.Add(btnSearch);
@@ -79,7 +85,9 @@
             panelSearch.Name = "panelSearch";
             panelSearch.Size = new Size(1080, 30);
             panelSearch.TabIndex = 2;
-
+            // 
+            // txtSearch
+            // 
             txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 10F);
             txtSearch.Location = new Point(0, 0);
@@ -87,7 +95,9 @@
             txtSearch.PlaceholderText = "Nhập từ khóa tìm kiếm...";
             txtSearch.Size = new Size(900, 30);
             txtSearch.TabIndex = 0;
-
+            // 
+            // btnSearch
+            // 
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.BackColor = Color.FromArgb(49, 176, 182);
             btnSearch.Font = new Font("Segoe UI", 10F);
@@ -99,7 +109,9 @@
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
-
+            // 
+            // picSearchIcon
+            // 
             picSearchIcon.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picSearchIcon.Location = new Point(905, 5);
             picSearchIcon.Name = "picSearchIcon";
@@ -107,7 +119,9 @@
             picSearchIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             picSearchIcon.TabIndex = 2;
             picSearchIcon.TabStop = false;
-
+            // 
+            // panelInput
+            // 
             panelInput.AutoSize = true;
             panelInput.Controls.Add(tbViolationId);
             panelInput.Controls.Add(tbMemberId);
@@ -132,38 +146,50 @@
             panelInput.Padding = new Padding(50, 0, 0, 0);
             panelInput.Size = new Size(1120, 280);
             panelInput.TabIndex = 3;
-
+            // 
+            // tbViolationId
+            // 
             tbViolationId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbViolationId.Location = new Point(241, 36);
             tbViolationId.Name = "tbViolationId";
             tbViolationId.ReadOnly = true;
             tbViolationId.Size = new Size(370, 34);
             tbViolationId.TabIndex = 4;
-
+            // 
+            // tbMemberId
+            // 
             tbMemberId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbMemberId.Location = new Point(241, 96);
             tbMemberId.Name = "tbMemberId";
             tbMemberId.Size = new Size(370, 34);
             tbMemberId.TabIndex = 5;
-
+            // 
+            // tbViolationDate
+            // 
             tbViolationDate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbViolationDate.Location = new Point(241, 156);
             tbViolationDate.Name = "tbViolationDate";
             tbViolationDate.Size = new Size(370, 34);
             tbViolationDate.TabIndex = 6;
-
+            // 
+            // tbViolationType
+            // 
             tbViolationType.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbViolationType.Location = new Point(241, 216);
             tbViolationType.Name = "tbViolationType";
             tbViolationType.Size = new Size(370, 34);
             tbViolationType.TabIndex = 7;
-
+            // 
+            // tbPenalty
+            // 
             tbPenalty.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbPenalty.Location = new Point(778, 36);
             tbPenalty.Name = "tbPenalty";
             tbPenalty.Size = new Size(370, 34);
             tbPenalty.TabIndex = 8;
-
+            // 
+            // cbStatus
+            // 
             cbStatus.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStatus.Items.AddRange(new object[] { "Đang hoạt động", "Khóa tạm thời", "Khóa vĩnh viễn" });
@@ -172,20 +198,26 @@
             cbStatus.Size = new Size(370, 36);
             cbStatus.TabIndex = 9;
             cbStatus.SelectedIndexChanged += cbStatus_SelectedIndexChanged;
-
+            // 
+            // tbBlockDate
+            // 
             tbBlockDate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbBlockDate.Location = new Point(778, 156);
             tbBlockDate.Name = "tbBlockDate";
             tbBlockDate.ReadOnly = true;
             tbBlockDate.Size = new Size(370, 34);
             tbBlockDate.TabIndex = 10;
-
+            // 
+            // tbUnblockDate
+            // 
             tbUnblockDate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbUnblockDate.Location = new Point(778, 216);
             tbUnblockDate.Name = "tbUnblockDate";
             tbUnblockDate.Size = new Size(370, 34);
             tbUnblockDate.TabIndex = 11;
-
+            // 
+            // lblViolationId
+            // 
             lblViolationId.AutoSize = true;
             lblViolationId.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblViolationId.Location = new Point(81, 36);
@@ -193,7 +225,9 @@
             lblViolationId.Size = new Size(124, 28);
             lblViolationId.TabIndex = 0;
             lblViolationId.Text = "Mã vi phạm";
-
+            // 
+            // lblMemberId
+            // 
             lblMemberId.AutoSize = true;
             lblMemberId.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblMemberId.Location = new Point(81, 96);
@@ -201,7 +235,9 @@
             lblMemberId.Size = new Size(149, 28);
             lblMemberId.TabIndex = 1;
             lblMemberId.Text = "Mã thành viên";
-
+            // 
+            // lblViolationDate
+            // 
             lblViolationDate.AutoSize = true;
             lblViolationDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblViolationDate.Location = new Point(81, 156);
@@ -209,7 +245,9 @@
             lblViolationDate.Size = new Size(144, 28);
             lblViolationDate.TabIndex = 2;
             lblViolationDate.Text = "Ngày vi phạm";
-
+            // 
+            // lblViolationType
+            // 
             lblViolationType.AutoSize = true;
             lblViolationType.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblViolationType.Location = new Point(81, 216);
@@ -217,7 +255,9 @@
             lblViolationType.Size = new Size(68, 28);
             lblViolationType.TabIndex = 3;
             lblViolationType.Text = "Mô tả";
-
+            // 
+            // lblPenalty
+            // 
             lblPenalty.AutoSize = true;
             lblPenalty.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblPenalty.Location = new Point(634, 36);
@@ -225,7 +265,9 @@
             lblPenalty.Size = new Size(87, 28);
             lblPenalty.TabIndex = 4;
             lblPenalty.Text = "Xử phạt";
-
+            // 
+            // lblStatus
+            // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblStatus.Location = new Point(634, 96);
@@ -233,23 +275,29 @@
             lblStatus.Size = new Size(108, 28);
             lblStatus.TabIndex = 5;
             lblStatus.Text = "Trạng thái";
-
+            // 
+            // lblBlockDate
+            // 
             lblBlockDate.AutoSize = true;
             lblBlockDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblBlockDate.Location = new Point(634, 156);
             lblBlockDate.Name = "lblBlockDate";
-            lblBlockDate.Size = new Size(90, 28);
+            lblBlockDate.Size = new Size(114, 28);
             lblBlockDate.TabIndex = 6;
             lblBlockDate.Text = "Ngày khóa";
-
+            // 
+            // lblUnblockDate
+            // 
             lblUnblockDate.AutoSize = true;
             lblUnblockDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblUnblockDate.Location = new Point(634, 216);
             lblUnblockDate.Name = "lblUnblockDate";
-            lblUnblockDate.Size = new Size(90, 28);
+            lblUnblockDate.Size = new Size(151, 28);
             lblUnblockDate.TabIndex = 7;
             lblUnblockDate.Text = "Ngày mở khóa";
-
+            // 
+            // flowLayoutPanelButtons
+            // 
             flowLayoutPanelButtons.AutoSize = true;
             flowLayoutPanelButtons.Controls.Add(btnAdd);
             flowLayoutPanelButtons.Controls.Add(btnUpdate);
@@ -259,7 +307,9 @@
             flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
             flowLayoutPanelButtons.Size = new Size(929, 47);
             flowLayoutPanelButtons.TabIndex = 4;
-
+            // 
+            // btnAdd
+            // 
             btnAdd.AutoSize = true;
             btnAdd.BackColor = Color.FromArgb(49, 176, 182);
             btnAdd.Cursor = Cursors.Hand;
@@ -273,7 +323,9 @@
             btnAdd.Text = "Thêm";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
-
+            // 
+            // btnUpdate
+            // 
             btnUpdate.AutoSize = true;
             btnUpdate.BackColor = Color.FromArgb(49, 176, 182);
             btnUpdate.Cursor = Cursors.Hand;
@@ -286,7 +338,9 @@
             btnUpdate.Text = "Sửa";
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
-
+            // 
+            // btnDelete
+            // 
             btnDelete.AutoSize = true;
             btnDelete.BackColor = Color.FromArgb(49, 176, 182);
             btnDelete.Cursor = Cursors.Hand;
@@ -300,7 +354,9 @@
             btnDelete.Text = "Xóa";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
-
+            // 
+            // btnLoadData
+            // 
             btnLoadData.AutoSize = true;
             btnLoadData.BackColor = Color.FromArgb(49, 176, 182);
             btnLoadData.Cursor = Cursors.Hand;
@@ -314,7 +370,9 @@
             btnLoadData.Text = "Làm mới";
             btnLoadData.UseVisualStyleBackColor = false;
             btnLoadData.Click += btnLoadData_Click;
-
+            // 
+            // FormViolation
+            // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1120, 720);
