@@ -1,5 +1,4 @@
 using qltv.GUI.UI_For_Admin;
-using qltv.GUI.UI_For_Login;
 using qltv.GUI.UI_For_User;
 
 namespace QLTV
@@ -163,11 +162,5 @@ namespace QLTV
             }
         }
 
-        private void bt_logout_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new Login().ShowDialog();
-            this.Close();
-        }
     }
 }

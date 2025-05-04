@@ -94,7 +94,7 @@ namespace qltv.BUS
         public static List<string> GetDeviceStatuses()
         {
             List<string> statuses = new List<string>();
-            statuses.Add("Bình thường");
+            statuses.Add("Có sẵn");
             statuses.Add("Được đặt chỗ");
             statuses.Add("Đang được mượn");
             return statuses;

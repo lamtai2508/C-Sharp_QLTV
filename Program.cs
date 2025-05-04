@@ -1,4 +1,4 @@
-using qltv.GUI.UI_For_Login;
+
 using QLTV;
 using qltv.GUI.UI_For_User;
 
@@ -17,7 +17,6 @@ namespace qltv
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormAdminDashboard());
-            //Application.Run(new Login());
         }
     }
 }

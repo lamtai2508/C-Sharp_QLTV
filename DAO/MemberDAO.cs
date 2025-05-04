@@ -2,6 +2,7 @@
 using qltv.DTO;
 using QLTV.Resources;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -47,6 +48,24 @@ namespace qltv.DAO
                 }
             }
             return null;
+        }
+        // Hàm thêm tài khoản tự động nếu thêm thành viên thành công
+        public static bool AutoAddAccount(string accountId)
+        {
+            string password = "1";
+            using(MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string query = "INSERT INTO account (account_id, password )" +
+                    "VALUES ( @accountId, @password);";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@accountId", accountId);
+                cmd.Parameters.AddWithValue("@password", password);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                return rowsAffected > 0;
+            }
         }
         // Hàm tìm kiếm thành viên theo id, name, ngày sinh, trạng thái
         public static DataTable SearchMembers(string keyword)
@@ -122,7 +141,7 @@ namespace qltv.DAO
             return true;
         }
         // Hàm kiểm tra có dịnh dạng của member trước khi lưu
-        public static bool VailidateInputMember(MemberDTO member, out string errorMessage)
+        public static bool ValidateInputMember(MemberDTO member, out string errorMessage)
         {
             // Kiểm tra ngày sinh
             if (!DateTime.TryParseExact(member.dob.ToString("yyyy-MM-dd"), "yyyy-MM-dd",
@@ -163,7 +182,7 @@ namespace qltv.DAO
         public static bool AddMember(MemberDTO member) 
         {
             // Kiểm tra dữ liệu trước khi thêm mới
-            if (VailidateInputMember(member, out string errorMessage))
+            if (ValidateInputMember(member, out string errorMessage))
             {
                 string query = "insert into members (member_id, full_name, gender, number_phone, dob, email)" +
                    "values(@member_id, @full_name, @gender, @number_phone, @dob, @email)";
@@ -187,7 +206,7 @@ namespace qltv.DAO
         // Sửa thông tin thành viên
         public static bool UpdateMember(MemberDTO member)
         {
-            if(VailidateInputMember(member, out string errorMessage))
+            if(ValidateInputMember(member, out string errorMessage))
             {
                 string query = "update members set full_name = @full_name, gender = @gender, number_phone = @number_phone, dob = @dob, email = @email " +
                "where member_id = @member_id";
@@ -205,6 +224,29 @@ namespace qltv.DAO
             else
             {
                 MessageBox.Show(errorMessage, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        public static bool UpdateStatusMember(MemberDTO member)
+        {
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string getStatus = "select status from members where member_id = @memberId";
+                MySqlCommand cmd = new MySqlCommand(getStatus, conn);
+                cmd.Parameters.AddWithValue("@memberId", member.member_id);
+                string currentStatus = cmd.ExecuteScalar()?.ToString();
+
+                if (currentStatus != member.status)
+                {
+                    string query = "update members set status = @status where member_id = @memberId";
+                    MySqlCommand cmdd = new MySqlCommand(query, conn);
+                    cmdd.Parameters.AddWithValue("@memberId", member.member_id);
+                    cmdd.Parameters.AddWithValue("@status", member.status);
+                    int rowsEfftect = cmdd.ExecuteNonQuery();
+                    return rowsEfftect > 0;
+                }
+
                 return false;
             }
         }

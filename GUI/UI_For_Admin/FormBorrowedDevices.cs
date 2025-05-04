@@ -2,6 +2,7 @@
 using qltv.BUS;
 using qltv.DTO;
 using QLTV.Resources;
+using qltv_Winform.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -157,19 +158,32 @@ namespace qltv.GUI.UI_For_Admin
                 {
                     MessageBox.Show("Xác nhận đơn đặt chỗ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Cập nhật trạng thái thiết bị thành "Được đặt chỗ"
                     DataGridViewRow selectedRow = FindRowByReservationId(selectedReservationId);
+                    // Cập nhật trạng thái thiết bị thành "Được được mượn"
                     if (selectedRow != null)
                     {
                         string deviceId = selectedRow.Cells["device_id"].Value.ToString();
+                        string memberId = selectedRow.Cells["member_id"].Value.ToString();
+                        DateTime borrowDate = Convert.ToDateTime(selectedRow.Cells["borrowed_date"].Value);
+                        DateTime dueDate = Convert.ToDateTime(selectedRow.Cells["returned_date"].Value);
+
                         DeviceDTO device = DeviceBUS.GetDeviceById(deviceId);
                         if (device != null)
                         {
                             device.status = "Đang được mượn";
                             DeviceBUS.UpdateDevice(device);
                         }
+                        // Thêm mới thiết bị được mượn 
+                        BorrowedDeviceDTO borrowed = new BorrowedDeviceDTO
+                        {
+                            member_id = memberId,
+                            device_id = deviceId,
+                            borrow_date = borrowDate,
+                            due_date = dueDate,
+                            status = "Đang mượn"
+                        };
+                        BorrowedDeviceBUS.AddBorrowedDevice(borrowed);
                     }
-
                     load_data();
                 }
                 else
@@ -194,6 +208,7 @@ namespace qltv.GUI.UI_For_Admin
                 {
                     MessageBox.Show("Từ chối đơn đặt chỗ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DataGridViewRow selectedRow = FindRowByReservationId(selectedReservationId);
+                    // Thay đổi trạng thái thiết bị từ "đang đặt chỗ" thành "có sẵn"
                     if (selectedRow != null)
                     {
                         string deviceId = selectedRow.Cells["device_id"].Value.ToString();

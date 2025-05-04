@@ -214,7 +214,7 @@ namespace qltv_Winform.GUI.UI_For_Admin
 
                     case "Xóa theo trạng thái":
                         match = row["status"].ToString().Equals(value, StringComparison.OrdinalIgnoreCase);
-                        break;
+                    break;
 
                 }
 
@@ -228,9 +228,5 @@ namespace qltv_Winform.GUI.UI_For_Admin
         }
 
 
-        private void FormBulkDeleteMembers_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -34,7 +34,11 @@ namespace qltv.BUS
                 {
                     MessageBox.Show("Thành viên đã tồn tại!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                return MemberDAO.AddMember(member);
+                else
+                {
+                    if (MemberDAO.AddMember(member)) 
+                        return MemberDAO.AutoAddAccount(member.member_id);
+                }
             }
             MessageBox.Show("Không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;

@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdminDashboard));
             panel1 = new Panel();
-            bt_logout = new Label();
             label2 = new Label();
             bt_menu = new PictureBox();
             label1 = new Label();
@@ -76,7 +75,6 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(bt_logout);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(bt_menu);
             panel1.Controls.Add(label1);
@@ -86,21 +84,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1500, 64);
             panel1.TabIndex = 0;
-            // 
-            // bt_logout
-            // 
-            bt_logout.Cursor = Cursors.Hand;
-            bt_logout.Dock = DockStyle.Right;
-            bt_logout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bt_logout.Image = (Image)resources.GetObject("bt_logout.Image");
-            bt_logout.ImageAlign = ContentAlignment.MiddleRight;
-            bt_logout.Location = new Point(1355, 0);
-            bt_logout.Name = "bt_logout";
-            bt_logout.Size = new Size(145, 64);
-            bt_logout.TabIndex = 5;
-            bt_logout.Text = "Đăng xuất";
-            bt_logout.TextAlign = ContentAlignment.MiddleLeft;
-            bt_logout.Click += bt_logout_Click;
             // 
             // label2
             // 
@@ -229,7 +212,7 @@
             deviceContainer.Location = new Point(0, 196);
             deviceContainer.Margin = new Padding(0);
             deviceContainer.Name = "deviceContainer";
-            deviceContainer.Size = new Size(356, 294);
+            deviceContainer.Size = new Size(356, 98);
             deviceContainer.TabIndex = 7;
             // 
             // panel7
@@ -320,7 +303,7 @@
             // 
             violationContainer.BackColor = Color.FromArgb(255, 192, 128);
             violationContainer.Controls.Add(panel6);
-            violationContainer.Location = new Point(0, 490);
+            violationContainer.Location = new Point(0, 294);
             violationContainer.Margin = new Padding(0);
             violationContainer.Name = "violationContainer";
             violationContainer.Size = new Size(356, 98);
@@ -359,7 +342,7 @@
             // 
             statisticsContainer.BackColor = Color.FromArgb(255, 192, 128);
             statisticsContainer.Controls.Add(panel14);
-            statisticsContainer.Location = new Point(0, 588);
+            statisticsContainer.Location = new Point(0, 392);
             statisticsContainer.Margin = new Padding(0);
             statisticsContainer.Name = "statisticsContainer";
             statisticsContainer.Size = new Size(356, 98);
@@ -473,6 +456,5 @@
         private FlowLayoutPanel statisticsContainer;
         private Panel panel14;
         private Button bt_statistics;
-        private Label bt_logout;
     }
 }

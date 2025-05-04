@@ -3,13 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 13, 2025 lúc 09:35 AM
+-- Thời gian đã tạo: Th5 04, 2025 lúc 02:26 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,10 +19,9 @@ SET time_zone = "+00:00";
 
 --
 -- Cơ sở dữ liệu: `qltv`
-CREATE DATABASE qltv;
-USE qltv;
 --
-
+create database qltv;
+use qltv;
 -- --------------------------------------------------------
 
 --
@@ -29,10 +29,10 @@ USE qltv;
 --
 
 CREATE TABLE `account` (
-    `account_id` VARCHAR(10) NOT NULL,
-    `password` VARCHAR(20) NOT NULL,
-    `role` INT(1) NULL DEFAULT '1'
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+  `account_id` varchar(10) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `role` int(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `account`
@@ -40,14 +40,9 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `password`, `role`) VALUES
 ('admin1', '123456', 0),
-('TV112', '1234', 1),
-('TV113', '1234', 1),
-('TV114', '1234', 1),
-('TV115', '1234', 1),
-('TV116', '1234', 1),
-('TV117', '1234', 1),
-('TV118', '1234', 1);
-
+('TV001', '123456', '1'),
+('TV002', '123456', '1'),
+('TV003', '123456', '1');
 -- --------------------------------------------------------
 
 --
@@ -55,13 +50,20 @@ INSERT INTO `account` (`account_id`, `password`, `role`) VALUES
 --
 
 CREATE TABLE `borroweddevices` (
-    `borrowed_id` VARCHAR(10) NOT NULL,
-    `member_id` VARCHAR(10) NOT NULL,
-    `device_id` VARCHAR(10) NOT NULL,
-    `borrow_date` DATE NOT NULL,
-    `return_date` DATE NOT NULL,
-    `status` ENUM('Đã trả lại', 'Bị mất/Hư', 'Chưa trả lại') NOT NULL DEFAULT 'Chưa trả lại'
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+  `member_id` varchar(10) NOT NULL,
+  `device_id` varchar(10) NOT NULL,
+  `borrow_date` date NOT NULL,
+  `due_date` date NOT NULL,
+  `return_date` date DEFAULT NULL,
+  `status` enum('Đã trả lại','Mất thiết bị/Hư','Đang mượn') NOT NULL DEFAULT 'Đang mượn'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `borroweddevices`
+--
+
+
+
 
 -- --------------------------------------------------------
 
@@ -70,22 +72,23 @@ CREATE TABLE `borroweddevices` (
 --
 
 CREATE TABLE `devices` (
-  `device_id` VARCHAR(10) NOT NULL,
-  `device_name` VARCHAR(30) NOT NULL,
-  `device_type` VARCHAR(20) NOT NULL,
-  `status` ENUM('Bình thường','Được đặt chỗ','Đang được mượn') NOT NULL DEFAULT 'Bình thường'
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+  `device_id` varchar(10) NOT NULL,
+  `device_name` varchar(30) NOT NULL,
+  `device_type` varchar(20) NOT NULL,
+  `status` enum('Có sẵn','Được đặt chỗ','Đang được mượn') NOT NULL DEFAULT 'Có sẵn'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `devices`
 --
 
 INSERT INTO `devices` (`device_id`, `device_name`, `device_type`, `status`) VALUES
-('D001', 'iPad Air', 'Tablet', 'Bình thường'),
-('D002', 'Dell XPS 13', 'Laptop', 'Được đặt chỗ'),
-('D003', 'Canon EOS 90D', 'Camera', 'Đang được mượn'),
-('D004', 'Samsung Galaxy Tab', 'Tablet', 'Bình thường'),
-('D005', 'MacBook Pro', 'Laptop', 'Bình thường');
+('D001', 'Laptop Dell Latitude 5420', 'Laptop', 'có sẵn'),
+('D002', 'Máy in Canon LBP2900', 'Printer', 'có sẵn'),
+('D003', 'Màn hình Samsung 24"', 'Monitor', 'có sẵn'),
+('D004', 'Bàn phím Logitech K120', 'Keyboard', 'có sẵn'),
+('D005', 'Chuột không dây Logitech M185', 'Mouse', 'có sẵn'),
+('D006', 'Router TP-Link Archer C6', 'Networking', 'có sẵn');
 
 -- --------------------------------------------------------
 
@@ -94,11 +97,11 @@ INSERT INTO `devices` (`device_id`, `device_name`, `device_type`, `status`) VALU
 --
 
 CREATE TABLE `memberhistory` (
-  `member_id` VARCHAR(10) NOT NULL,
-  `device_id` VARCHAR(10) NOT NULL,
-  `violation_id` VARCHAR(10) NOT NULL,
-  `reservation_id` VARCHAR(10) NOT NULL
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+  `member_id` varchar(10) NOT NULL,
+  `device_id` varchar(10) NOT NULL,
+  `violation_id` varchar(10) NOT NULL,
+  `reservation_id` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -106,29 +109,28 @@ CREATE TABLE `memberhistory` (
 -- Cấu trúc bảng cho bảng `members`
 --
 
-CREATE TABLE `members` (    
-    `member_id` VARCHAR(10) NOT NULL,
-    `full_name` VARCHAR(30) NOT NULL,
-    `gender` VARCHAR(4) NOT NULL,
-    `number_phone` VARCHAR(11) NOT NULL,
-    `dob` DATE NOT NULL,
-    `email` VARCHAR(50) NOT NULL,
-    `status` ENUM('Hoạt động', 'Đang bị phạt', 'Bị cấm') NOT NULL DEFAULT 'Hoạt động'
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+CREATE TABLE `members` (
+  `member_id` varchar(10) NOT NULL,
+  `full_name` varchar(30) NOT NULL,
+  `gender` varchar(4) NOT NULL,
+  `number_phone` varchar(11) NOT NULL,
+  `dob` date NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `status` enum('Đang hoạt động','Đang bị cánh cáo','Đang bị tạm khóa','Khóa vĩnh viễn') NOT NULL DEFAULT 'Đang hoạt động'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `members`
 --
 
 INSERT INTO `members` (`member_id`, `full_name`, `gender`, `number_phone`, `dob`, `email`, `status`) VALUES
-('admin1', 'admin', 'Nam', '123456789', '2000-01-11', 'admin1@gmail.com', 'Hoạt động'),
-('TV112', 'Nguyen Van A', 'Nữ', '732183421', '2000-01-02', 'NguyenVanA123@gmail.com', 'Hoạt động'),
-('TV113', 'TV112', 'Nam', '0123456789', '2000-01-23', 'TV112@gmail.com', 'Hoạt động'),
-('TV114', 'Nguyễn Văn A', 'Nữ', '0987654321', '1990-05-01', 'nguyenvana@example.com', 'Hoạt động'),
-('TV115', 'Trần Thị B', 'Nữ', '0912345678', '1988-03-14', 'tranthib@example.com', 'Đang bị phạt'),
-('TV116', 'Lê Minh C', 'Nữ', '0934567890', '1992-07-23', 'leminhc@example.com', 'Hoạt động'),
-('TV117', 'Phạm Thị D', 'Nữ', '0978123456', '1995-11-30', 'phamthid@example.com', 'Bị cấm'),
-('TV118', 'Hoàng Quốc E', 'Nữ', '0901234567', '1997-02-20', 'hoangquoce@example.com', 'Hoạt động');
+('admin1', 'admin', 'nam', '123456789', '2000-01-11', 'admin1@gmail.com', ''),
+('TV001', 'Nguyễn Văn A', 'Nam', '0901234567', '1990-05-10', 'a.nguyen@example.com', 'Đang hoạt động'),
+('TV002', 'Trần Thị B', 'Nữ', '0912345678', '1992-08-15', 'b.tran@example.com', 'Đang hoạt động'),
+('TV003', 'Lê Văn C', 'Nam', '0923456789', '1988-12-20', 'c.le@example.com', 'Đang hoạt động'),
+('TV004', 'Phạm Thị D', 'Nữ', '0934567890', '1995-03-25', 'd.pham@example.com', 'Đang hoạt động'),
+('TV005', 'Hoàng Văn E', 'Nam', '0945678901', '1993-07-30', 'e.hoang@example.com', 'Đang hoạt động'),
+('TV006', 'Đỗ Thị F', 'Nữ', '0956789012', '1991-11-05', 'f.do@example.com', 'Đang hoạt động');
 
 -- --------------------------------------------------------
 
@@ -137,27 +139,19 @@ INSERT INTO `members` (`member_id`, `full_name`, `gender`, `number_phone`, `dob`
 --
 
 CREATE TABLE `reservations` (
-    `reservation_id` VARCHAR(10) NOT NULL,
-    `member_id` VARCHAR(10) NOT NULL,
-    `device_id` VARCHAR(10) NOT NULL,
-    `reservation_date` DATE NOT NULL,
-    `borrowed_date` DATE NOT NULL,
-    `returned_date` DATE NOT NULL,
-    `status` ENUM('Chờ duyệt', 'Chấp nhận', 'Từ chối') NULL DEFAULT 'Chờ duyệt'
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+  `reservation_id` varchar(10) NOT NULL,
+  `member_id` varchar(10) NOT NULL,
+  `device_id` varchar(10) NOT NULL,
+  `reservation_date` date NOT NULL,
+  `borrowed_date` date NOT NULL,
+  `returned_date` date NOT NULL,
+  `status` enum('Chờ duyệt','Chấp nhận','Từ chối') DEFAULT 'Chờ duyệt'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `reservations`
 --
 
-INSERT INTO `reservations` 
-(`reservation_id`, `member_id`, `device_id`, `reservation_date`, `borrowed_date`, `returned_date`, `status`)
-VALUES
-('R001', 'TV112', 'D001', '2025-04-01', '2025-04-02', '2025-04-10', 'Chấp nhận'),
-('R002', 'TV113', 'D002', '2025-04-03', '2025-04-04', '2025-04-12', 'Chờ duyệt'),
-('R003', 'TV114', 'D003', '2025-04-05', '2025-04-06', '2025-04-15', 'Từ chối'),
-('R004', 'TV115', 'D004', '2025-04-07', '2025-04-08', '2025-04-17', 'Chấp nhận'),
-('R005', 'TV116', 'D005', '2025-04-09', '2025-04-10', '2025-04-18', 'Chờ duyệt');
 
 -- --------------------------------------------------------
 
@@ -166,33 +160,22 @@ VALUES
 --
 
 CREATE TABLE `violations` (
-  `violation_id` VARCHAR(10) NOT NULL,
-  `member_id` VARCHAR(10) NOT NULL,
-  `violation_type` VARCHAR(50) NOT NULL,
-  `penalty` VARCHAR(50) NOT NULL,
-  `violation_date` DATE NOT NULL,
-  `block_date` DATE DEFAULT NULL,
-  `unblock_date` DATE DEFAULT NULL,
-  `status` ENUM('Đang hoạt động','Khóa tạm thời','Khóa vĩnh viễn') NOT NULL DEFAULT 'Đang hoạt động',
-  `warning_count` INT NOT NULL DEFAULT 0
-) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_GENERAL_CI;
+  `violation_id` varchar(10) NOT NULL,
+  `member_id` varchar(10) NOT NULL,
+  `violation_type` varchar(50) NOT NULL,
+  `penalty` varchar(50) NOT NULL,
+  `violation_date` date NOT NULL,
+  `block_date` date DEFAULT NULL,
+  `unblock_date` date DEFAULT NULL,
+  `status` enum('Đang hoạt động','Phạt đền bù','Khóa tạm thời','Khóa vĩnh viễn') DEFAULT NULL,
+  `warning_count` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `violations`
 --
 
-INSERT INTO `violations` 
-(`violation_id`, `member_id`, `violation_type`, `penalty`, `violation_date`, `block_date`, `unblock_date`, `status`, `warning_count`)
-VALUES
-('V001', 'TV112', 'Trả thiết bị trễ', 'Cảnh cáo', '2025-05-01', NULL, NULL, 'Đang hoạt động', 1),
-('V002', 'TV113', 'Làm hỏng thiết bị', 'Phạt: 50$ (Yêu cầu đền bù)', '2025-05-02', '2025-05-02', '2025-05-05', 'Khóa tạm thời', 1),
-('V003', 'TV114', 'Làm mất thiết bị', 'Yêu cầu đền bù', '2025-05-03', '2025-05-03', '2025-05-06', 'Khóa tạm thời', 1),
-('V004', 'TV115', 'Sử dụng sai mục đích', 'Cảnh cáo', '2025-05-04', NULL, NULL, 'Đang hoạt động', 0),
-('V005', 'TV116', 'Trả trễ nhiều lần', 'Phạt: 20$', '2025-05-05', '2025-05-05', '2025-05-08', 'Khóa tạm thời', 2),
-('V006', 'TV117', 'Làm hỏng thiết bị', 'Phạt: 100$ (Yêu cầu đền bù)', '2025-05-06', '2025-05-06', '2025-05-09', 'Khóa tạm thời', 1),
-('V007', 'TV118', 'Trả thiết bị trễ', 'Cảnh cáo', '2025-05-07', NULL, NULL, 'Đang hoạt động', 1),
-('V008', 'TV119', 'Trả thiết bị trễ', 'Cảnh cáo', '2025-05-08', '2025-05-08', NULL, 'Khóa vĩnh viễn', 3);
--- --------------------------------------------------------
+
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -208,8 +191,7 @@ ALTER TABLE `account`
 -- Chỉ mục cho bảng `borroweddevices`
 --
 ALTER TABLE `borroweddevices`
-  ADD PRIMARY KEY (`borrowed_id`),
-  ADD KEY `device_id` (`device_id`),
+  ADD PRIMARY KEY (`device_id`) USING BTREE,
   ADD KEY `member_id` (`member_id`);
 
 --
@@ -286,7 +268,6 @@ ALTER TABLE `reservations`
 --
 ALTER TABLE `violations`
   ADD CONSTRAINT `violations_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `members` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
