@@ -38,7 +38,7 @@ namespace qltv.GUI.UI_For_Admin
 
             // Thiết lập dropdown trạng thái
             cmbStatus.Items.Clear();
-            cmbStatus.Items.Add("Bình thường");
+            cmbStatus.Items.Add("Có sẵn");
             cmbStatus.Items.Add("Được đặt chỗ");
             cmbStatus.Items.Add("Đang được mượn");
             cmbStatus.SelectedIndex = 0;
