@@ -13,6 +13,13 @@ namespace QLTV
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            // load Home when start 
+            Home home = new Home();
+            home.TopLevel = false;
+            home.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(home);
+            home.Show();
         }
 
         private void bt_device_transition_Click(object sender, EventArgs e)
