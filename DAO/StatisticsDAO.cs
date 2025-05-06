@@ -1,5 +1,6 @@
 using MySql.Data.MySqlClient;
 using qltv.DTO;
+using QLTV.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -7,12 +8,12 @@ namespace qltv.DAO
 {
     public class StatisticsDAO
     {
-        private static string connectionString = "Server=127.0.0.1;Database=qltv;Uid=root;Pwd=123456;"; // Update password as needed
+        private static string connectionString = "Server=127.0.0.1;Database=qltv;Uid=root;Pwd=;"; // Update password as needed
 
         public List<StatisticsMemberVisitDTO> GetMemberVisitStatistics(DateTime startDate, DateTime endDate)
         {
             List<StatisticsMemberVisitDTO> result = new List<StatisticsMemberVisitDTO>();
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 string query = @"
@@ -51,7 +52,7 @@ namespace qltv.DAO
         public List<StatisticsDeviceBorrowingDTO> GetDeviceBorrowingStatistics(DateTime startDate, DateTime endDate)
         {
             List<StatisticsDeviceBorrowingDTO> result = new List<StatisticsDeviceBorrowingDTO>();
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 string query = @"
@@ -90,7 +91,7 @@ namespace qltv.DAO
         public List<StatisticsBorrowedDeviceDTO> GetCurrentBorrowedDevices(DateTime startDate, DateTime endDate)
         {
             List<StatisticsBorrowedDeviceDTO> result = new List<StatisticsBorrowedDeviceDTO>();
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 string query = @"
@@ -130,7 +131,7 @@ namespace qltv.DAO
         public List<StatisticsViolationDTO> GetViolationStatistics()
         {
             List<StatisticsViolationDTO> result = new List<StatisticsViolationDTO>();
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 string query = @"
