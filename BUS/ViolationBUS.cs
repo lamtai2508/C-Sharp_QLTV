@@ -175,20 +175,50 @@ namespace qltv.BUS
 
             // Cập nhật block_date và unblock_date khi chuyển trạng thái
             ViolationDTO existingViolation = ViolationDAO.GetViolationById(violation.violation_id);
-            if (existingViolation != null && existingViolation.status == "Cảnh cáo" && violation.status == "Khóa tạm thời")
+            if (existingViolation != null && existingViolation.status == "Đang hoạt động" && violation.status == "Khóa tạm thời")
             {
-                violation.block_date = DateTime.Now.ToString("yyyy-MM-dd");
+                violation.warning_count = 2;
+                violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
                 violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
             }
             else if (violation.status == "Khóa vĩnh viễn")
             {
                 violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
                 violation.unblock_date = null;
+                violation.warning_count = 3;
+                string memberStatus = "Khóa vĩnh viễn";
+                MemberDTO memberDTO = new MemberDTO
+                {
+                    member_id = violation.member_id,
+                    status = memberStatus
+                };
+                MemberDAO.UpdateStatusMember(memberDTO);
             }
-            else if (violation.status == "Cảnh cáo")
+            else if (violation.status == "Đang hoạt động")
             {
                 violation.block_date = null;
                 violation.unblock_date = null;
+                violation.warning_count = 1;
+                string memberStatus = "Đang bị cảnh cáo";
+                MemberDTO memberDTO = new MemberDTO
+                {
+                    member_id = violation.member_id,
+                    status = memberStatus
+                };
+                MemberDAO.UpdateStatusMember(memberDTO);
+            }
+            else if (violation.status == "Khóa tạm thời")
+            {
+                violation.warning_count = 2;
+                violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
+                string memberStatus = "Đang bị tạm khóa";
+                MemberDTO memberDTO = new MemberDTO
+                {
+                    member_id = violation.member_id,
+                    status = memberStatus
+                };
+                MemberDAO.UpdateStatusMember(memberDTO);
             }
 
             return ViolationDAO.UpdateViolation(violation);
