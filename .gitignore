@@ -364,5 +364,4 @@ FodyWeavers.xsd
 /Database/DatabaseHelep.cs
 /Database/DatabaseHelep.cs
 Database/DatabaseHelep.cs
-/Database/DatabaseHelper.cs
-/DAO/StatisticsDAO.cs
+
