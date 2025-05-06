@@ -14,7 +14,7 @@ namespace qltv.DTO
         public DateTime borrow_date {  get; set; }
         public DateTime due_date { get; set; }
 
-        public DateTime return_date {  get; set; }
+        public DateTime? return_date {  get; set; }
         public string status {  get; set; }
         public BorrowedDeviceDTO() { }
         public BorrowedDeviceDTO(string borrowed_id, string member_id, string device_id, DateTime borrow_date, DateTime due_date , DateTime return_date, string status)

@@ -237,5 +237,10 @@ namespace qltv.GUI.UI_For_Admin
         {
             load_data();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

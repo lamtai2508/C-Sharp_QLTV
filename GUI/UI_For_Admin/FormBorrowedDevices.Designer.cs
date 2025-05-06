@@ -46,6 +46,7 @@
             textBox1.Size = new Size(466, 61);
             textBox1.TabIndex = 0;
             textBox1.Text = " Xử lý đặt chỗ thiết bị";
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // table_BDL
             // 
