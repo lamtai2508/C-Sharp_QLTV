@@ -60,18 +60,6 @@ namespace qltv.BUS
                     if (violation.violation_type.Contains("Trả muộn") || violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
                     {
                         newWarningCount += 1; // Tăng warning_count thêm 1 cho vi phạm mới
-
-                        if (newWarningCount >= 1)
-                        {
-                            string memberStatus = "Đang bị cảnh cáo";
-                            MemberDTO memberDTO = new MemberDTO
-                            {
-                                member_id = violation.member_id,
-                                status = memberStatus
-                            };
-
-                            MemberDAO.UpdateStatusMember(memberDTO);
-                        }
                     }
 
                     // Xác định trạng thái và ngày khóa/mở khóa
@@ -138,6 +126,17 @@ namespace qltv.BUS
                 if (violation.violation_type.Contains("Trả muộn") || violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
                 {
                     warningCount = 1;
+                    if (warningCount == 1)
+                    {
+                        string memberStatus = "Đang bị cảnh cáo";
+                        MemberDTO memberDTO = new MemberDTO
+                        {
+                            member_id = violation.member_id,
+                            status = memberStatus
+                        };
+
+                        MemberDAO.UpdateStatusMember(memberDTO);
+                    }
                     if (violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
                     {
                         violation.penalty += " (Yêu cầu đền bù)";
@@ -197,7 +196,25 @@ namespace qltv.BUS
 
         public static bool DeleteViolation(string violation_id)
         {
-            return ViolationDAO.DeleteViolation(violation_id);
+            ViolationDTO violation = ViolationDAO.GetViolationById(violation_id);
+            if (violation == null)
+            {
+                // Không tìm thấy vi phạm, không thể tiếp tục
+                return false;
+            }
+            if (ViolationDAO.DeleteViolation(violation_id))
+            {
+                string memberStatus = "Đang hoạt động";
+                MemberDTO memberDTO = new MemberDTO
+                {
+                    member_id = violation.member_id,
+                    status = memberStatus
+                };
+
+                MemberDAO.UpdateStatusMember(memberDTO);
+                return true;
+            }
+            return false;
         }
 
         public static DataTable SearchViolation(string keyword)
