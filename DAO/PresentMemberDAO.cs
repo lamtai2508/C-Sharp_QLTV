@@ -17,17 +17,39 @@ namespace qltv_Winform.DAO
         // lấy tất cả dữ liệu của bảng presentmembers
         public static DataTable GetALLPresentMember()
         {
-            // Lấy tất cả trừ admin ra
             string query = "select * from presentmembers";
             return DatabaseHelper.GetData(query);
         }
 
-        
+        // add leavetime to presentmember by member_id
+        public static bool AddLeaveTimeToPresentMember(string member_id, DateTime leave_time)
+        {
+            string query = "update presentmembers set leavetime = @leave_time where member_id = @member_id";
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@member_id", member_id);
+                    cmd.Parameters.AddWithValue("@leave_time", leave_time);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Lỗi: " + ex.Message);
+                        return false;
+                    }
+                }
+            }
+        }
 
         // thêm thành viên vào bảng presentmembers
-        public static bool AddPresentMember(PresentMemberDTO presentMember)
+        public static bool AddPresentMemberExceptLeaveTime(PresentMemberDTO presentMember)
         {
-            string query = "insert into presentmembers(member_id, full_name, appear_time, leave_time) values(@member_id, @full_name, @appear_time, @leave_time)";
+            string query = "insert into presentmembers(member_id, full_name, appeartime) values(@member_id, @full_name, @appear_time)";
 
             using (MySqlConnection conn = DatabaseHelper.GetConnection())
             {
@@ -37,7 +59,6 @@ namespace qltv_Winform.DAO
                     cmd.Parameters.AddWithValue("@member_id", presentMember.member_id);
                     cmd.Parameters.AddWithValue("@full_name", presentMember.full_name);
                     cmd.Parameters.AddWithValue("@appear_time", presentMember.appear_time);
-                    cmd.Parameters.AddWithValue("@leave_time", presentMember.leave_time);
                     try
                     {
                         cmd.ExecuteNonQuery();

@@ -1,5 +1,6 @@
 using qltv.GUI.UI_For_Admin;
 using qltv.GUI.UI_For_User;
+using qltv_Winform.GUI.UI_For_Admin;
 
 namespace QLTV
 {
@@ -7,6 +8,7 @@ namespace QLTV
     {
         bool menuExpand = true;
         bool deviceExpand = false;
+        bool memberExpand = false;
 
         public FormAdminDashboard()
         {
@@ -32,8 +34,13 @@ namespace QLTV
             menuTransition.Start();
         }
 
+        private void bt_member_click(object sender, EventArgs e)
+        {
+            memberTransition.Start();
+        }
+
         //event hiện thị form danh sách thành viên
-        private void bt_member_Click(object sender, EventArgs e)
+        private void bt_memberlist_Click(object sender, EventArgs e)
         {
             FormMember mbList = new FormMember();
 
@@ -44,6 +51,18 @@ namespace QLTV
             contentContainer.Controls.Add(mbList);
             mbList.Show();
         }
+
+        //event hiện thị form khu hoc tap
+        private void bt_learnspace_Click(object sender, EventArgs e)
+        {
+            FormLearnSpace learnSpace = new FormLearnSpace();
+            contentContainer.Controls.Clear();
+            learnSpace.TopLevel = false;
+            learnSpace.Dock = DockStyle.Fill;
+            contentContainer.Controls.Add(learnSpace);
+            learnSpace.Show();
+        }
+
 
         //event hiện thị form trang chủ
         private void bt_home_Click_1(object sender, EventArgs e)
@@ -165,6 +184,36 @@ namespace QLTV
                 {
                     deviceTransition.Stop();
                     deviceExpand = false;
+                }
+            }
+        }
+
+        private void memberTransition_Tick(object sender, EventArgs e)
+        {
+            if (memberExpand == false)
+            {
+                // tự động phóng to menu khi click icon device
+                menuTransition.Start();
+                if (sidebar.Width >= 355)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+
+                memberContainer.Height += 5;
+                if (memberContainer.Height >= 290)
+                {
+                    memberTransition.Stop();
+                    memberExpand = true;
+                }
+            }
+            else
+            {
+                memberContainer.Height -= 5;
+                if (memberContainer.Height <= 98)
+                {
+                    memberTransition.Stop();
+                    memberExpand = false;
                 }
             }
         }

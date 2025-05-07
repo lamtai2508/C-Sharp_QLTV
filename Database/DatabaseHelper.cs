@@ -8,7 +8,7 @@ namespace QLTV.Resources
 {
     class DatabaseHelper
     {
-        private static string ConnectionString = "server=localhost;user=root;password=;database=qltv;port=3306";
+        private static string ConnectionString = "server=localhost;user=root;password=123456;database=qltv;port=3306";
 
         // Hàm kết nối database
         public static MySqlConnection GetConnection()
