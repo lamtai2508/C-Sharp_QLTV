@@ -49,13 +49,22 @@ namespace qltv_Winform.GUI.UI_For_Admin
 
         }
 
+        private void FormLearnSpace_Click(object sender, EventArgs e)
+        {
+            // Clear selection in the DataGridView
+            presentmember_table.ClearSelection();
+        }
+
         private void btCheckin_Click(object sender, EventArgs e)
         {
             var member_id = member_idtb.Text;
             var member = MemberDAO.GetMemberById(member_id);
 
+
             if (member != null)
             {
+
+
                 // Get current time
                 DateTime currentTime = DateTime.Now;
                 // Create a new PresentMemberDTO object
@@ -140,6 +149,18 @@ namespace qltv_Winform.GUI.UI_For_Admin
             else
             {
                 MessageBox.Show("Vui lòng chọn một thành viên để check-out!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void presentmember_table_SelectionChanged(object sender, EventArgs e)
+        {
+            if (presentmember_table.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = presentmember_table.SelectedRows[0];
+                if (selectedRow.Cells["member_id"]?.Value is string memberId && !string.IsNullOrEmpty(memberId))
+                {
+                    member_idtb.Text = memberId;
+                }
             }
         }
 

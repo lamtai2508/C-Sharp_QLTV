@@ -72,6 +72,20 @@ namespace qltv_Winform.DAO
                 }
             }
         }
+        public static bool IsMemberInGroupWithNullLeaveTime(string member_id)
+        {
+            string query = "SELECT COUNT(*) FROM presentmembers WHERE leavetime IS NULL AND member_id = @member_id";
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@member_id", member_id);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // Return true if the member exists in the group
+                }
+            }
+        }
 
 
     }

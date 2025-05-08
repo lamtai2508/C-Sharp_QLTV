@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 -- Cấu trúc bảng cho bảng `account`
 --
 
+
+use qltv;
 CREATE TABLE `account` (
   `account_id` varchar(10) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -159,6 +161,26 @@ CREATE TABLE `violations` (
   `status` enum('Đang hoạt động','Phạt đền bù','Khóa tạm thời','Khóa vĩnh viễn') DEFAULT NULL,
   `warning_count` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+create table `presentmembers` (
+	`member_id` varchar(10) NOT NULL, 
+	`full_name` varchar(30) NOT NULL,
+    `appeartime` datetime NOT NULL, 
+    `leavetime` datetime
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `presentmembers`
+  ADD KEY `member_id` (`member_id`);
+  
+ALTER TABLE `presentmembers`
+  ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `members` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+insert into `presentmembers` (`member_id`, `full_name`, `appeartime`, `leavetime`) values 
+('TV001', 'Nguyen Van A', '2025-5-7 12:20:11', '2025-5-7 13:20:11'), 
+('TV002', 'Tran Thi B', '2025-5-7 12:20:11', '2025-5-7 15:20:11'), 
+('TV001', 'Nguyen Van A', '2025-5-7 17:20:11', '2025-5-7 20:20:11'), 
+('TV002', 'Tran Thi B', '2025-5-7 21:20:11', '2025-5-7 22:20:11');    
+
 
 --
 -- Chỉ mục cho các bảng đã đổ

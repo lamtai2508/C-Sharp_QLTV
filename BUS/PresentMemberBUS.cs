@@ -14,15 +14,17 @@ namespace qltv.BUS
         public static bool AddPresentMember(PresentMemberDTO presentMember)
         {
             // Thêm thành viên check in vào bảng presentmembers
-
-
             return PresentMemberDAO.AddPresentMemberExceptLeaveTime(presentMember);
         }
 
         public static bool UpdateLeaveTime(string member_id, DateTime leave_time)
         {
-            // Thêm thời gian check out vào bảng presentmembers
-            return PresentMemberDAO.AddLeaveTimeToPresentMember(member_id, leave_time);
+            // Kiểm tra nếu member co mat
+            if (PresentMemberDAO.IsMemberInGroupWithNullLeaveTime(member_id))
+            {
+                return PresentMemberDAO.AddLeaveTimeToPresentMember(member_id, leave_time);
+            }
+            return false;
         }
     }
 }
