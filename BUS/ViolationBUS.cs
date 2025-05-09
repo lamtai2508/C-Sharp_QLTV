@@ -55,41 +55,25 @@ namespace qltv.BUS
                     string newViolationType = $"{existingViolation.violation_type}; {violation.violation_type}";
                     string newPenalty = $"{existingViolation.penalty}; {violation.penalty}";
 
-                    // Tính lại warning_count
-                    int newWarningCount = existingViolation.warning_count;
-                    if (violation.violation_type.Contains("Trả muộn") || violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
-                    {
-                        newWarningCount += 1; // Tăng warning_count thêm 1 cho vi phạm mới
-                    }
+                    // Tăng warning_count thêm 1
+                    int newWarningCount = existingViolation.warning_count + 1;
 
-                    // Xác định trạng thái và ngày khóa/mở khóa
-                    string blockDate = newWarningCount >= 2 ? DateTime.Now.ToString("yyyy-MM-dd") : existingViolation.block_date;
-                    string unblockDate = newWarningCount == 2 ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : existingViolation.unblock_date;
+                    // Xác định trạng thái và ngày khóa/mở khóa dựa trên warning_count
                     string status;
+                    string blockDate = existingViolation.block_date;
+                    string unblockDate = existingViolation.unblock_date;
+
                     if (newWarningCount >= 3)
                     {
                         status = "Khóa vĩnh viễn";
+                        blockDate = DateTime.Now.ToString("yyyy-MM-dd");
                         unblockDate = null; // Không có ngày mở khóa khi khóa vĩnh viễn
-
-                        string memberStatus = "Khóa vĩnh viễn";
-                        MemberDTO memberDTO = new MemberDTO
-                        {
-                            member_id = violation.member_id,
-                            status = memberStatus
-                        };
-                        MemberDAO.UpdateStatusMember(memberDTO);
                     }
-                    else if (newWarningCount == 2 || violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
+                    else if (newWarningCount == 2)
                     {
                         status = "Khóa tạm thời";
-                        string memberStatus = "Đang bị tạm khóa";
-                        MemberDTO memberDTO = new MemberDTO
-                        {
-                            member_id = violation.member_id,
-                            status = memberStatus
-                        };
-                        MemberDAO.UpdateStatusMember(memberDTO);
-                        
+                        blockDate = DateTime.Now.ToString("yyyy-MM-dd");
+                        unblockDate = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd"); // Mặc định khóa 3 ngày
                     }
                     else
                     {
@@ -122,36 +106,15 @@ namespace qltv.BUS
             else
             {
                 // Thêm vi phạm mới nếu member_id chưa tồn tại
-                int warningCount = 0;
-                if (violation.violation_type.Contains("Trả muộn") || violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
-                {
-                    warningCount = 1;
-                    if (warningCount == 1)
-                    {
-                        string memberStatus = "Đang bị cảnh cáo";
-                        MemberDTO memberDTO = new MemberDTO
-                        {
-                            member_id = violation.member_id,
-                            status = memberStatus
-                        };
+                int warningCount = 1; // Bắt đầu với 1 cảnh cáo cho vi phạm đầu tiên
+                string status = "Đang hoạt động";
+                string blockDate = null;
+                string unblockDate = null;
 
-                        MemberDAO.UpdateStatusMember(memberDTO);
-                    }
-                    if (violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
-                    {
-                        violation.penalty += " (Yêu cầu đền bù)";
-                    }
-                }
-
-                string status = warningCount >= 2 || violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị") ? "Khóa tạm thời" : "Đang hoạt động";
-                string blockDate = status == "Khóa tạm thời" ? DateTime.Now.ToString("yyyy-MM-dd") : null;
-                string unblockDate = status == "Khóa tạm thời" ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : null;
-               
-                if (warningCount >= 3)
+                // Yêu cầu đền bù nếu hư hỏng hoặc mất thiết bị
+                if (violation.violation_type.Contains("Hư hỏng") || violation.violation_type.Contains("Mất thiết bị"))
                 {
-                    status = "Khóa vĩnh viễn";
-                    blockDate = DateTime.Now.ToString("yyyy-MM-dd");
-                    unblockDate = null;
+                    violation.penalty += " (Yêu cầu đền bù)";
                 }
 
                 violation.warning_count = warningCount;
@@ -173,52 +136,74 @@ namespace qltv.BUS
                 return false;
             }
 
-            // Cập nhật block_date và unblock_date khi chuyển trạng thái
+            // Lấy thông tin vi phạm hiện tại
             ViolationDTO existingViolation = ViolationDAO.GetViolationById(violation.violation_id);
-            if (existingViolation != null && existingViolation.status == "Đang hoạt động" && violation.status == "Khóa tạm thời")
+            if (existingViolation != null)
             {
-                violation.warning_count = 2;
-                violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
-                violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
-            }
-            else if (violation.status == "Khóa vĩnh viễn")
-            {
-                violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
-                violation.unblock_date = null;
-                violation.warning_count = 3;
-                string memberStatus = "Khóa vĩnh viễn";
-                MemberDTO memberDTO = new MemberDTO
+                // So sánh trạng thái hiện tại và trạng thái mới để điều chỉnh warning_count
+                int newWarningCount = violation.warning_count;
+
+                // Xử lý thay đổi trạng thái và điều chỉnh warning_count
+                if (existingViolation.status == "Khóa vĩnh viễn" && violation.status == "Khóa tạm thời")
                 {
-                    member_id = violation.member_id,
-                    status = memberStatus
-                };
-                MemberDAO.UpdateStatusMember(memberDTO);
-            }
-            else if (violation.status == "Đang hoạt động")
-            {
-                violation.block_date = null;
-                violation.unblock_date = null;
-                violation.warning_count = 1;
-                string memberStatus = "Đang bị cảnh cáo";
-                MemberDTO memberDTO = new MemberDTO
+                    newWarningCount = Math.Max(0, newWarningCount - 1); // Giảm warning_count đi 1
+                    violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                    violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
+                }
+                else if (existingViolation.status == "Khóa vĩnh viễn" && violation.status == "Đang hoạt động")
                 {
-                    member_id = violation.member_id,
-                    status = memberStatus
-                };
-                MemberDAO.UpdateStatusMember(memberDTO);
-            }
-            else if (violation.status == "Khóa tạm thời")
-            {
-                violation.warning_count = 2;
-                violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
-                violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
-                string memberStatus = "Đang bị tạm khóa";
-                MemberDTO memberDTO = new MemberDTO
+                    newWarningCount = Math.Max(0, newWarningCount - 2); // Giảm warning_count đi 2
+                    violation.block_date = null;
+                    violation.unblock_date = null;
+                }
+                else if (existingViolation.status == "Khóa tạm thời" && violation.status == "Đang hoạt động")
                 {
-                    member_id = violation.member_id,
-                    status = memberStatus
-                };
-                MemberDAO.UpdateStatusMember(memberDTO);
+                    newWarningCount = Math.Max(0, newWarningCount - 1); // Giảm warning_count đi 1
+                    violation.block_date = null;
+                    violation.unblock_date = null;
+                }
+                else if (existingViolation.status == "Đang hoạt động" && violation.status == "Khóa tạm thời")
+                {
+                    newWarningCount += 1; // Tăng warning_count thêm 1
+                    violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                    violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
+                }
+                else if (existingViolation.status == "Đang hoạt động" && violation.status == "Khóa vĩnh viễn")
+                {
+                    newWarningCount += 2; // Tăng warning_count thêm 2
+                    violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                    violation.unblock_date = null;
+                }
+                else if (existingViolation.status == "Khóa tạm thời" && violation.status == "Khóa vĩnh viễn")
+                {
+                    newWarningCount += 1; // Tăng warning_count thêm 1
+                    violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                    violation.unblock_date = null;
+                }
+                else
+                {
+                    // Cập nhật trạng thái dựa trên warning_count nếu không có thay đổi trạng thái đặc biệt
+                    if (newWarningCount >= 3)
+                    {
+                        violation.status = "Khóa vĩnh viễn";
+                        violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                        violation.unblock_date = null;
+                    }
+                    else if (newWarningCount == 2)
+                    {
+                        violation.status = "Khóa tạm thời";
+                        violation.block_date = string.IsNullOrEmpty(violation.block_date) ? DateTime.Now.ToString("yyyy-MM-dd") : violation.block_date;
+                        violation.unblock_date = string.IsNullOrEmpty(violation.unblock_date) ? DateTime.Now.AddDays(3).ToString("yyyy-MM-dd") : violation.unblock_date;
+                    }
+                    else
+                    {
+                        violation.status = "Đang hoạt động";
+                        violation.block_date = null;
+                        violation.unblock_date = null;
+                    }
+                }
+
+                violation.warning_count = newWarningCount;
             }
 
             return ViolationDAO.UpdateViolation(violation);
@@ -226,25 +211,7 @@ namespace qltv.BUS
 
         public static bool DeleteViolation(string violation_id)
         {
-            ViolationDTO violation = ViolationDAO.GetViolationById(violation_id);
-            if (violation == null)
-            {
-                // Không tìm thấy vi phạm, không thể tiếp tục
-                return false;
-            }
-            if (ViolationDAO.DeleteViolation(violation_id))
-            {
-                string memberStatus = "Đang hoạt động";
-                MemberDTO memberDTO = new MemberDTO
-                {
-                    member_id = violation.member_id,
-                    status = memberStatus
-                };
-
-                MemberDAO.UpdateStatusMember(memberDTO);
-                return true;
-            }
-            return false;
+            return ViolationDAO.DeleteViolation(violation_id);
         }
 
         public static DataTable SearchViolation(string keyword)
