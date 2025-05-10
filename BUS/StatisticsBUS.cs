@@ -72,5 +72,20 @@ namespace qltv.BUS
             }
             return dt;
         }
+
+        public static DataTable GetActiveMemberStatistics()
+        {
+            List<StatisticsActiveMemberDTO> data = dao.GetActiveMemberStatistics();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("member_id", typeof(string));
+            dt.Columns.Add("full_name", typeof(string));
+            dt.Columns.Add("appear_time", typeof(DateTime));
+
+            foreach (var item in data)
+            {
+                dt.Rows.Add(item.MemberId, item.FullName, item.AppearTime);
+            }
+            return dt;
+        }
     }
 }

@@ -23,15 +23,18 @@ namespace qltv.GUI.UI_For_Admin
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
             table_MemberStats = new DataGridView();
             table_DeviceBorrowing = new DataGridView();
             table_CurrentBorrowed = new DataGridView();
             table_Violations = new DataGridView();
+            table_ActiveMembers = new DataGridView();
             lbl_TotalCompensation = new Label();
             ((System.ComponentModel.ISupportInitialize)table_MemberStats).BeginInit();
             ((System.ComponentModel.ISupportInitialize)table_DeviceBorrowing).BeginInit();
             ((System.ComponentModel.ISupportInitialize)table_CurrentBorrowed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)table_Violations).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)table_ActiveMembers).BeginInit();
             SuspendLayout();
             // 
             // dateTimePickerStart
@@ -108,6 +111,16 @@ namespace qltv.GUI.UI_For_Admin
             label5.TabIndex = 7;
             label5.Text = "Tổng tiền bồi thường:";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label6.Location = new Point(50, 790);
+            label6.Name = "label6";
+            label6.Size = new Size(256, 28);
+            label6.TabIndex = 13;
+            label6.Text = "Thành viên đang hoạt động";
+            // 
             // table_MemberStats
             // 
             table_MemberStats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -144,6 +157,15 @@ namespace qltv.GUI.UI_For_Admin
             table_Violations.Size = new Size(900, 120);
             table_Violations.TabIndex = 11;
             // 
+            // table_ActiveMembers
+            // 
+            table_ActiveMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            table_ActiveMembers.Location = new Point(50, 830);
+            table_ActiveMembers.Name = "table_ActiveMembers";
+            table_ActiveMembers.RowHeadersWidth = 51;
+            table_ActiveMembers.Size = new Size(900, 120);
+            table_ActiveMembers.TabIndex = 14;
+            // 
             // lbl_TotalCompensation
             // 
             lbl_TotalCompensation.AutoSize = true;
@@ -158,12 +180,14 @@ namespace qltv.GUI.UI_For_Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 850);
+            ClientSize = new Size(1000, 1000);
+            Controls.Add(table_ActiveMembers);
             Controls.Add(lbl_TotalCompensation);
             Controls.Add(table_Violations);
             Controls.Add(table_CurrentBorrowed);
             Controls.Add(table_DeviceBorrowing);
             Controls.Add(table_MemberStats);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -179,6 +203,7 @@ namespace qltv.GUI.UI_For_Admin
             ((System.ComponentModel.ISupportInitialize)table_DeviceBorrowing).EndInit();
             ((System.ComponentModel.ISupportInitialize)table_CurrentBorrowed).EndInit();
             ((System.ComponentModel.ISupportInitialize)table_Violations).EndInit();
+            ((System.ComponentModel.ISupportInitialize)table_ActiveMembers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,10 +216,12 @@ namespace qltv.GUI.UI_For_Admin
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView table_MemberStats;
         private System.Windows.Forms.DataGridView table_DeviceBorrowing;
         private System.Windows.Forms.DataGridView table_CurrentBorrowed;
         private System.Windows.Forms.DataGridView table_Violations;
+        private System.Windows.Forms.DataGridView table_ActiveMembers;
         private System.Windows.Forms.Label lbl_TotalCompensation;
     }
 }

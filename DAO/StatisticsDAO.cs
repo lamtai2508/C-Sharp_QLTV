@@ -18,15 +18,14 @@ namespace qltv.DAO
                 conn.Open();
                 string query = @"
                     SELECT 
-                        r.borrowed_date AS visit_date,
+                        DATE(p.appeartime) AS visit_date,
                         m.status,
-                        COUNT(DISTINCT r.member_id) AS member_count
-                    FROM reservations r
-                    JOIN members m ON r.member_id = m.member_id
-                    WHERE r.borrowed_date BETWEEN @StartDate AND @EndDate
-                        AND r.status = 'Chấp nhận'
-                    GROUP BY r.borrowed_date, m.status
-                    ORDER BY r.borrowed_date, m.status";
+                        COUNT(DISTINCT p.member_id) AS member_count
+                    FROM presentmembers p
+                    JOIN members m ON p.member_id = m.member_id
+                    WHERE p.appeartime BETWEEN @StartDate AND @EndDate
+                    GROUP BY DATE(p.appeartime), m.status
+                    ORDER BY visit_date, m.status";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -103,7 +102,7 @@ namespace qltv.DAO
                     FROM borroweddevices bd
                     JOIN devices d ON bd.device_id = d.device_id
                     WHERE bd.borrow_date BETWEEN @StartDate AND @EndDate
-                        AND bd.status = 'Chưa trả lại'
+                        AND bd.status = 'Đang mượn'
                     ORDER BY bd.borrow_date, d.device_name";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -177,6 +176,57 @@ namespace qltv.DAO
                 }
             }
             return result;
+        }
+
+        public List<StatisticsActiveMemberDTO> GetActiveMemberStatistics()
+        {
+            List<StatisticsActiveMemberDTO> result = new List<StatisticsActiveMemberDTO>();
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string query = @"
+                    SELECT 
+                        p.member_id,
+                        p.full_name,
+                        p.appeartime
+                    FROM presentmembers p
+                    WHERE p.leavetime IS NULL 
+                        OR p.leavetime > NOW()
+                    ORDER BY p.appeartime";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(new StatisticsActiveMemberDTO
+                            {
+                                MemberId = reader.GetString("member_id"),
+                                FullName = reader.GetString("full_name"),
+                                AppearTime = reader.GetDateTime("appeartime")
+                            });
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        public bool IsAdmin(string accountId, string password)
+        {
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT role FROM account WHERE account_id = @AccountId AND password = @Password";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@AccountId", accountId);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    object result = cmd.ExecuteScalar();
+                    return result != null && Convert.ToInt32(result) == 0;
+                }
+            }
         }
     }
 }

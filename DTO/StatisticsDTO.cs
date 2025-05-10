@@ -30,4 +30,11 @@ namespace qltv.DTO
         public string Status { get; set; }
         public double CompensationAmount { get; set; }
     }
+
+    public class StatisticsActiveMemberDTO
+    {
+        public string MemberId { get; set; }
+        public string FullName { get; set; }
+        public DateTime AppearTime { get; set; }
+    }
 }
