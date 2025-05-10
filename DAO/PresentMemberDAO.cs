@@ -87,6 +87,55 @@ namespace qltv_Winform.DAO
             }
         }
 
+        // check if member_id exists in violation
+        public static bool IsMemberInViolation(string member_id)
+        {
+            string query = "SELECT COUNT(*) FROM violations WHERE member_id = @member_id";
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@member_id", member_id);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // Return true if the member exists in the group
+                }
+            }
+        }
+
+
+        // Delete a present member by multiple conditions
+        public static bool DeletePresentMemberByConditions(string? member_id, DateTime? appear_time)
+        {
+            string query = "DELETE FROM presentmembers WHERE member_id = @member_id AND appeartime = @appear_time";
+
+            // Add an additional condition for leave_time if it's provided
+
+
+            using (MySqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@member_id", member_id);
+                    cmd.Parameters.AddWithValue("@appear_time", appear_time);
+
+
+                    try
+                    {
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0; // Return true if at least one row was deleted
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                        return false;
+                    }
+                }
+            }
+        }
+
+
 
     }
 }

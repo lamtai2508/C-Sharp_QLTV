@@ -57,7 +57,7 @@ namespace qltv_Winform.GUI.UI_For_Admin
 
         private void btCheckin_Click(object sender, EventArgs e)
         {
-            var member_id = member_idtb.Text;
+            var member_id = member_idtb.Text.ToUpper();
             var member = MemberDAO.GetMemberById(member_id);
 
 
@@ -92,11 +92,16 @@ namespace qltv_Winform.GUI.UI_For_Admin
                 MessageBox.Show("Mã thành viên không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
+
+            if (PresentMemberBUS.IsMemberInViolation(member_id))
+            {
+                MessageBox.Show("Thành viên này có vi phạm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btCheck_Click(object sender, EventArgs e)
         {
-            var member_id = member_idtb.Text;
+            var member_id = member_idtb.Text.ToUpper();
 
             // Use MemberDAO to check if the member_id exists
             var member = MemberDAO.GetMemberById(member_id);
@@ -164,5 +169,31 @@ namespace qltv_Winform.GUI.UI_For_Admin
             }
         }
 
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+
+            // get data from selected row
+            if (presentmember_table.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = presentmember_table.SelectedRows[0];
+                var member_id = selectedRow.Cells["member_id"].Value.ToString();
+                var appear_time = Convert.ToDateTime(selectedRow.Cells["appeartime"].Value);
+                // Delete the member from the database
+                if (PresentMemberBUS.DeletePresentMemberByConditions(member_id, appear_time))
+                {
+                    MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    clearInput();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một thành viên để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

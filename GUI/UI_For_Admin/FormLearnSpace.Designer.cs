@@ -35,6 +35,7 @@
             presentmember_table = new DataGridView();
             btCheck = new Button();
             label2 = new Label();
+            deleteBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)presentmember_table).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             btCheckin.BackColor = Color.LawnGreen;
             btCheckin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btCheckin.Location = new Point(728, 97);
+            btCheckin.Location = new Point(679, 102);
             btCheckin.Margin = new Padding(3, 4, 3, 4);
             btCheckin.Name = "btCheckin";
             btCheckin.Size = new Size(181, 97);
@@ -65,7 +66,7 @@
             // 
             btCheckout.BackColor = SystemColors.ActiveCaption;
             btCheckout.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btCheckout.Location = new Point(915, 102);
+            btCheckout.Location = new Point(866, 102);
             btCheckout.Margin = new Padding(3, 4, 3, 4);
             btCheckout.Name = "btCheckout";
             btCheckout.Size = new Size(163, 65);
@@ -124,11 +125,24 @@
             label2.TabIndex = 6;
             label2.Text = "MÃ THÀNH VIÊN";
             // 
+            // deleteBtn
+            // 
+            deleteBtn.BackColor = Color.LightCoral;
+            deleteBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteBtn.Location = new Point(1035, 102);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(148, 65);
+            deleteBtn.TabIndex = 7;
+            deleteBtn.Text = "Xóa";
+            deleteBtn.UseVisualStyleBackColor = false;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
             // FormLearnSpace
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1336, 816);
+            Controls.Add(deleteBtn);
             Controls.Add(label2);
             Controls.Add(btCheck);
             Controls.Add(presentmember_table);
@@ -155,5 +169,6 @@
         private DataGridView presentmember_table;
         private Button btCheck;
         private Label label2;
+        private Button deleteBtn;
     }
 }

@@ -75,7 +75,7 @@ namespace qltv.GUI.UI_For_Admin
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label2.Location = new Point(50, 250);
+            label2.Location = new Point(50, 290);
             label2.Name = "label2";
             label2.Size = new Size(202, 28);
             label2.TabIndex = 4;
@@ -85,7 +85,7 @@ namespace qltv.GUI.UI_For_Admin
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label3.Location = new Point(50, 430);
+            label3.Location = new Point(550, 290);
             label3.Name = "label3";
             label3.Size = new Size(256, 28);
             label3.TabIndex = 5;
@@ -95,7 +95,7 @@ namespace qltv.GUI.UI_For_Admin
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label4.Location = new Point(50, 610);
+            label4.Location = new Point(50, 522);
             label4.Name = "label4";
             label4.Size = new Size(143, 28);
             label4.TabIndex = 6;
@@ -105,7 +105,7 @@ namespace qltv.GUI.UI_For_Admin
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F);
-            label5.Location = new Point(50, 650);
+            label5.Location = new Point(50, 560);
             label5.Name = "label5";
             label5.Size = new Size(177, 23);
             label5.TabIndex = 7;
@@ -115,43 +115,45 @@ namespace qltv.GUI.UI_For_Admin
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label6.Location = new Point(50, 790);
+            label6.Location = new Point(550, 70);
             label6.Name = "label6";
-            label6.Size = new Size(256, 28);
+            label6.Size = new Size(275, 28);
             label6.TabIndex = 13;
             label6.Text = "Thành viên đang hoạt động";
             // 
             // table_MemberStats
             // 
+            table_MemberStats.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            table_MemberStats.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             table_MemberStats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             table_MemberStats.Location = new Point(50, 110);
             table_MemberStats.Name = "table_MemberStats";
             table_MemberStats.RowHeadersWidth = 51;
-            table_MemberStats.Size = new Size(900, 120);
+            table_MemberStats.Size = new Size(450, 120);
             table_MemberStats.TabIndex = 8;
             // 
             // table_DeviceBorrowing
             // 
             table_DeviceBorrowing.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_DeviceBorrowing.Location = new Point(50, 290);
+            table_DeviceBorrowing.Location = new Point(50, 338);
             table_DeviceBorrowing.Name = "table_DeviceBorrowing";
             table_DeviceBorrowing.RowHeadersWidth = 51;
-            table_DeviceBorrowing.Size = new Size(900, 120);
+            table_DeviceBorrowing.Size = new Size(450, 120);
             table_DeviceBorrowing.TabIndex = 9;
             // 
             // table_CurrentBorrowed
             // 
             table_CurrentBorrowed.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_CurrentBorrowed.Location = new Point(50, 470);
+            table_CurrentBorrowed.Location = new Point(550, 338);
             table_CurrentBorrowed.Name = "table_CurrentBorrowed";
             table_CurrentBorrowed.RowHeadersWidth = 51;
-            table_CurrentBorrowed.Size = new Size(900, 120);
+            table_CurrentBorrowed.Size = new Size(796, 120);
             table_CurrentBorrowed.TabIndex = 10;
             // 
             // table_Violations
             // 
             table_Violations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_Violations.Location = new Point(50, 680);
+            table_Violations.Location = new Point(50, 597);
             table_Violations.Name = "table_Violations";
             table_Violations.RowHeadersWidth = 51;
             table_Violations.Size = new Size(900, 120);
@@ -160,17 +162,17 @@ namespace qltv.GUI.UI_For_Admin
             // table_ActiveMembers
             // 
             table_ActiveMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_ActiveMembers.Location = new Point(50, 830);
+            table_ActiveMembers.Location = new Point(550, 110);
             table_ActiveMembers.Name = "table_ActiveMembers";
             table_ActiveMembers.RowHeadersWidth = 51;
-            table_ActiveMembers.Size = new Size(900, 120);
+            table_ActiveMembers.Size = new Size(450, 120);
             table_ActiveMembers.TabIndex = 14;
             // 
             // lbl_TotalCompensation
             // 
             lbl_TotalCompensation.AutoSize = true;
             lbl_TotalCompensation.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbl_TotalCompensation.Location = new Point(200, 650);
+            lbl_TotalCompensation.Location = new Point(245, 560);
             lbl_TotalCompensation.Name = "lbl_TotalCompensation";
             lbl_TotalCompensation.Size = new Size(203, 23);
             lbl_TotalCompensation.TabIndex = 12;
@@ -180,7 +182,7 @@ namespace qltv.GUI.UI_For_Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 1000);
+            ClientSize = new Size(1358, 1000);
             Controls.Add(table_ActiveMembers);
             Controls.Add(lbl_TotalCompensation);
             Controls.Add(table_Violations);

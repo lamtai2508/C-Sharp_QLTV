@@ -26,5 +26,25 @@ namespace qltv.BUS
             }
             return false;
         }
+
+        public static bool IsMemberInViolation (string member_id)
+        {
+            // Kiểm tra nếu member co mat
+            if (PresentMemberDAO.IsMemberInGroupWithNullLeaveTime(member_id))
+            {
+                return PresentMemberDAO.IsMemberInViolation(member_id);
+            }
+            return false;
+        }
+
+        public static bool DeletePresentMemberByConditions(string member_id, DateTime appear_time)
+        {
+            // Xóa thành viên khỏi bảng presentmembers
+            if (PresentMemberDAO.IsMemberInGroupWithNullLeaveTime(member_id))
+            {
+                return false;
+            }
+            return PresentMemberDAO.DeletePresentMemberByConditions(member_id, appear_time);
+        }
     }
 }

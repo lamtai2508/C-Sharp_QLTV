@@ -12,12 +12,12 @@ namespace qltv.GUI.UI_For_Admin
         private readonly string _accountId;
         private readonly string _password;
 
-        public FormStatistical(string accountId, string password)
+        public FormStatistical() //string accountId, string password add variable in need
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            _accountId = accountId;
-            _password = password;
+            //_accountId = accountId;
+            //_password = password;
         }
 
         private void FormStatistical_Load(object sender, EventArgs e)
